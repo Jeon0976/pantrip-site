@@ -5,6 +5,9 @@ const langs=['ko','en','ja','th','ru','es','mn'];
 const data=JSON.parse(await readFile('legal-content.json','utf8'));
 assert.deepEqual(Object.keys(data).sort(),[...langs].sort());
 assert.equal(await readFile('public/legal.css','utf8'),await readFile('legal.css','utf8'));
+for(const file of ['public/index.html','public/privacy.html','public/support.html']){
+ const html=await readFile(file,'utf8');assert(html.includes('Pantrip') && !html.includes('ExpiryCheck'));
+}
 let checked=0;
 for(const lang of langs){
  assert.equal(data[lang].sections.length,10);
@@ -17,6 +20,7 @@ for(const lang of langs){
   const html=await readFile(file,'utf8');
   assert(html.includes(`<html lang="${lang}">`));
   assert(html.includes('jsh097610@gmail.com'));
+  assert(html.includes('Pantrip') && !html.includes('ExpiryCheck'));
   assert(!/<script|__\w+__|YOUR_|localhost|127\.0\.0\.1/i.test(html));
   assert.equal((html.match(/aria-current="page"/g)||[]).length,1);
   assert(html.includes(`aria-label="${data[lang].contentsTitle}"`));

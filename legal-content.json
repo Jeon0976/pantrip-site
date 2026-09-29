@@ -8,14 +8,14 @@
       [
         "1. 운영자와 적용 대상",
         [
-          "ExpiryCheck의 운영자 및 개인정보 보호책임자는 전성훈입니다. 개인정보 문의와 권리 행사는 jsh097610@gmail.com으로 연락해 주세요. 이 방침은 ExpiryCheck 앱과 공식 지원 웹페이지에 적용됩니다. 서비스는 만 16세 이상을 대상으로 합니다. 16세 미만의 개인정보가 수집된 사실을 알게 되면 확인 후 삭제합니다."
+          "Pantrip의 운영자 및 개인정보 보호책임자는 전성훈입니다. 개인정보 문의와 권리 행사는 jsh097610@gmail.com으로 연락해 주세요. 이 방침은 Pantrip 앱과 공식 지원 웹페이지에 적용됩니다. 서비스는 만 16세 이상을 대상으로 합니다. 16세 미만의 개인정보가 수집된 사실을 알게 되면 확인 후 삭제합니다."
         ]
       ],
       [
         "2. 직접 등록한 식품과 사진",
         [
-          "식품명, 사진, 유통기한, 보관 위치와 사용 기록은 기기에 저장되며, iCloud를 사용하는 경우 사용자의 Apple 계정으로 동기화됩니다. 사진의 글자 인식과 배경 제거는 기기에서 처리합니다. 해당 사진, 인식한 원문과 식품명을 Amplitude로 전송하지 않습니다. iCloud는 ExpiryCheck의 소셜 로그인 계정과 별개입니다.",
-          "로그아웃하거나 ExpiryCheck 계정을 삭제해도 등록한 식품은 유지됩니다. 식품을 지우려면 앱에서 직접 삭제해 주세요. iCloud 동기화가 켜져 있으면 삭제가 다른 연결 기기에도 반영될 수 있습니다."
+          "식품명, 사진, 유통기한, 보관 위치와 사용 기록은 기기에 저장되며, iCloud를 사용하는 경우 사용자의 Apple 계정으로 동기화됩니다. 사진의 글자 인식과 배경 제거는 기기에서 처리합니다. 해당 사진, 인식한 원문과 식품명을 Amplitude로 전송하지 않습니다. iCloud는 Pantrip의 소셜 로그인 계정과 별개입니다.",
+          "로그아웃하거나 Pantrip 계정을 삭제해도 등록한 식품은 유지됩니다. 식품을 지우려면 앱에서 직접 삭제해 주세요. iCloud 동기화가 켜져 있으면 삭제가 다른 연결 기기에도 반영될 수 있습니다."
         ]
       ],
       [
@@ -129,14 +129,14 @@
       [
         "1. Operator and scope",
         [
-          "ExpiryCheck is operated by Seonghun Jeon (전성훈), who is also the privacy contact. Contact jsh097610@gmail.com for privacy questions and rights requests. This notice applies to the app and official support website. The service is intended for people aged 16 and above. If we learn that we collected information from someone under 16, we investigate and delete it."
+          "Pantrip is operated by Seonghun Jeon (전성훈), who is also the privacy contact. Contact jsh097610@gmail.com for privacy questions and rights requests. This notice applies to the app and official support website. The service is intended for people aged 16 and above. If we learn that we collected information from someone under 16, we investigate and delete it."
         ]
       ],
       [
         "2. Food inventory and photos",
         [
-          "Food names, photos, expiry dates, storage locations and usage records are stored on your device. If you use iCloud, they sync through your Apple account. Text recognition and background removal run on-device. We do not send those photos, recognized text or food names to Amplitude. iCloud is separate from your ExpiryCheck social-login account.",
-          "Logging out or deleting your ExpiryCheck account does not delete your food inventory. To remove food records, delete them in the app. With iCloud sync enabled, deletion can also affect your other connected devices."
+          "Food names, photos, expiry dates, storage locations and usage records are stored on your device. If you use iCloud, they sync through your Apple account. Text recognition and background removal run on-device. We do not send those photos, recognized text or food names to Amplitude. iCloud is separate from your Pantrip social-login account.",
+          "Logging out or deleting your Pantrip account does not delete your food inventory. To remove food records, delete them in the app. With iCloud sync enabled, deletion can also affect your other connected devices."
         ]
       ],
       [
@@ -250,14 +250,14 @@
       [
         "1. 運営者と対象",
         [
-          "ExpiryCheckの運営者兼個人情報の窓口は전성훈（Seonghun Jeon）です。お問い合わせや権利行使はjsh097610@gmail.comまでご連絡ください。本方針はアプリと公式サポートサイトに適用されます。本サービスは16歳以上を対象とします。16歳未満の方の情報を収集したことが判明した場合、確認して削除します。"
+          "Pantripの運営者兼個人情報の窓口は전성훈（Seonghun Jeon）です。お問い合わせや権利行使はjsh097610@gmail.comまでご連絡ください。本方針はアプリと公式サポートサイトに適用されます。本サービスは16歳以上を対象とします。16歳未満の方の情報を収集したことが判明した場合、確認して削除します。"
         ]
       ],
       [
         "2. 食品と写真",
         [
-          "食品名、写真、期限、保管場所、使用履歴は端末に保存し、iCloudを利用する場合はご自身のAppleアカウントで同期します。文字認識と背景除去は端末内で行います。写真、認識した原文、食品名をAmplitudeには送信しません。iCloudとExpiryCheckのソーシャルログインは別のものです。",
-          "ログアウトやExpiryCheckアカウントの削除後も食品は残ります。食品の削除はアプリ内で行ってください。iCloud同期が有効な場合、他の接続端末にも削除が反映されることがあります。"
+          "食品名、写真、期限、保管場所、使用履歴は端末に保存し、iCloudを利用する場合はご自身のAppleアカウントで同期します。文字認識と背景除去は端末内で行います。写真、認識した原文、食品名をAmplitudeには送信しません。iCloudとPantripのソーシャルログインは別のものです。",
+          "ログアウトやPantripアカウントの削除後も食品は残ります。食品の削除はアプリ内で行ってください。iCloud同期が有効な場合、他の接続端末にも削除が反映されることがあります。"
         ]
       ],
       [
@@ -371,13 +371,13 @@
       [
         "1. Responsable y alcance",
         [
-          "ExpiryCheck está a cargo de Seonghun Jeon (전성훈), también responsable de privacidad. Contacto: jsh097610@gmail.com. Esta política se aplica a la app y al sitio oficial de ayuda. El servicio está dirigido a mayores de 16 años. Si sabemos que hemos recopilado datos de una persona menor de 16 años, los investigaremos y eliminaremos."
+          "Pantrip está a cargo de Seonghun Jeon (전성훈), también responsable de privacidad. Contacto: jsh097610@gmail.com. Esta política se aplica a la app y al sitio oficial de ayuda. El servicio está dirigido a mayores de 16 años. Si sabemos que hemos recopilado datos de una persona menor de 16 años, los investigaremos y eliminaremos."
         ]
       ],
       [
         "2. Alimentos y fotografías",
         [
-          "Los nombres, fotos, fechas de caducidad, ubicaciones e historial de uso se guardan en el dispositivo y, si utilizas iCloud, se sincronizan mediante tu cuenta de Apple. El reconocimiento de texto y la eliminación de fondos se realizan en el dispositivo. No enviamos esas fotos, el texto reconocido ni los nombres de alimentos a Amplitude. iCloud es independiente del inicio de sesión social de ExpiryCheck.",
+          "Los nombres, fotos, fechas de caducidad, ubicaciones e historial de uso se guardan en el dispositivo y, si utilizas iCloud, se sincronizan mediante tu cuenta de Apple. El reconocimiento de texto y la eliminación de fondos se realizan en el dispositivo. No enviamos esas fotos, el texto reconocido ni los nombres de alimentos a Amplitude. iCloud es independiente del inicio de sesión social de Pantrip.",
           "Cerrar sesión o eliminar tu cuenta no elimina los alimentos. Puedes borrarlos desde la app. Si iCloud está activado, la eliminación puede propagarse a otros dispositivos conectados."
         ]
       ],
@@ -492,13 +492,13 @@
       [
         "1. Оператор и область действия",
         [
-          "ExpiryCheck управляет 전성훈 (Seonghun Jeon), также отвечающий за вопросы конфиденциальности. Контакт: jsh097610@gmail.com. Политика относится к приложению и официальному сайту поддержки. Сервис предназначен для лиц от 16 лет. Если мы узнаем о сборе данных ребёнка младше 16 лет, мы проверим сведения и удалим их."
+          "Pantrip управляет 전성훈 (Seonghun Jeon), также отвечающий за вопросы конфиденциальности. Контакт: jsh097610@gmail.com. Политика относится к приложению и официальному сайту поддержки. Сервис предназначен для лиц от 16 лет. Если мы узнаем о сборе данных ребёнка младше 16 лет, мы проверим сведения и удалим их."
         ]
       ],
       [
         "2. Продукты и фотографии",
         [
-          "Названия продуктов, фотографии, сроки годности, места хранения и история использования сохраняются на устройстве. При использовании iCloud они синхронизируются через ваш аккаунт Apple. Распознавание текста и удаление фона выполняются на устройстве. Эти фотографии, распознанный исходный текст и названия продуктов не передаются в Amplitude. iCloud не зависит от социального входа в ExpiryCheck.",
+          "Названия продуктов, фотографии, сроки годности, места хранения и история использования сохраняются на устройстве. При использовании iCloud они синхронизируются через ваш аккаунт Apple. Распознавание текста и удаление фона выполняются на устройстве. Эти фотографии, распознанный исходный текст и названия продуктов не передаются в Amplitude. iCloud не зависит от социального входа в Pantrip.",
           "Выход из аккаунта и его удаление не удаляют продукты. Удаляйте записи о продуктах отдельно в приложении. При включённой синхронизации удаление может распространиться на другие подключённые устройства."
         ]
       ],
@@ -613,14 +613,14 @@
       [
         "1. ผู้ดำเนินการและขอบเขต",
         [
-          "ExpiryCheck ดำเนินการโดย 전성훈 (Seonghun Jeon) ซึ่งเป็นผู้ติดต่อด้านข้อมูลส่วนบุคคลด้วย ติดต่อ jsh097610@gmail.com เพื่อสอบถามหรือใช้สิทธิ นโยบายนี้ครอบคลุมแอปและเว็บไซต์ช่วยเหลืออย่างเป็นทางการ บริการนี้สำหรับผู้มีอายุ 16 ปีขึ้นไป หากพบว่าเก็บข้อมูลของผู้มีอายุต่ำกว่า 16 ปี เราจะตรวจสอบและลบข้อมูลนั้น"
+          "Pantrip ดำเนินการโดย 전성훈 (Seonghun Jeon) ซึ่งเป็นผู้ติดต่อด้านข้อมูลส่วนบุคคลด้วย ติดต่อ jsh097610@gmail.com เพื่อสอบถามหรือใช้สิทธิ นโยบายนี้ครอบคลุมแอปและเว็บไซต์ช่วยเหลืออย่างเป็นทางการ บริการนี้สำหรับผู้มีอายุ 16 ปีขึ้นไป หากพบว่าเก็บข้อมูลของผู้มีอายุต่ำกว่า 16 ปี เราจะตรวจสอบและลบข้อมูลนั้น"
         ]
       ],
       [
         "2. อาหารและรูปภาพ",
         [
-          "ชื่ออาหาร รูปภาพ วันหมดอายุ สถานที่เก็บ และประวัติการใช้เก็บในอุปกรณ์ และซิงค์ผ่านบัญชี Apple ของคุณเมื่อใช้ iCloud การอ่านข้อความและลบพื้นหลังทำในอุปกรณ์ เราไม่ส่งรูปภาพ ข้อความต้นฉบับที่อ่านได้ หรือชื่ออาหารไปยัง Amplitude บัญชี iCloud แยกจากการเข้าสู่ระบบโซเชียลของ ExpiryCheck",
-          "การออกจากระบบหรือลบบัญชี ExpiryCheck ไม่ลบรายการอาหาร หากต้องการลบให้ทำในแอป เมื่อเปิด iCloud การลบอาจซิงค์ไปยังอุปกรณ์อื่นที่เชื่อมต่อด้วย"
+          "ชื่ออาหาร รูปภาพ วันหมดอายุ สถานที่เก็บ และประวัติการใช้เก็บในอุปกรณ์ และซิงค์ผ่านบัญชี Apple ของคุณเมื่อใช้ iCloud การอ่านข้อความและลบพื้นหลังทำในอุปกรณ์ เราไม่ส่งรูปภาพ ข้อความต้นฉบับที่อ่านได้ หรือชื่ออาหารไปยัง Amplitude บัญชี iCloud แยกจากการเข้าสู่ระบบโซเชียลของ Pantrip",
+          "การออกจากระบบหรือลบบัญชี Pantrip ไม่ลบรายการอาหาร หากต้องการลบให้ทำในแอป เมื่อเปิด iCloud การลบอาจซิงค์ไปยังอุปกรณ์อื่นที่เชื่อมต่อด้วย"
         ]
       ],
       [
@@ -734,14 +734,14 @@
       [
         "1. Үйлчилгээ эрхлэгч ба хамрах хүрээ",
         [
-          "ExpiryCheck-ийн үйлчилгээ эрхлэгч, хувийн мэдээллийн асуудал хариуцагч нь 전성훈 (Seonghun Jeon) юм. Асуулт болон эрхээ хэрэгжүүлэх хүсэлтийг jsh097610@gmail.com хаягаар илгээнэ үү. Энэ бодлого апп болон албан ёсны тусламжийн сайтад хамаарна. Үйлчилгээ нь 16 ба түүнээс дээш насныханд зориулагдсан. 16 нас хүрээгүй хүний мэдээлэл цуглуулсан нь тогтоогдвол шалгаж устгана."
+          "Pantrip-ийн үйлчилгээ эрхлэгч, хувийн мэдээллийн асуудал хариуцагч нь 전성훈 (Seonghun Jeon) юм. Асуулт болон эрхээ хэрэгжүүлэх хүсэлтийг jsh097610@gmail.com хаягаар илгээнэ үү. Энэ бодлого апп болон албан ёсны тусламжийн сайтад хамаарна. Үйлчилгээ нь 16 ба түүнээс дээш насныханд зориулагдсан. 16 нас хүрээгүй хүний мэдээлэл цуглуулсан нь тогтоогдвол шалгаж устгана."
         ]
       ],
       [
         "2. Хүнс ба зураг",
         [
-          "Хүнсний нэр, зураг, дуусах хугацаа, хадгалах газар, ашиглалтын түүх төхөөрөмжид хадгалагдана. iCloud ашиглавал таны Apple бүртгэлээр синк хийнэ. Зургийн бичвэр таних, дэвсгэр арилгах ажиллагаа төхөөрөмж дээр хийгдэнэ. Эдгээр зураг, таньсан эх бичвэр, хүнсний нэрийг Amplitude руу илгээхгүй. iCloud нь ExpiryCheck-ийн сошиал нэвтрэлтээс тусдаа.",
-          "Системээс гарах эсвэл ExpiryCheck бүртгэлээ устгах үед хүнсний жагсаалт үлдэнэ. Хүнсийг устгах бол апп дотор тусад нь устгана уу. iCloud синк асаалттай бол устгал бусад холбогдсон төхөөрөмжид мөн тусаж болно."
+          "Хүнсний нэр, зураг, дуусах хугацаа, хадгалах газар, ашиглалтын түүх төхөөрөмжид хадгалагдана. iCloud ашиглавал таны Apple бүртгэлээр синк хийнэ. Зургийн бичвэр таних, дэвсгэр арилгах ажиллагаа төхөөрөмж дээр хийгдэнэ. Эдгээр зураг, таньсан эх бичвэр, хүнсний нэрийг Amplitude руу илгээхгүй. iCloud нь Pantrip-ийн сошиал нэвтрэлтээс тусдаа.",
+          "Системээс гарах эсвэл Pantrip бүртгэлээ устгах үед хүнсний жагсаалт үлдэнэ. Хүнсийг устгах бол апп дотор тусад нь устгана уу. iCloud синк асаалттай бол устгал бусад холбогдсон төхөөрөмжид мөн тусаж болно."
         ]
       ],
       [
