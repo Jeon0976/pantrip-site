@@ -3,7 +3,7 @@
     "privacyTitle": "개인정보 처리방침",
     "supportTitle": "고객지원 및 계정 삭제",
     "updated": "최종 수정",
-    "summary": "등록한 식품은 기기·iCloud에 유지됩니다. 실제 계정 삭제 자동 처리는 배포 준비 중이며 현재는 요청을 접수합니다.",
+    "summary": "계정 삭제 기능이 서버에 배포되었습니다. 계정·포인트·꾸미기 소유권은 삭제 대상이며, 등록한 식품은 기기·iCloud에 유지됩니다. 외부 서비스의 삭제는 별도로 처리합니다.",
     "sections": [
       [
         "1. 운영자와 적용 대상",
@@ -49,7 +49,7 @@
       [
         "7. 보관 기간과 파기",
         [
-          "법정 보관이 필요한 계약·결제·공급 기록은 원 거래 시각부터 5년, 소비자 불만·분쟁 기록은 해당 기록에 적용되는 기준부터 3년간 필요한 최소 항목만 제한 보관합니다. 모든 활동·사진의 5년 보관을 의미하지 않습니다. 삭제 처리 상태와 복구 조회 기록은 삭제 완료 후 30일 보관하는 설계이며, 자동 삭제·만료 처리는 아직 배포 준비 중입니다. 처리 중인 요청은 완료와 구분하여 안내합니다.",
+          "법정 보관이 필요한 계약·결제·공급 기록은 원 거래 시각부터 5년, 소비자 불만·분쟁 기록은 해당 기록에 적용되는 기준부터 3년간 필요한 최소 항목만 제한 보관합니다. 모든 활동·사진의 5년 보관을 의미하지 않습니다. 삭제 처리 상태와 복구 조회 기록은 삭제 완료 후 30일 보관하도록 서버에 구현되어 있습니다. 서버가 정기적으로 보관 기간을 확인하고 기간이 지난 해당 기록을 삭제합니다. 처리 중인 요청은 완료와 구분하여 안내합니다.",
           "이용 분석 이벤트는 분석 목적이 유지되는 동안 보관하며, 적용 가능한 삭제 요청이 확인되면 공급업체의 삭제 절차를 진행합니다. 현재 자동 12개월 삭제 설정은 완료되지 않았으므로 12개월이 지나면 자동으로 지워진다고 보장하지 않습니다. 기존의 계정과 연결되지 않은 기기 기반 분석 기록은 계정 ID만으로 찾아 삭제할 수 없을 수 있습니다. 관련 요청 시 확인 가능한 범위와 추가 절차를 안내합니다.",
           "개인정보는 보관 목적이 끝나면 복구하기 어렵도록 삭제합니다. 공급업체의 삭제 처리와 제한된 보안·백업 보관에는 시간이 걸릴 수 있습니다. 삭제 요청 상태와 외부 처리 완료를 구분해 안내하며, 법정 보관 정보는 기간 만료 후 파기합니다."
         ]
@@ -57,7 +57,8 @@
       [
         "8. 계정 삭제",
         [
-          "현재 계정 삭제는 앱 설정의 내 정보에서 요청을 접수하는 단계입니다. 계정·포인트·꾸미기 소유권을 실제로 지우고 외부 처리업체까지 추적하는 자동 처리는 아직 배포 준비 중입니다. 접수만으로 삭제 완료라 안내하지 않으며, 진행 확인이나 앱 이용이 어려우면 이메일로 지원을 요청해 주세요. 익명 계정도 대상입니다. 필요한 Apple 재인증과 결제 증빙 확인을 거쳐 처리합니다. 등록한 식품은 기기·iCloud에 유지되며 계정 삭제는 환불을 의미하지 않습니다."
+          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 필요한 인증과 거래 확인을 거쳐 서버 계정·포인트·구매한 주방 및 장식의 소유권을 삭제하는 기능이 배포되어 있습니다. 익명 계정도 대상입니다. 등록한 식품과 사진은 기기·iCloud에 유지됩니다. 계정 삭제는 환불을 의미하지 않으며, 법정 보관이 필요한 최소 결제 기록은 정해진 기간 동안 별도로 보관합니다.",
+          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
         ]
       ],
       [
@@ -96,7 +97,8 @@
       [
         "계정 삭제",
         [
-          "현재 계정 삭제는 앱 설정의 내 정보에서 요청을 접수하는 단계입니다. 계정·포인트·꾸미기 소유권을 실제로 지우고 외부 처리업체까지 추적하는 자동 처리는 아직 배포 준비 중입니다. 접수만으로 삭제 완료라 안내하지 않으며, 진행 확인이나 앱 이용이 어려우면 이메일로 지원을 요청해 주세요. 익명 계정도 대상입니다. 필요한 Apple 재인증과 결제 증빙 확인을 거쳐 처리합니다. 등록한 식품은 기기·iCloud에 유지되며 계정 삭제는 환불을 의미하지 않습니다."
+          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 필요한 인증과 거래 확인을 거쳐 서버 계정·포인트·구매한 주방 및 장식의 소유권을 삭제하는 기능이 배포되어 있습니다. 익명 계정도 대상입니다. 등록한 식품과 사진은 기기·iCloud에 유지됩니다. 계정 삭제는 환불을 의미하지 않으며, 법정 보관이 필요한 최소 결제 기록은 정해진 기간 동안 별도로 보관합니다.",
+          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
         ]
       ],
       [
@@ -117,7 +119,7 @@
     "privacyTitle": "Privacy Policy",
     "supportTitle": "Support and account deletion",
     "updated": "Last updated",
-    "summary": "Food remains on your device/iCloud. Account-deletion automation is awaiting deployment; requests are currently accepted.",
+    "summary": "Account deletion is deployed on the server. Accounts, points and kitchen/decor ownership are subject to deletion; registered food remains on your device/iCloud. External services handle erasure separately.",
     "sections": [
       [
         "1. Operator and scope",
@@ -163,7 +165,7 @@
       [
         "7. Retention and erasure",
         [
-          "Minimum legally required contract, payment and supply records are retained for five years from the original transaction time; complaint/dispute records for three years under the applicable record-specific rule. This does not mean retaining all activity or photos for five years. Deletion status and recovery records are designed to remain for 30 days after completion. Automated deletion and expiry processing are not yet deployed. Pending requests are distinguished from completed deletion.",
+          "Minimum legally required contract, payment and supply records are retained for five years from the original transaction time; complaint/dispute records for three years under the applicable record-specific rule. This does not mean retaining all activity or photos for five years. The server implements retention of deletion status and recovery records for 30 days after completion. The server regularly checks retention periods and deletes the applicable records when those periods have ended. Pending requests are distinguished from completed deletion.",
           "Analytics events are retained while the analytics purpose remains; verified applicable deletion requests are handled through the provider. Automatic 12-month deletion has not been configured, so we do not promise that events disappear after 12 months. Older device-based analytics not linked to an account may not be identifiable from the account ID alone. We explain the available scope and additional steps for such requests.",
           "When the retention purpose ends, we erase data to make recovery difficult. Provider erasure and limited security/backup retention can take time. We distinguish request receipt from external completion. Statutorily retained data is erased when its period ends."
         ]
@@ -171,7 +173,8 @@
       [
         "8. Deleting your account",
         [
-          "Currently, Settings → My information accepts account-deletion requests. Automation that deletes the account, points and decoration ownership and tracks external providers is still awaiting deployment. A submitted request is not reported as completed deletion. Email support for progress or if the app is inaccessible. Anonymous accounts are included. Necessary Apple reauthentication and payment-evidence checks apply. Food remains on your device/iCloud; account deletion is not a refund."
+          "You can request account deletion in My information in the app settings. The server functionality to delete the account, points and purchased kitchen/decor ownership after required identity and transaction checks is deployed. Anonymous accounts are included. Registered food and photos remain on your device/iCloud. Account deletion is not a refund; minimum legally required payment records are retained separately for the applicable period.",
+          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
         ]
       ],
       [
@@ -210,7 +213,8 @@
       [
         "Delete an account",
         [
-          "Currently, Settings → My information accepts account-deletion requests. Automation that deletes the account, points and decoration ownership and tracks external providers is still awaiting deployment. A submitted request is not reported as completed deletion. Email support for progress or if the app is inaccessible. Anonymous accounts are included. Necessary Apple reauthentication and payment-evidence checks apply. Food remains on your device/iCloud; account deletion is not a refund."
+          "You can request account deletion in My information in the app settings. The server functionality to delete the account, points and purchased kitchen/decor ownership after required identity and transaction checks is deployed. Anonymous accounts are included. Registered food and photos remain on your device/iCloud. Account deletion is not a refund; minimum legally required payment records are retained separately for the applicable period.",
+          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
         ]
       ],
       [
@@ -231,7 +235,7 @@
     "privacyTitle": "プライバシーポリシー",
     "supportTitle": "サポート・アカウント削除",
     "updated": "最終更新",
-    "summary": "食品は端末・iCloudに残ります。アカウント削除の自動処理は導入準備中で、現在は申請を受け付けています。",
+    "summary": "アカウント削除機能はサーバーに導入済みです。アカウント・ポイント・キッチンや装飾の所有権が削除対象となり、登録した食品は端末・iCloudに残ります。外部サービスのデータ削除は別途処理します。",
     "sections": [
       [
         "1. 運営者と対象",
@@ -277,7 +281,7 @@
       [
         "7. 保存期間と消去",
         [
-          "法定保存が必要な契約・決済・供給の最小限の記録は元の取引時刻から5年間、苦情・紛争記録は当該記録に適用される基準から3年間、アクセスを制限して保存します。すべての活動・写真を5年保存する意味ではありません。削除状況と復旧照会記録は完了後30日保存する設計で、自動削除・期限処理はまだ導入準備中です。処理中と削除完了を区別して案内します。",
+          "法定保存が必要な契約・決済・供給の最小限の記録は元の取引時刻から5年間、苦情・紛争記録は当該記録に適用される基準から3年間、アクセスを制限して保存します。すべての活動・写真を5年保存する意味ではありません。削除状況と復旧照会記録を完了後30日間保存する処理はサーバーに実装済みです。サーバーが定期的に保存期間を確認し、期間を過ぎた対象記録を削除します。処理中と削除完了を区別して案内します。",
           "分析イベントは分析目的が続く間保存し、対象となる削除依頼を確認した場合は提供者の削除手続きを行います。12か月後の自動削除設定は未完了のため、12か月で必ず消えるとは保証しません。過去のアカウントに結び付かない端末ベースの分析は、アカウントIDだけでは特定できない場合があります。確認できる範囲と追加手続きを案内します。",
           "保存目的が終了すると復元が困難な方法で消去します。提供者の処理や限定的な安全・バックアップ保存には時間がかかることがあります。受付と外部処理完了は区別し、法定保存情報は期間満了後に消去します。"
         ]
@@ -285,7 +289,8 @@
       [
         "8. アカウント削除",
         [
-          "現在は設定の「自分の情報」でアカウント削除の申請を受け付けています。アカウント・ポイント・装飾の所有権を削除し外部提供者の処理を追跡する自動処理は、まだ導入準備中です。受付だけで削除完了とは表示しません。進捗確認やアプリを利用できない場合はメールでお問い合わせください。匿名アカウントも対象です。必要なApple再認証と決済証憑の確認を行います。食品は端末・iCloudに残り、アカウント削除は返金ではありません。"
+          "アプリ設定の「マイ情報」からアカウント削除を申請できます。必要な本人確認・取引確認後に、サーバー上のアカウント・ポイント・購入したキッチンや装飾の所有権を削除する機能は導入済みです。匿名アカウントも対象です。登録した食品と写真は端末・iCloudに残ります。アカウント削除は返金を意味せず、法定保存が必要な最小限の決済記録は所定の期間、別途保存します。",
+          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
         ]
       ],
       [
@@ -324,7 +329,8 @@
       [
         "アカウント削除",
         [
-          "現在は設定の「自分の情報」でアカウント削除の申請を受け付けています。アカウント・ポイント・装飾の所有権を削除し外部提供者の処理を追跡する自動処理は、まだ導入準備中です。受付だけで削除完了とは表示しません。進捗確認やアプリを利用できない場合はメールでお問い合わせください。匿名アカウントも対象です。必要なApple再認証と決済証憑の確認を行います。食品は端末・iCloudに残り、アカウント削除は返金ではありません。"
+          "アプリ設定の「マイ情報」からアカウント削除を申請できます。必要な本人確認・取引確認後に、サーバー上のアカウント・ポイント・購入したキッチンや装飾の所有権を削除する機能は導入済みです。匿名アカウントも対象です。登録した食品と写真は端末・iCloudに残ります。アカウント削除は返金を意味せず、法定保存が必要な最小限の決済記録は所定の期間、別途保存します。",
+          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
         ]
       ],
       [
@@ -345,7 +351,7 @@
     "privacyTitle": "Política de privacidad",
     "supportTitle": "Ayuda y eliminación de cuenta",
     "updated": "Última actualización",
-    "summary": "Los alimentos permanecen en su dispositivo/iCloud. La eliminación automática de cuentas aún espera despliegue; actualmente se reciben solicitudes.",
+    "summary": "La función de eliminación de cuentas está desplegada en el servidor. Se eliminan la cuenta, los puntos y la propiedad de cocinas y decoraciones; los alimentos registrados permanecen en el dispositivo/iCloud. Los servicios externos procesan el borrado por separado.",
     "sections": [
       [
         "1. Responsable y alcance",
@@ -391,7 +397,7 @@
       [
         "7. Conservación y borrado",
         [
-          "Los registros mínimos de contratos, pagos y suministro exigidos por ley se conservan cinco años desde la transacción original; las reclamaciones y disputas, tres años según la regla aplicable a cada registro. No supone guardar toda la actividad o fotos cinco años. El diseño prevé conservar el estado y la recuperación de la supresión 30 días después de completarla. El borrado automático y la gestión de vencimientos aún no están desplegados. Se distingue una solicitud pendiente de una eliminación terminada.",
+          "Los registros mínimos de contratos, pagos y suministro exigidos por ley se conservan cinco años desde la transacción original; las reclamaciones y disputas, tres años según la regla aplicable a cada registro. No supone guardar toda la actividad o fotos cinco años. El servidor implementa la conservación del estado y los datos de recuperación de la eliminación durante 30 días tras completarla. El servidor revisa periódicamente los plazos de conservación y elimina los registros correspondientes cuando vencen. Se distingue una solicitud pendiente de una eliminación terminada.",
           "Los eventos analíticos se conservan mientras persista su finalidad; las solicitudes aplicables verificadas se tramitan con el proveedor. No está configurado el borrado automático a los 12 meses y no garantizamos ese plazo. Es posible que los eventos antiguos basados en el dispositivo y no vinculados a una cuenta no puedan localizarse solo con su ID. Explicaremos el alcance verificable y los pasos adicionales.",
           "Al terminar la finalidad, borramos los datos de modo que su recuperación resulte difícil. El borrado externo y la retención limitada de seguridad/copias pueden tardar. Distinguimos recepción y finalización externa. Los registros legales se borran al vencer su plazo."
         ]
@@ -399,7 +405,8 @@
       [
         "8. Eliminar la cuenta",
         [
-          "Actualmente Ajustes → Mi información permite solicitar la eliminación de la cuenta. La automatización que elimina cuenta, puntos y propiedad de decoraciones y sigue a los proveedores externos aún espera despliegue. Recibir una solicitud no se presenta como eliminación completada. Escriba a soporte para conocer el progreso o si no puede abrir la app. Incluye cuentas anónimas y las verificaciones necesarias de Apple y pagos. Los alimentos permanecen en el dispositivo/iCloud; eliminar la cuenta no es un reembolso."
+          "Puedes solicitar la eliminación de la cuenta en Mi información, en los ajustes de la app. Está desplegada la función del servidor que elimina la cuenta, los puntos y la propiedad de cocinas y decoraciones compradas tras las comprobaciones de identidad y transacciones necesarias. Incluye las cuentas anónimas. Los alimentos y fotos registrados permanecen en el dispositivo/iCloud. Eliminar la cuenta no equivale a un reembolso; los registros mínimos de pago exigidos por ley se conservan por separado durante el plazo correspondiente.",
+          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
         ]
       ],
       [
@@ -438,7 +445,8 @@
       [
         "Eliminar una cuenta",
         [
-          "Actualmente Ajustes → Mi información permite solicitar la eliminación de la cuenta. La automatización que elimina cuenta, puntos y propiedad de decoraciones y sigue a los proveedores externos aún espera despliegue. Recibir una solicitud no se presenta como eliminación completada. Escriba a soporte para conocer el progreso o si no puede abrir la app. Incluye cuentas anónimas y las verificaciones necesarias de Apple y pagos. Los alimentos permanecen en el dispositivo/iCloud; eliminar la cuenta no es un reembolso."
+          "Puedes solicitar la eliminación de la cuenta en Mi información, en los ajustes de la app. Está desplegada la función del servidor que elimina la cuenta, los puntos y la propiedad de cocinas y decoraciones compradas tras las comprobaciones de identidad y transacciones necesarias. Incluye las cuentas anónimas. Los alimentos y fotos registrados permanecen en el dispositivo/iCloud. Eliminar la cuenta no equivale a un reembolso; los registros mínimos de pago exigidos por ley se conservan por separado durante el plazo correspondiente.",
+          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
         ]
       ],
       [
@@ -459,7 +467,7 @@
     "privacyTitle": "Политика конфиденциальности",
     "supportTitle": "Поддержка и удаление аккаунта",
     "updated": "Обновлено",
-    "summary": "Продукты остаются на устройстве/iCloud. Автоматическое удаление аккаунта ещё не развёрнуто; сейчас принимаются заявки.",
+    "summary": "Функция удаления аккаунта развёрнута на сервере. Удалению подлежат аккаунт, баллы и права на кухни и украшения; добавленные продукты остаются на устройстве/iCloud. Внешние сервисы удаляют данные отдельно.",
     "sections": [
       [
         "1. Оператор и область действия",
@@ -505,7 +513,7 @@
       [
         "7. Сроки хранения и уничтожение",
         [
-          "Минимальные обязательные договорные, платёжные и поставочные записи хранятся пять лет с исходной даты операции; жалобы и споры — три года по применимому к записи правилу. Это не означает хранение всех действий или фото пять лет. Статус удаления и данные восстановления планируется хранить 30 дней после завершения. Автоматическое удаление и обработка сроков пока не развёрнуты. Ожидающая заявка отличается от завершённого удаления.",
+          "Минимальные обязательные договорные, платёжные и поставочные записи хранятся пять лет с исходной даты операции; жалобы и споры — три года по применимому к записи правилу. Это не означает хранение всех действий или фото пять лет. На сервере реализовано хранение статуса удаления и данных восстановления в течение 30 дней после завершения. Сервер регулярно проверяет сроки хранения и удаляет соответствующие записи после их истечения. Ожидающая заявка отличается от завершённого удаления.",
           "Аналитика сохраняется пока действует её цель; проверенные применимые запросы направляются поставщику для удаления. Автоматическое удаление через 12 месяцев ещё не настроено, и такой срок не гарантируется. Старые события устройства, не связанные с аккаунтом, могут не определяться только по ID аккаунта. Мы объясним доступный объём и дополнительные действия.",
           "По окончании цели данные удаляются способом, затрудняющим восстановление. Внешняя обработка удаления и ограниченное хранение для безопасности/резервирования могут занять время. Получение запроса отличается от завершения внешнего удаления. Обязательные записи уничтожаются по истечении срока."
         ]
@@ -513,7 +521,8 @@
       [
         "8. Удаление аккаунта",
         [
-          "Сейчас в настройках раздел информации об аккаунте принимает заявки на удаление. Автоматизация удаления аккаунта, баллов и прав на декор с отслеживанием внешних поставщиков ещё не развёрнута. Приём заявки не обозначается как завершённое удаление. Для уточнения статуса или при недоступности приложения обратитесь по почте. Анонимные аккаунты также включены; при необходимости проверяются Apple и платёжные документы. Продукты остаются на устройстве/iCloud; удаление аккаунта не является возвратом денег."
+          "Запросить удаление аккаунта можно в разделе информации об аккаунте в настройках приложения. На сервере развёрнута функция удаления аккаунта, баллов и прав на купленные кухни и украшения после необходимых проверок личности и операций. Она распространяется и на анонимные аккаунты. Добавленные продукты и фотографии остаются на устройстве/iCloud. Удаление аккаунта не означает возврат денег; минимальные обязательные платёжные записи хранятся отдельно в течение установленного срока.",
+          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
         ]
       ],
       [
@@ -552,7 +561,8 @@
       [
         "Удалить аккаунт",
         [
-          "Сейчас в настройках раздел информации об аккаунте принимает заявки на удаление. Автоматизация удаления аккаунта, баллов и прав на декор с отслеживанием внешних поставщиков ещё не развёрнута. Приём заявки не обозначается как завершённое удаление. Для уточнения статуса или при недоступности приложения обратитесь по почте. Анонимные аккаунты также включены; при необходимости проверяются Apple и платёжные документы. Продукты остаются на устройстве/iCloud; удаление аккаунта не является возвратом денег."
+          "Запросить удаление аккаунта можно в разделе информации об аккаунте в настройках приложения. На сервере развёрнута функция удаления аккаунта, баллов и прав на купленные кухни и украшения после необходимых проверок личности и операций. Она распространяется и на анонимные аккаунты. Добавленные продукты и фотографии остаются на устройстве/iCloud. Удаление аккаунта не означает возврат денег; минимальные обязательные платёжные записи хранятся отдельно в течение установленного срока.",
+          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
         ]
       ],
       [
@@ -573,7 +583,7 @@
     "privacyTitle": "นโยบายความเป็นส่วนตัว",
     "supportTitle": "ความช่วยเหลือและการลบบัญชี",
     "updated": "ปรับปรุงล่าสุด",
-    "summary": "อาหารอยู่ในอุปกรณ์/iCloud ระบบลบบัญชีอัตโนมัติยังรอการนำขึ้นใช้งาน ขณะนี้รับคำขอแล้ว",
+    "summary": "นำฟังก์ชันลบบัญชีขึ้นเซิร์ฟเวอร์แล้ว บัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งเป็นข้อมูลที่ต้องลบ ส่วนอาหารที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud บริการภายนอกดำเนินการลบข้อมูลแยกกัน",
     "sections": [
       [
         "1. ผู้ดำเนินการและขอบเขต",
@@ -619,7 +629,7 @@
       [
         "7. ระยะเวลาเก็บและการทำลาย",
         [
-          "เก็บเฉพาะบันทึกสัญญา การชำระเงิน และการส่งมอบที่กฎหมายกำหนดห้าปีนับจากเวลาธุรกรรมเดิม ส่วนข้อร้องเรียนและข้อพิพาทสามปีตามเกณฑ์ของบันทึกนั้น ไม่ใช่เก็บทุกกิจกรรมหรือภาพห้าปี ออกแบบให้เก็บสถานะและข้อมูลกู้คืนการลบ 30 วันหลังเสร็จสิ้น ระบบลบอัตโนมัติและจัดการวันครบกำหนดยังไม่ได้นำขึ้นใช้งาน แยกคำขอที่รอดำเนินการจากการลบเสร็จแล้ว",
+          "เก็บเฉพาะบันทึกสัญญา การชำระเงิน และการส่งมอบที่กฎหมายกำหนดห้าปีนับจากเวลาธุรกรรมเดิม ส่วนข้อร้องเรียนและข้อพิพาทสามปีตามเกณฑ์ของบันทึกนั้น ไม่ใช่เก็บทุกกิจกรรมหรือภาพห้าปี เซิร์ฟเวอร์มีการจัดเก็บสถานะและข้อมูลกู้คืนการลบเป็นเวลา 30 วันหลังเสร็จสิ้นแล้ว เซิร์ฟเวอร์ตรวจสอบระยะเวลาเก็บรักษาเป็นประจำและลบบันทึกที่เกี่ยวข้องเมื่อครบกำหนด แยกคำขอที่รอดำเนินการจากการลบเสร็จแล้ว",
           "เหตุการณ์วิเคราะห์เก็บตราบที่ยังมีวัตถุประสงค์ เมื่อยืนยันคำขอลบที่ใช้บังคับจะดำเนินผ่านผู้ให้บริการ ยังไม่ได้ตั้งลบอัตโนมัติเมื่อครบ 12 เดือน จึงไม่รับรองระยะเวลานั้น เหตุการณ์เก่าที่อิงอุปกรณ์และไม่เชื่อมกับบัญชีอาจหาไม่ได้จากรหัสบัญชีเพียงอย่างเดียว เราจะแจ้งขอบเขตที่ตรวจสอบได้และขั้นตอนเพิ่มเติม",
           "เมื่อหมดวัตถุประสงค์จะลบด้วยวิธีที่กู้คืนได้ยาก การลบของผู้ให้บริการและการเก็บจำกัดเพื่อความปลอดภัย/สำรองอาจใช้เวลา เราแยกการรับคำขอจากการลบภายนอกสำเร็จ และลบข้อมูลตามกฎหมายเมื่อครบกำหนด"
         ]
@@ -627,7 +637,8 @@
       [
         "8. การลบบัญชี",
         [
-          "ขณะนี้เมนูข้อมูลของฉันในการตั้งค่ารับคำขอลบบัญชี ระบบอัตโนมัติที่ลบบัญชี คะแนน และสิทธิ์ของตกแต่งพร้อมติดตามผู้ให้บริการภายนอกยังรอการนำขึ้นใช้งาน การรับคำขอไม่ใช่การยืนยันว่าลบเสร็จ ติดต่ออีเมลเพื่อตรวจสอบสถานะหรือเมื่อเปิดแอปไม่ได้ รวมถึงบัญชีไม่ระบุชื่อ โดยตรวจสอบ Apple และหลักฐานการชำระเงินเมื่อจำเป็น อาหารยังอยู่ในอุปกรณ์/iCloud และการลบบัญชีไม่ใช่การคืนเงิน"
+          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่าแอป ฟังก์ชันเซิร์ฟเวอร์สำหรับลบบัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งที่ซื้อหลังตรวจสอบตัวตนและธุรกรรมที่จำเป็นได้ถูกนำขึ้นใช้งานแล้ว รวมถึงบัญชีไม่ระบุตัวตน อาหารและรูปภาพที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud การลบบัญชีไม่ได้หมายถึงการคืนเงิน และจะเก็บบันทึกการชำระเงินขั้นต่ำที่กฎหมายกำหนดแยกไว้ตามระยะเวลาที่เกี่ยวข้อง",
+          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
         ]
       ],
       [
@@ -666,7 +677,8 @@
       [
         "ลบบัญชี",
         [
-          "ขณะนี้เมนูข้อมูลของฉันในการตั้งค่ารับคำขอลบบัญชี ระบบอัตโนมัติที่ลบบัญชี คะแนน และสิทธิ์ของตกแต่งพร้อมติดตามผู้ให้บริการภายนอกยังรอการนำขึ้นใช้งาน การรับคำขอไม่ใช่การยืนยันว่าลบเสร็จ ติดต่ออีเมลเพื่อตรวจสอบสถานะหรือเมื่อเปิดแอปไม่ได้ รวมถึงบัญชีไม่ระบุชื่อ โดยตรวจสอบ Apple และหลักฐานการชำระเงินเมื่อจำเป็น อาหารยังอยู่ในอุปกรณ์/iCloud และการลบบัญชีไม่ใช่การคืนเงิน"
+          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่าแอป ฟังก์ชันเซิร์ฟเวอร์สำหรับลบบัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งที่ซื้อหลังตรวจสอบตัวตนและธุรกรรมที่จำเป็นได้ถูกนำขึ้นใช้งานแล้ว รวมถึงบัญชีไม่ระบุตัวตน อาหารและรูปภาพที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud การลบบัญชีไม่ได้หมายถึงการคืนเงิน และจะเก็บบันทึกการชำระเงินขั้นต่ำที่กฎหมายกำหนดแยกไว้ตามระยะเวลาที่เกี่ยวข้อง",
+          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
         ]
       ],
       [
@@ -687,7 +699,7 @@
     "privacyTitle": "Нууцлалын бодлого",
     "supportTitle": "Тусламж ба бүртгэл устгах",
     "updated": "Шинэчилсэн",
-    "summary": "Хүнс төхөөрөмж/iCloud-д үлдэнэ. Бүртгэл устгах автомат ажиллагаа хараахан нэвтрээгүй, одоогоор хүсэлт хүлээн авч байна.",
+    "summary": "Бүртгэл устгах боломжийг серверт нэвтрүүлсэн. Бүртгэл, оноо, гал тогоо болон чимэглэлийн эзэмших эрхийг устгана; бүртгэсэн хүнс төхөөрөмж/iCloud-д үлдэнэ. Гаднын үйлчилгээ өгөгдлийг тусад нь устгана.",
     "sections": [
       [
         "1. Үйлчилгээ эрхлэгч ба хамрах хүрээ",
@@ -733,7 +745,7 @@
       [
         "7. Хадгалах хугацаа ба устгал",
         [
-          "Хуулиар шаардсан гэрээ, төлбөр, нийлүүлэлтийн хамгийн бага бүртгэлийг анхны гүйлгээний цагаас таван жил, гомдол/маргааны бүртгэлийг холбогдох журмаар гурван жил хязгаарлагдмал хадгална. Бүх үйлдэл, зургийг таван жил хадгалах гэсэн үг биш. Устгалын төлөв, сэргээх лавлагааг дууссанаас хойш 30 хоног хадгалахаар төлөвлөсөн. Автомат устгал, хугацаа дуусгах ажиллагаа хараахан нэвтрээгүй. Хүлээгдэж буй хүсэлт ба дууссан устгалыг ялгаж мэдээлнэ.",
+          "Хуулиар шаардсан гэрээ, төлбөр, нийлүүлэлтийн хамгийн бага бүртгэлийг анхны гүйлгээний цагаас таван жил, гомдол/маргааны бүртгэлийг холбогдох журмаар гурван жил хязгаарлагдмал хадгална. Бүх үйлдэл, зургийг таван жил хадгалах гэсэн үг биш. Устгалын төлөв, сэргээх лавлагааг дууссанаас хойш 30 хоног хадгалах ажиллагааг серверт хэрэгжүүлсэн. Сервер хадгалах хугацааг тогтмол шалгаж, хугацаа нь дууссан холбогдох бүртгэлийг устгана. Хүлээгдэж буй хүсэлт ба дууссан устгалыг ялгаж мэдээлнэ.",
           "Шинжилгээний үйл явдлыг зорилго үргэлжлэх хугацаанд хадгалж, хамаарах устгах хүсэлтийг шалгасны дараа үйлчилгээ үзүүлэгчээр устгуулна. 12 сарын автомат устгал тохируулагдаагүй тул 12 сар болоод заавал устна гэж батлахгүй. Бүртгэлтэй холбогдоогүй хуучин төхөөрөмжийн үйл явдлыг зөвхөн бүртгэлийн ID-аар олж чадахгүй байж болно. Шалгаж болох хүрээ, нэмэлт алхмыг тайлбарлана.",
           "Зорилго дуусмагц сэргээхэд хүндрэлтэй аргаар устгана. Гадаад үйлчилгээний устгал, хязгаарлагдмал аюулгүй байдал/нөөц хадгалалт хугацаа шаардаж болно. Хүсэлт хүлээн авсан болон гадаад устгал дууссаныг ялгаж мэдээлнэ. Хуульд заасан мэдээллийг хугацаа дуусахад устгана."
         ]
@@ -741,7 +753,8 @@
       [
         "8. Бүртгэл устгах",
         [
-          "Одоогоор тохиргооны Миний мэдээлэл хэсэг бүртгэл устгах хүсэлт хүлээн авна. Бүртгэл, оноо, чимэглэлийн эзэмшлийг устгаж гаднын нийлүүлэгчийг хянах автомат ажиллагаа хараахан нэвтрээгүй. Хүсэлт авсныг устгал дууссан гэж харуулахгүй. Явцыг шалгах эсвэл апп нээгдэхгүй бол имэйлээр хандана уу. Нэргүй бүртгэл мөн хамрагдана; шаардлагатай Apple баталгаажуулалт, төлбөрийн нотолгоог шалгана. Хүнс төхөөрөмж/iCloud-д үлдэх ба бүртгэл устгах нь төлбөр буцаалт биш."
+          "Аппын тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргаж болно. Шаардлагатай таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, худалдаж авсан гал тогоо, чимэглэлийн эрхийг устгах боломжийг нэвтрүүлсэн. Нэргүй бүртгэл мөн хамрагдана. Бүртгэсэн хүнс, зураг төхөөрөмж/iCloud-д үлдэнэ. Бүртгэл устгах нь төлбөр буцаах гэсэн үг биш; хуулиар шаардсан төлбөрийн хамгийн бага бүртгэлийг зохих хугацаанд тусад нь хадгална.",
+          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
         ]
       ],
       [
@@ -780,7 +793,8 @@
       [
         "Бүртгэл устгах",
         [
-          "Одоогоор тохиргооны Миний мэдээлэл хэсэг бүртгэл устгах хүсэлт хүлээн авна. Бүртгэл, оноо, чимэглэлийн эзэмшлийг устгаж гаднын нийлүүлэгчийг хянах автомат ажиллагаа хараахан нэвтрээгүй. Хүсэлт авсныг устгал дууссан гэж харуулахгүй. Явцыг шалгах эсвэл апп нээгдэхгүй бол имэйлээр хандана уу. Нэргүй бүртгэл мөн хамрагдана; шаардлагатай Apple баталгаажуулалт, төлбөрийн нотолгоог шалгана. Хүнс төхөөрөмж/iCloud-д үлдэх ба бүртгэл устгах нь төлбөр буцаалт биш."
+          "Аппын тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргаж болно. Шаардлагатай таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, худалдаж авсан гал тогоо, чимэглэлийн эрхийг устгах боломжийг нэвтрүүлсэн. Нэргүй бүртгэл мөн хамрагдана. Бүртгэсэн хүнс, зураг төхөөрөмж/iCloud-д үлдэнэ. Бүртгэл устгах нь төлбөр буцаах гэсэн үг биш; хуулиар шаардсан төлбөрийн хамгийн бага бүртгэлийг зохих хугацаанд тусад нь хадгална.",
+          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
         ]
       ],
       [
