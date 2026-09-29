@@ -3,7 +3,7 @@
     "privacyTitle": "개인정보 처리방침",
     "supportTitle": "고객지원 및 계정 삭제",
     "updated": "최종 수정",
-    "summary": "계정 삭제 기능이 서버에 배포되었습니다. 계정·포인트·꾸미기 소유권은 삭제 대상이며, 등록한 식품은 기기·iCloud에 유지됩니다. 외부 서비스의 삭제는 별도로 처리합니다.",
+    "summary": "Pantrip이 어떤 정보를 처리하고, 정보를 관리하거나 삭제하는 방법을 안내합니다.",
     "sections": [
       [
         "1. 운영자와 적용 대상",
@@ -124,7 +124,7 @@
     "privacyTitle": "Privacy Policy",
     "supportTitle": "Support and account deletion",
     "updated": "Last updated",
-    "summary": "Account deletion is deployed on the server. Accounts, points and kitchen/decor ownership are subject to deletion; registered food remains on your device/iCloud. External services handle erasure separately.",
+    "summary": "Learn what information Pantrip processes and how to manage or delete it.",
     "sections": [
       [
         "1. Operator and scope",
@@ -245,7 +245,7 @@
     "privacyTitle": "プライバシーポリシー",
     "supportTitle": "サポート・アカウント削除",
     "updated": "最終更新",
-    "summary": "アカウント削除機能はサーバーに導入済みです。アカウント・ポイント・キッチンや装飾の所有権が削除対象となり、登録した食品は端末・iCloudに残ります。外部サービスのデータ削除は別途処理します。",
+    "summary": "Pantripが取り扱う情報と、その管理・削除方法をご案内します。",
     "sections": [
       [
         "1. 運営者と対象",
@@ -366,7 +366,7 @@
     "privacyTitle": "Política de privacidad",
     "supportTitle": "Ayuda y eliminación de cuenta",
     "updated": "Última actualización",
-    "summary": "La función de eliminación de cuentas está desplegada en el servidor. Se eliminan la cuenta, los puntos y la propiedad de cocinas y decoraciones; los alimentos registrados permanecen en el dispositivo/iCloud. Los servicios externos procesan el borrado por separado.",
+    "summary": "Consulta qué información trata Pantrip y cómo gestionarla o eliminarla.",
     "sections": [
       [
         "1. Responsable y alcance",
@@ -487,7 +487,7 @@
     "privacyTitle": "Политика конфиденциальности",
     "supportTitle": "Поддержка и удаление аккаунта",
     "updated": "Обновлено",
-    "summary": "Функция удаления аккаунта развёрнута на сервере. Удалению подлежат аккаунт, баллы и права на кухни и украшения; добавленные продукты остаются на устройстве/iCloud. Внешние сервисы удаляют данные отдельно.",
+    "summary": "Узнайте, какую информацию обрабатывает Pantrip и как управлять ею или удалить её.",
     "sections": [
       [
         "1. Оператор и область действия",
@@ -608,7 +608,7 @@
     "privacyTitle": "นโยบายความเป็นส่วนตัว",
     "supportTitle": "ความช่วยเหลือและการลบบัญชี",
     "updated": "ปรับปรุงล่าสุด",
-    "summary": "นำฟังก์ชันลบบัญชีขึ้นเซิร์ฟเวอร์แล้ว บัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งเป็นข้อมูลที่ต้องลบ ส่วนอาหารที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud บริการภายนอกดำเนินการลบข้อมูลแยกกัน",
+    "summary": "ดูข้อมูลที่ Pantrip ประมวลผลและวิธีจัดการหรือลบข้อมูลนั้น",
     "sections": [
       [
         "1. ผู้ดำเนินการและขอบเขต",
@@ -729,7 +729,7 @@
     "privacyTitle": "Нууцлалын бодлого",
     "supportTitle": "Тусламж ба бүртгэл устгах",
     "updated": "Шинэчилсэн",
-    "summary": "Бүртгэл устгах боломжийг серверт нэвтрүүлсэн. Бүртгэл, оноо, гал тогоо болон чимэглэлийн эзэмших эрхийг устгана; бүртгэсэн хүнс төхөөрөмж/iCloud-д үлдэнэ. Гаднын үйлчилгээ өгөгдлийг тусад нь устгана.",
+    "summary": "Pantrip ямар мэдээлэл боловсруулдаг, түүнийг хэрхэн удирдах эсвэл устгах талаар тайлбарлана.",
     "sections": [
       [
         "1. Үйлчилгээ эрхлэгч ба хамрах хүрээ",
