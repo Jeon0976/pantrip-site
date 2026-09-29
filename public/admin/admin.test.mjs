@@ -61,3 +61,10 @@ test('erasure lifecycle distinguishes Apple not required from incomplete work', 
   assert.ok(erasureSteps({ authDeleted: true }).includes('인증 계정 삭제: 완료'));
   assert.equal(erasureSteps().filter(value => value.endsWith('대기')).length, 6);
 });
+
+test('page IDs are unique so rendering cannot replace a containing section', async () => {
+  const html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length, 'Duplicate element IDs');
+  assert.match(html, /<tbody id="erasures"><\/tbody>/);
+});
