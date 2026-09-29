@@ -1,4 +1,4 @@
-# ExpiryCheck 공개 안내 페이지
+# Pantrip 공개 안내 페이지
 
 배포 대상은 `public/`입니다. 저장소 루트의 기존 소개 페이지·영상·이미지는 이번 개인정보 안내 수정 대상이 아닙니다. 공개 여부와 실제 주소는 호스팅 배포 결과로 확인합니다.
 
@@ -34,3 +34,15 @@
 수집 경로, 계정 ID를 이용한 권리 행사·대리인 확인·거절 시 안내, 이번 문서 변경 이력을 7개 언어에 같은 범위로 보완했습니다. 한국 권익구제 연락처는 기존 9절에 유지합니다. `node check-legal.mjs`가 목차 대상·중복 ID·CSS 배포본 일치·변경 이력도 검사합니다.
 
 사업자 정보/공개 연락 주소는 제공받지 않았으므로 임의로 만들지 않았습니다. 실제 처리국가·세부 보관기간·국외 이전 근거 등 위의 출시 확인 항목이 남아 있으며, 간결한 UI나 추가 안내가 그 법적 확인을 대신하지 않습니다. 이전 안내가 필요한 이용자는 공개 연락처로 요청할 수 있고, 기존 원문은 저장소 변경 이력으로 보존합니다.
+
+## 공개 주소와 저장소 이름 변경
+
+- 저장소: https://github.com/Jeon0976/pantrip-site
+- 안내: https://jeon0976.github.io/pantrip-site/
+- 개인정보: https://jeon0976.github.io/pantrip-site/privacy/en.html
+- 고객지원: https://jeon0976.github.io/pantrip-site/support/en.html
+- 운영자: https://jeon0976.github.io/pantrip-site/admin/
+
+페이지 내부 링크·CSS·언어 전환·관리자 OAuth callback은 현재 페이지의 상대 경로로 계산하므로 저장소 경로를 하드코딩하지 않는다. GitHub 저장소 이름 변경 후 Pages를 다시 배포하고, Supabase Auth의 Redirect URLs에 위 관리자 URL을 추가해야 한다. 기존 허용 URL은 구버전 호환 확인 전 제거하지 않는다. GitHub 저장소 리다이렉트가 이전 Pages URL을 보장하는 것은 아니므로 앱과 외부 콘솔의 공개 URL도 함께 갱신한다.
+
+Supabase 프로젝트 ref, 키, OAuth client ID, 앱 bundle ID 및 `expirycheck:` 분석 식별자는 이름 변경 대상이 아니다.
