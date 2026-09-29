@@ -14,8 +14,8 @@
       [
         "2. 직접 등록한 식품과 사진",
         [
-          "식품명, 사진, 유통기한, 보관 위치와 사용 기록은 기기에 저장되며, iCloud를 사용하는 경우 사용자의 Apple 계정으로 동기화됩니다. 사진의 글자 인식과 배경 제거는 기기에서 처리합니다. 해당 사진, 인식한 원문과 식품명을 Amplitude로 전송하지 않습니다. iCloud는 Pantrip의 소셜 로그인 계정과 별개입니다.",
-          "로그아웃하거나 Pantrip 계정을 삭제해도 등록한 식품은 유지됩니다. 식품을 지우려면 앱에서 직접 삭제해 주세요. iCloud 동기화가 켜져 있으면 삭제가 다른 연결 기기에도 반영될 수 있습니다."
+          "식품명, 사진, 날짜, 수량, 메모, 바코드, 보관 위치, 선택한 모델과 사용 기록은 기본적으로 기기에 저장합니다. Apple·Google 로그인 후 식품 동기화에 동의하면 해당 정보와 사진·썸네일을 계정에 연결하여 Supabase 서버와 비공개 파일 저장소에 전송하고 다른 로그인 기기와 동기화합니다. 동의 전에는 이 식품 동기화 전송을 시작하지 않습니다. iCloud 동기화는 사용하지 않습니다. 사진의 글자 인식과 배경 제거는 기기에서 처리하며 사진·인식 원문·식품명을 Amplitude에 보내지 않습니다.",
+          "로그아웃과 계정 삭제 후에도 기기의 식품·사진은 유지됩니다. 동기화를 끄면 전송을 멈추지만 이미 저장된 서버 사본을 삭제하지는 않습니다. 서버 사본은 계정 삭제 처리 시 삭제합니다. 동기화가 켜진 상태에서 식품을 삭제하면 같은 계정의 다른 동기화 기기에도 반영됩니다. 다른 계정의 식품을 새 계정에 자동 업로드하지 않습니다. 이전 버전에서 기기에 내려받은 자료는 유지하지만 내려받지 않은 iCloud 자료가 자동 이관되지는 않습니다."
         ]
       ],
       [
@@ -58,7 +58,7 @@
       [
         "8. 계정 삭제",
         [
-          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 필요한 인증과 거래 확인을 거쳐 서버 계정·포인트·구매한 주방 및 장식의 소유권을 삭제하는 기능이 배포되어 있습니다. 익명 계정도 대상입니다. 등록한 식품과 사진은 기기·iCloud에 유지됩니다. 계정 삭제는 환불을 의미하지 않으며, 법정 보관이 필요한 최소 결제 기록은 정해진 기간 동안 별도로 보관합니다.",
+          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
           "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
         ]
       ],
@@ -82,8 +82,8 @@
     "providersTitle": "처리 제공자와 전달 정보",
     "providerLink": "개인정보 안내 및 연락처",
     "providers": [
-      "인증·DB·서버 운영 위탁. 계정, 포인트·거래·보상 기록. DB 저장 지역은 대한민국 서울이며 Supabase 운영 주체는 싱가포르입니다. 국제 지원·하위 처리업체의 처리에는 미국 등 국외 처리가 포함될 수 있습니다. 서비스 제공 기간과 위 보관 기준이 적용됩니다.",
-      "사용자가 선택한 Apple 로그인·App Store 결제·iCloud. 로그인 식별자와 허용한 프로필, 거래 정보, iCloud에 동기화한 식품 자료. 미국 및 Apple이 안내하는 운영 지역에서 각 기능의 제공·보안 목적으로 처리하며 Apple 계정·iCloud의 보관 설정도 적용됩니다.",
+      "인증·DB·비공개 파일 저장·서버 운영. 계정, 포인트·거래·보상 기록 및 식품 동기화에 동의한 경우 식품 정보·사진·썸네일. DB 저장 지역은 대한민국 서울이며 Supabase 운영 주체는 싱가포르입니다. 국제 지원·하위 처리업체의 처리에는 미국 등 국외 처리가 포함될 수 있습니다. 서비스 제공 기간과 위 보관 기준이 적용됩니다.",
+      "사용자가 선택한 Apple 로그인·App Store 결제. 로그인 식별자와 허용한 프로필 및 거래 정보. 미국 및 Apple이 안내하는 운영 지역에서 서비스·보안 목적으로 처리하며 Apple 계정의 보관 설정도 적용됩니다. 새로운 식품 iCloud 동기화는 수행하지 않습니다.",
       "Google 로그인과 AdMob 보상 광고. 로그인 식별자·허용한 프로필, 광고·기기·통신 정보 및 보상 검증값. 미국 및 Google이 안내하는 운영 지역에서 인증·광고 제공·보안 목적으로 처리합니다. 광고 선택과 Google의 해당 서비스 보관 기준이 적용됩니다. 지원 이메일은 Gmail로 수신하므로 문의자의 이메일 주소, 문의 본문·첨부파일과 선택적으로 보낸 계정 ID를 Google이 이메일 제공 목적으로 처리합니다. 문의 해결에 필요한 범위로 사용하며, 해당되는 분쟁 기록 보관 의무와 공급자 보관 조건을 구분합니다.",
       "결제 검증·거래 관리: 계정 식별자, 상품·거래·영수증·환불 정보. 실제 처리 국가와 공급자 보관 기간은 확인 중입니다. 필요한 법정 결제 기록은 별도 제한 보관합니다.",
       "이용 분석 위탁. 허용된 이벤트·속성, 분석 식별자와 앱·기기 정보. 프로젝트는 미국 서버를 사용합니다. 수집 조건과 보관·삭제는 위 이용 분석 항목을 따릅니다.",
@@ -100,7 +100,7 @@
       [
         "계정 삭제",
         [
-          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 필요한 인증과 거래 확인을 거쳐 서버 계정·포인트·구매한 주방 및 장식의 소유권을 삭제하는 기능이 배포되어 있습니다. 익명 계정도 대상입니다. 등록한 식품과 사진은 기기·iCloud에 유지됩니다. 계정 삭제는 환불을 의미하지 않으며, 법정 보관이 필요한 최소 결제 기록은 정해진 기간 동안 별도로 보관합니다.",
+          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
           "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
         ]
       ],
@@ -113,7 +113,7 @@
       [
         "식품과 iCloud",
         [
-          "등록한 식품은 로그아웃과 계정 삭제 후에도 남습니다. 삭제하려면 앱에서 식품을 직접 삭제해 주세요. 동기화가 켜져 있으면 다른 기기에 반영될 수 있으니 확인 후 삭제하세요. iCloud 동기화 문제는 같은 Apple 계정인지와 iCloud 사용 설정을 먼저 확인해 주세요."
+          "식품은 기기에 먼저 저장하며 서버 작업 중에도 앱을 사용할 수 있습니다. 동기화 문제는 같은 Pantrip 계정인지, 식품 동기화가 켜져 있는지와 네트워크 연결을 확인해 주세요. 오프라인 변경은 연결 후 재시도합니다. 로그아웃 후에도 기기 식품은 남습니다. 동기화 중 식품 삭제는 다른 연결 기기에 반영될 수 있습니다."
         ]
       ]
     ],
@@ -135,8 +135,8 @@
       [
         "2. Food inventory and photos",
         [
-          "Food names, photos, expiry dates, storage locations and usage records are stored on your device. If you use iCloud, they sync through your Apple account. Text recognition and background removal run on-device. We do not send those photos, recognized text or food names to Amplitude. iCloud is separate from your Pantrip social-login account.",
-          "Logging out or deleting your Pantrip account does not delete your food inventory. To remove food records, delete them in the app. With iCloud sync enabled, deletion can also affect your other connected devices."
+          "Food names, photos, dates, quantities, notes, barcodes, storage locations, selected models and usage records are stored on your device by default. After Apple or Google sign-in, if you agree to food sync, these records, photos and thumbnails are linked to your account and sent to Supabase database and private file storage to sync with other signed-in devices. This food-sync transfer does not start before your agreement. iCloud sync is not used. Text recognition and background removal run on-device; photos, recognized text and food names are not sent to Amplitude.",
+          "Food and photos on your device remain after logout or account deletion. Turning sync off stops transfers but does not delete existing server copies; those are deleted during account erasure. Deleting food with sync on propagates to other syncing devices on the same account. Food belonging to another account is not automatically uploaded to a new account. Data already downloaded by older versions remains, but iCloud-only data is not automatically imported."
         ]
       ],
       [
@@ -179,7 +179,7 @@
       [
         "8. Deleting your account",
         [
-          "You can request account deletion in My information in the app settings. The server functionality to delete the account, points and purchased kitchen/decor ownership after required identity and transaction checks is deployed. Anonymous accounts are included. Registered food and photos remain on your device/iCloud. Account deletion is not a refund; minimum legally required payment records are retained separately for the applicable period.",
+          "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
           "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
         ]
       ],
@@ -203,8 +203,8 @@
     "providersTitle": "Providers and data shared",
     "providerLink": "Privacy information and contact",
     "providers": [
-      "Authentication, database and server processing: account, points, transaction and reward records. The database region is Seoul, South Korea; Supabase is based in Singapore. International support/subprocessors may also involve the US and other countries. Service and retention rules above apply.",
-      "Optional Apple sign-in, App Store payments and iCloud: provider identifiers/allowed profile fields, transactions and food records synced to iCloud. Processed in the US and Apple’s disclosed operating locations for those services and security. Apple account/iCloud retention settings also apply.",
+      "Authentication, database, private file storage and server processing: account, points, transaction and reward records, plus food records, photos and thumbnails when you agree to food sync. The database region is Seoul, South Korea; Supabase is based in Singapore. International support/subprocessors may involve the US and other countries. The service and retention rules above apply.",
+      "Optional Apple sign-in and App Store payments: provider identifiers, allowed profile fields and transactions. Processed in the US and Apple’s disclosed operating locations for service and security. Apple account retention settings apply. We no longer perform food synchronization through iCloud.",
       "Google sign-in and AdMob rewards: provider identifiers/allowed profiles, ad/device/connection data and reward verification values. Processed in the US and Google’s disclosed operating locations for authentication, ads and security. Ad choices and Google service retention rules apply. Support mail is received through Gmail. Google therefore processes the sender’s email address, message, attachments and any voluntarily supplied account ID to provide email services. We use these to resolve the inquiry; applicable dispute-record duties and provider retention conditions are distinguished.",
       "Payment verification and transaction management: account identifiers, products, transactions, receipts and refunds. Actual processing countries and provider retention periods are being verified. Required payment evidence is retained separately with restricted access.",
       "Usage analytics: permitted events/properties, analytics identifiers and app/device information. This project uses US servers. Collection and retention follow the analytics sections above.",
@@ -221,7 +221,7 @@
       [
         "Delete an account",
         [
-          "You can request account deletion in My information in the app settings. The server functionality to delete the account, points and purchased kitchen/decor ownership after required identity and transaction checks is deployed. Anonymous accounts are included. Registered food and photos remain on your device/iCloud. Account deletion is not a refund; minimum legally required payment records are retained separately for the applicable period.",
+          "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
           "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
         ]
       ],
@@ -234,7 +234,7 @@
       [
         "Food and iCloud",
         [
-          "Food records remain after logout or account deletion. Remove them directly in the app. With sync enabled, removal may affect other devices. For sync problems, check that devices use the same Apple account and that iCloud is enabled."
+          "Food is saved on your device first, and server work does not block the app. For sync problems, check your Pantrip account, food-sync setting and network connection. Offline changes retry when connected. Local food remains after logout. Deleting food while syncing can also affect other connected devices."
         ]
       ]
     ],
@@ -256,8 +256,8 @@
       [
         "2. 食品と写真",
         [
-          "食品名、写真、期限、保管場所、使用履歴は端末に保存し、iCloudを利用する場合はご自身のAppleアカウントで同期します。文字認識と背景除去は端末内で行います。写真、認識した原文、食品名をAmplitudeには送信しません。iCloudとPantripのソーシャルログインは別のものです。",
-          "ログアウトやPantripアカウントの削除後も食品は残ります。食品の削除はアプリ内で行ってください。iCloud同期が有効な場合、他の接続端末にも削除が反映されることがあります。"
+          "食品名、写真、日付、数量、メモ、バーコード、保管場所、選択したモデル、使用履歴は初期設定では端末に保存します。Apple・Googleでログイン後、食品同期に同意すると、これらの情報と写真・サムネイルをアカウントに紐付け、Supabaseのデータベースと非公開ファイル領域へ送信して他のログイン端末と同期します。同意前にはこの同期送信を開始しません。iCloud同期は使用しません。文字認識・背景除去は端末内で行い、写真・認識原文・食品名をAmplitudeへ送りません。",
+          "ログアウトやアカウント削除後も端末の食品・写真は残ります。同期をオフにすると転送を停止しますが、既存のサーバーコピーは削除しません。サーバーコピーはアカウント削除時に削除します。同期中の食品削除は同じアカウントの他の同期端末にも反映されます。別のアカウントの食品を新しいアカウントへ自動送信しません。旧版でダウンロード済みの資料は保持しますが、iCloudにしかない資料は自動移行されません。"
         ]
       ],
       [
@@ -300,7 +300,7 @@
       [
         "8. アカウント削除",
         [
-          "アプリ設定の「マイ情報」からアカウント削除を申請できます。必要な本人確認・取引確認後に、サーバー上のアカウント・ポイント・購入したキッチンや装飾の所有権を削除する機能は導入済みです。匿名アカウントも対象です。登録した食品と写真は端末・iCloudに残ります。アカウント削除は返金を意味せず、法定保存が必要な最小限の決済記録は所定の期間、別途保存します。",
+          "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
           "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
         ]
       ],
@@ -324,8 +324,8 @@
     "providersTitle": "提供者と送信情報",
     "providerLink": "プライバシー情報・連絡先",
     "providers": [
-      "認証・DB・サーバー委託。アカウント、ポイント、取引、報酬記録。DBは韓国ソウル、運営法人はシンガポール。国際サポート・再委託先は米国等で処理する場合があります。上記保存基準を適用します。",
-      "選択したAppleログイン・App Store・iCloud。識別子、許可されたプロフィール、取引、同期した食品情報。米国およびAppleが開示する地域でサービス・安全目的に処理し、Apple・iCloudの保存設定も適用します。",
+      "認証、DB、非公開ファイル保存、サーバー処理。アカウント・ポイント・取引・報酬情報と、食品同期に同意した場合の食品・写真・サムネイルを扱います。DBは韓国ソウル、Supabase運営主体はシンガポールです。国際サポート等で米国その他の国での処理を含む場合があります。上記の保管基準を適用します。",
+      "選択したAppleログインとApp Store決済。識別子、許可されたプロフィール、取引情報を米国およびAppleが開示する地域でサービス・安全目的に処理します。Appleアカウントの保存設定が適用されます。新たな食品のiCloud同期は行いません。",
       "Googleログイン・AdMob。識別子、許可されたプロフィール、広告・端末・通信情報、報酬検証値。米国およびGoogleが開示する地域で認証・広告・安全目的に処理し、広告選択と同社保存基準を適用します。 問い合わせメールはGmailで受信します。Googleはメール提供のため送信者のメールアドレス、本文・添付ファイル、任意で送ったアカウントIDを処理します。問い合わせ解決に必要な範囲で使い、該当する紛争記録の保存義務と提供者の保管条件を区別します。",
       "決済の検証・取引管理：アカウント識別子、商品、取引、レシート、返金情報。実際の処理国と提供者の保存期間は確認中です。必要な決済証憑はアクセスを制限して別途保存します。",
       "利用分析委託。許可されたイベント・属性、分析識別子、アプリ・端末情報。プロジェクトは米国サーバーを使用し、収集・保存は上記分析項目に従います。",
@@ -342,7 +342,7 @@
       [
         "アカウント削除",
         [
-          "アプリ設定の「マイ情報」からアカウント削除を申請できます。必要な本人確認・取引確認後に、サーバー上のアカウント・ポイント・購入したキッチンや装飾の所有権を削除する機能は導入済みです。匿名アカウントも対象です。登録した食品と写真は端末・iCloudに残ります。アカウント削除は返金を意味せず、法定保存が必要な最小限の決済記録は所定の期間、別途保存します。",
+          "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
           "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
         ]
       ],
@@ -355,7 +355,7 @@
       [
         "食品とiCloud",
         [
-          "ログアウト・アカウント削除後も食品は残ります。削除はアプリ内で行い、同期中の他端末にも反映される点にご注意ください。同期の問題はAppleアカウントとiCloud設定を確認してください。"
+          "食品はまず端末に保存し、サーバー処理中もアプリを使えます。同じPantripアカウント、食品同期設定、通信状態を確認してください。オフラインの変更は接続後に再試行します。ログアウト後も食品は残ります。同期中の削除は他の端末にも反映されることがあります。"
         ]
       ]
     ],
@@ -377,8 +377,8 @@
       [
         "2. Alimentos y fotografías",
         [
-          "Los nombres, fotos, fechas de caducidad, ubicaciones e historial de uso se guardan en el dispositivo y, si utilizas iCloud, se sincronizan mediante tu cuenta de Apple. El reconocimiento de texto y la eliminación de fondos se realizan en el dispositivo. No enviamos esas fotos, el texto reconocido ni los nombres de alimentos a Amplitude. iCloud es independiente del inicio de sesión social de Pantrip.",
-          "Cerrar sesión o eliminar tu cuenta no elimina los alimentos. Puedes borrarlos desde la app. Si iCloud está activado, la eliminación puede propagarse a otros dispositivos conectados."
+          "Los nombres, fotos, fechas, cantidades, notas, códigos de barras, ubicaciones, modelos elegidos e historial se guardan en el dispositivo por defecto. Tras iniciar sesión con Apple o Google, si aceptas sincronizar alimentos, enviamos estos datos, fotos y miniaturas vinculados a tu cuenta a la base de datos y al almacenamiento privado de Supabase para sincronizarlos entre dispositivos. Esta transferencia no empieza antes de tu aceptación. No usamos iCloud para sincronizar. El reconocimiento de texto y la eliminación del fondo son locales; no enviamos fotos, texto reconocido ni nombres de alimentos a Amplitude.",
+          "Los alimentos y fotos locales permanecen al cerrar sesión o eliminar la cuenta. Desactivar la sincronización detiene las transferencias sin borrar las copias del servidor; estas se borran al eliminar la cuenta. Borrar alimentos con sincronización activa se refleja en otros dispositivos de la misma cuenta. No subimos automáticamente alimentos de otra cuenta a una nueva. Se conservan los datos ya descargados por versiones anteriores, pero los datos que solo estén en iCloud no se importan automáticamente."
         ]
       ],
       [
@@ -421,7 +421,7 @@
       [
         "8. Eliminar la cuenta",
         [
-          "Puedes solicitar la eliminación de la cuenta en Mi información, en los ajustes de la app. Está desplegada la función del servidor que elimina la cuenta, los puntos y la propiedad de cocinas y decoraciones compradas tras las comprobaciones de identidad y transacciones necesarias. Incluye las cuentas anónimas. Los alimentos y fotos registrados permanecen en el dispositivo/iCloud. Eliminar la cuenta no equivale a un reembolso; los registros mínimos de pago exigidos por ley se conservan por separado durante el plazo correspondiente.",
+          "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
           "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
         ]
       ],
@@ -445,8 +445,8 @@
     "providersTitle": "Proveedores y datos transmitidos",
     "providerLink": "Privacidad y contacto",
     "providers": [
-      "Autenticación, base de datos y servidor: cuenta, puntos, transacciones y recompensas. Base de datos en Seúl, Corea; entidad en Singapur. El soporte internacional y los subencargados pueden tratar datos en EE. UU. y otros países. Se aplican las reglas de conservación anteriores.",
-      "Apple, App Store e iCloud opcionales: identificadores/perfiles permitidos, transacciones y alimentos sincronizados. Tratamiento en EE. UU. y ubicaciones declaradas por Apple para servicio y seguridad, con las opciones de conservación de Apple/iCloud.",
+      "Autenticación, base de datos, archivos privados y servidor: cuenta, puntos, transacciones, recompensas y, si aceptas sincronizar, alimentos, fotos y miniaturas. La base de datos está en Seúl y Supabase tiene sede en Singapur. El soporte y subencargados pueden tratar datos en EE. UU. y otros países. Se aplican los plazos anteriores.",
+      "Inicio de sesión con Apple y pagos de App Store opcionales: identificadores, perfil permitido y transacciones. Tratados en EE. UU. y regiones indicadas por Apple para servicio y seguridad, con sus ajustes de conservación. Ya no sincronizamos alimentos mediante iCloud.",
       "Google y AdMob: identificadores/perfiles, anuncios, dispositivo/conexión y verificación de recompensas. Tratamiento en EE. UU. y ubicaciones declaradas por Google para autenticación, publicidad y seguridad, según sus plazos y tus opciones. El correo de soporte se recibe en Gmail. Google trata la dirección del remitente, el mensaje, los adjuntos y el ID de cuenta aportado voluntariamente para prestar el servicio de correo. Se usan para resolver la consulta; se distinguen las obligaciones sobre disputas de los plazos del proveedor.",
       "Verificación y gestión de pagos: identificadores de cuenta, productos, transacciones, recibos y reembolsos. Se están verificando los países reales de tratamiento y los plazos del proveedor. Los justificantes exigidos se guardan por separado con acceso limitado.",
       "Analítica: eventos/propiedades permitidos, identificadores y datos de app/dispositivo. El proyecto usa servidores de EE. UU. Se aplican los apartados anteriores de analítica.",
@@ -463,7 +463,7 @@
       [
         "Eliminar una cuenta",
         [
-          "Puedes solicitar la eliminación de la cuenta en Mi información, en los ajustes de la app. Está desplegada la función del servidor que elimina la cuenta, los puntos y la propiedad de cocinas y decoraciones compradas tras las comprobaciones de identidad y transacciones necesarias. Incluye las cuentas anónimas. Los alimentos y fotos registrados permanecen en el dispositivo/iCloud. Eliminar la cuenta no equivale a un reembolso; los registros mínimos de pago exigidos por ley se conservan por separado durante el plazo correspondiente.",
+          "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
           "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
         ]
       ],
@@ -476,7 +476,7 @@
       [
         "Alimentos e iCloud",
         [
-          "Los alimentos permanecen tras cerrar sesión o eliminar la cuenta. Bórralos directamente en la app; con sincronización, puede afectar a otros dispositivos. Comprueba la cuenta de Apple y la configuración de iCloud si falla la sincronización."
+          "Los alimentos se guardan primero en el dispositivo y el servidor no bloquea la app. Comprueba la cuenta de Pantrip, la opción de sincronización y la conexión. Los cambios sin conexión se reintentan al conectar. Los alimentos locales permanecen tras cerrar sesión. Borrar alimentos sincronizados puede afectar a otros dispositivos."
         ]
       ]
     ],
@@ -498,8 +498,8 @@
       [
         "2. Продукты и фотографии",
         [
-          "Названия продуктов, фотографии, сроки годности, места хранения и история использования сохраняются на устройстве. При использовании iCloud они синхронизируются через ваш аккаунт Apple. Распознавание текста и удаление фона выполняются на устройстве. Эти фотографии, распознанный исходный текст и названия продуктов не передаются в Amplitude. iCloud не зависит от социального входа в Pantrip.",
-          "Выход из аккаунта и его удаление не удаляют продукты. Удаляйте записи о продуктах отдельно в приложении. При включённой синхронизации удаление может распространиться на другие подключённые устройства."
+          "Названия продуктов, фотографии, даты, количество, заметки, штрихкоды, места хранения, выбранные модели и история по умолчанию хранятся на устройстве. После входа через Apple или Google и согласия на синхронизацию эти данные, фотографии и миниатюры связываются с аккаунтом и передаются в базу данных и закрытое файловое хранилище Supabase для синхронизации устройств. До согласия эта передача не начинается. Синхронизация iCloud не используется. Распознавание текста и удаление фона выполняются на устройстве; фотографии, распознанный текст и названия продуктов не передаются Amplitude.",
+          "После выхода или удаления аккаунта локальные продукты и фотографии сохраняются. Отключение синхронизации останавливает передачу, но не удаляет серверные копии; они удаляются при удалении аккаунта. Удаление продукта при включённой синхронизации отражается на других устройствах этого аккаунта. Данные другого аккаунта не загружаются автоматически в новый. Ранее загруженные на устройство данные сохраняются, но данные только из iCloud автоматически не переносятся."
         ]
       ],
       [
@@ -542,7 +542,7 @@
       [
         "8. Удаление аккаунта",
         [
-          "Запросить удаление аккаунта можно в разделе информации об аккаунте в настройках приложения. На сервере развёрнута функция удаления аккаунта, баллов и прав на купленные кухни и украшения после необходимых проверок личности и операций. Она распространяется и на анонимные аккаунты. Добавленные продукты и фотографии остаются на устройстве/iCloud. Удаление аккаунта не означает возврат денег; минимальные обязательные платёжные записи хранятся отдельно в течение установленного срока.",
+          "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
           "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
         ]
       ],
@@ -566,8 +566,8 @@
     "providersTitle": "Поставщики и передаваемые данные",
     "providerLink": "Конфиденциальность и контакты",
     "providers": [
-      "Аутентификация, БД, сервер: аккаунт, баллы, покупки, награды. БД находится в Сеуле, Корея; компания — в Сингапуре. Международная поддержка и субподрядчики могут обрабатывать данные в США и других странах. Действуют сроки выше.",
-      "Выбранные Apple-вход, App Store, iCloud: идентификаторы, разрешённый профиль, платежи и синхронизированные продукты. Обработка в США и раскрытых Apple регионах для сервиса/безопасности; также действуют настройки хранения Apple/iCloud.",
+      "Аутентификация, база данных, закрытые файлы и сервер: аккаунт, баллы, операции, награды, а при согласии на синхронизацию — продукты, фото и миниатюры. База находится в Сеуле, Supabase — в Сингапуре; поддержка и подрядчики могут обрабатывать данные в США и других странах. Применяются указанные сроки хранения.",
+      "Выбранные вход Apple и платежи App Store: идентификаторы, разрешённый профиль и операции. Обработка в США и раскрытых Apple регионах для сервиса и безопасности с учётом настроек хранения Apple. Новая синхронизация продуктов через iCloud не выполняется.",
       "Google и AdMob: идентификаторы/профиль, реклама, устройство, соединение и проверка награды. Обработка в США и указанных Google регионах для входа, рекламы и безопасности по соответствующим срокам и настройкам. Письма поддержки принимаются в Gmail. Google обрабатывает адрес отправителя, текст, вложения и добровольно указанный ID аккаунта для предоставления почты. Мы используем их для решения обращения; обязанности хранения записей споров отделяются от сроков поставщика.",
       "Проверка платежей и управление операциями: идентификаторы аккаунта, товары, операции, чеки и возвраты. Фактические страны обработки и сроки поставщика уточняются. Обязательные платёжные документы хранятся отдельно с ограниченным доступом.",
       "Аналитика: допустимые события/свойства, идентификаторы, приложение и устройство. Проект использует серверы США; сбор и хранение описаны выше.",
@@ -584,7 +584,7 @@
       [
         "Удалить аккаунт",
         [
-          "Запросить удаление аккаунта можно в разделе информации об аккаунте в настройках приложения. На сервере развёрнута функция удаления аккаунта, баллов и прав на купленные кухни и украшения после необходимых проверок личности и операций. Она распространяется и на анонимные аккаунты. Добавленные продукты и фотографии остаются на устройстве/iCloud. Удаление аккаунта не означает возврат денег; минимальные обязательные платёжные записи хранятся отдельно в течение установленного срока.",
+          "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
           "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
         ]
       ],
@@ -597,7 +597,7 @@
       [
         "Продукты и iCloud",
         [
-          "Продукты сохраняются после выхода и удаления аккаунта. Удаляйте их отдельно в приложении; при синхронизации изменение затронет другие устройства. При проблемах проверьте аккаунт Apple и настройки iCloud."
+          "Продукты сначала сохраняются на устройстве, серверная работа не блокирует приложение. Проверьте аккаунт Pantrip, настройку синхронизации и подключение. Изменения без сети повторно передаются после подключения. После выхода локальные продукты остаются. Удаление при синхронизации может затронуть другие устройства."
         ]
       ]
     ],
@@ -619,8 +619,8 @@
       [
         "2. อาหารและรูปภาพ",
         [
-          "ชื่ออาหาร รูปภาพ วันหมดอายุ สถานที่เก็บ และประวัติการใช้เก็บในอุปกรณ์ และซิงค์ผ่านบัญชี Apple ของคุณเมื่อใช้ iCloud การอ่านข้อความและลบพื้นหลังทำในอุปกรณ์ เราไม่ส่งรูปภาพ ข้อความต้นฉบับที่อ่านได้ หรือชื่ออาหารไปยัง Amplitude บัญชี iCloud แยกจากการเข้าสู่ระบบโซเชียลของ Pantrip",
-          "การออกจากระบบหรือลบบัญชี Pantrip ไม่ลบรายการอาหาร หากต้องการลบให้ทำในแอป เมื่อเปิด iCloud การลบอาจซิงค์ไปยังอุปกรณ์อื่นที่เชื่อมต่อด้วย"
+          "ชื่ออาหาร รูปภาพ วันที่ จำนวน หมายเหตุ บาร์โค้ด ตำแหน่งเก็บ โมเดลที่เลือก และประวัติจะเก็บในอุปกรณ์เป็นค่าเริ่มต้น หลังเข้าสู่ระบบด้วย Apple หรือ Google หากยินยอมให้ซิงค์อาหาร ข้อมูล รูปภาพ และภาพย่อจะเชื่อมกับบัญชีและส่งไปยังฐานข้อมูลและพื้นที่ไฟล์ส่วนตัวของ Supabase เพื่อซิงค์กับอุปกรณ์อื่น จะไม่เริ่มส่งข้อมูลเพื่อซิงค์ก่อนยินยอม ไม่ใช้การซิงค์ iCloud การอ่านข้อความและลบพื้นหลังทำในอุปกรณ์ และไม่ส่งรูป ข้อความที่อ่านได้ หรือชื่ออาหารไปยัง Amplitude",
+          "อาหารและรูปภาพในอุปกรณ์ยังอยู่หลังออกจากระบบหรือลบบัญชี การปิดซิงค์หยุดการส่งแต่ไม่ลบสำเนาบนเซิร์ฟเวอร์ สำเนานั้นจะถูกลบเมื่อดำเนินการลบบัญชี การลบอาหารขณะเปิดซิงค์จะส่งผลต่ออุปกรณ์ที่ซิงค์ในบัญชีเดียวกัน ไม่อัปโหลดอาหารของบัญชีอื่นไปยังบัญชีใหม่โดยอัตโนมัติ ข้อมูลที่เวอร์ชันเก่าดาวน์โหลดไว้ยังอยู่ แต่ข้อมูลที่อยู่เฉพาะใน iCloud จะไม่ถูกนำเข้าอัตโนมัติ"
         ]
       ],
       [
@@ -663,7 +663,7 @@
       [
         "8. การลบบัญชี",
         [
-          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่าแอป ฟังก์ชันเซิร์ฟเวอร์สำหรับลบบัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งที่ซื้อหลังตรวจสอบตัวตนและธุรกรรมที่จำเป็นได้ถูกนำขึ้นใช้งานแล้ว รวมถึงบัญชีไม่ระบุตัวตน อาหารและรูปภาพที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud การลบบัญชีไม่ได้หมายถึงการคืนเงิน และจะเก็บบันทึกการชำระเงินขั้นต่ำที่กฎหมายกำหนดแยกไว้ตามระยะเวลาที่เกี่ยวข้อง",
+          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
           "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
         ]
       ],
@@ -687,8 +687,8 @@
     "providersTitle": "ผู้ให้บริการและข้อมูลที่ส่ง",
     "providerLink": "ข้อมูลความเป็นส่วนตัวและติดต่อ",
     "providers": [
-      "รับจ้างยืนยันตัวตน ฐานข้อมูลและเซิร์ฟเวอร์: บัญชี คะแนน ธุรกรรมและรางวัล ฐานข้อมูลอยู่โซล เกาหลี นิติบุคคลอยู่สิงคโปร์ การสนับสนุนต่างประเทศ/ผู้รับช่วงอาจประมวลผลในสหรัฐและประเทศอื่น ใช้เกณฑ์เก็บข้างต้น",
-      "Apple เข้าสู่ระบบ App Store และ iCloud ตามที่เลือก: รหัส โปรไฟล์ที่อนุญาต ธุรกรรม และอาหารที่ซิงค์ ประมวลผลในสหรัฐและพื้นที่ที่ Apple เปิดเผยเพื่อบริการ/ความปลอดภัย รวมถึงใช้การตั้งค่าเก็บของ Apple/iCloud",
+      "การยืนยันตัวตน ฐานข้อมูล ไฟล์ส่วนตัว และเซิร์ฟเวอร์: บัญชี แต้ม ธุรกรรม รางวัล และอาหาร รูปภาพ ภาพย่อเมื่อยินยอมให้ซิงค์ ฐานข้อมูลอยู่โซล เกาหลีใต้ และ Supabase อยู่สิงคโปร์ ฝ่ายสนับสนุนและผู้ประมวลผลย่อยอาจทำงานในสหรัฐและประเทศอื่น ใช้เกณฑ์การเก็บข้างต้น",
+      "Apple เข้าสู่ระบบและ App Store ตามที่เลือก: รหัส โปรไฟล์ที่อนุญาต และธุรกรรม ประมวลผลในสหรัฐและพื้นที่ที่ Apple แจ้งเพื่อบริการและความปลอดภัย ใช้การตั้งค่าการเก็บของบัญชี Apple ไม่มีการซิงค์อาหารใหม่ผ่าน iCloud",
       "Google และ AdMob: รหัส/โปรไฟล์ โฆษณา อุปกรณ์ การเชื่อมต่อและค่าตรวจสอบรางวัล ประมวลผลในสหรัฐและพื้นที่ที่ Google เปิดเผยเพื่อยืนยันตัวตน โฆษณาและความปลอดภัย ตามตัวเลือกและนโยบายเก็บของบริการ อีเมลสนับสนุนรับผ่าน Gmail ดังนั้น Google ประมวลผลอีเมลผู้ส่ง เนื้อหา ไฟล์แนบ และ ID บัญชีที่ส่งโดยสมัครใจเพื่อให้บริการอีเมล ใช้เท่าที่จำเป็นแก้ไขคำถาม โดยแยกหน้าที่เก็บบันทึกข้อพิพาทกับเงื่อนไขของผู้ให้บริการ",
       "ตรวจสอบและจัดการการชำระเงิน: รหัสบัญชี สินค้า ธุรกรรม ใบเสร็จ และคืนเงิน ประเทศประมวลผลจริงและระยะเก็บของผู้ให้บริการยังอยู่ระหว่างตรวจสอบ หลักฐานที่กฎหมายกำหนดเก็บแยกโดยจำกัดการเข้าถึง",
       "วิเคราะห์การใช้: เหตุการณ์/คุณสมบัติที่อนุญาต รหัสวิเคราะห์และข้อมูลแอป/อุปกรณ์ โครงการใช้เซิร์ฟเวอร์สหรัฐ ตามเงื่อนไขวิเคราะห์ข้างต้น",
@@ -705,7 +705,7 @@
       [
         "ลบบัญชี",
         [
-          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่าแอป ฟังก์ชันเซิร์ฟเวอร์สำหรับลบบัญชี แต้ม และสิทธิ์ในห้องครัวหรือของตกแต่งที่ซื้อหลังตรวจสอบตัวตนและธุรกรรมที่จำเป็นได้ถูกนำขึ้นใช้งานแล้ว รวมถึงบัญชีไม่ระบุตัวตน อาหารและรูปภาพที่ลงทะเบียนยังอยู่ในอุปกรณ์/iCloud การลบบัญชีไม่ได้หมายถึงการคืนเงิน และจะเก็บบันทึกการชำระเงินขั้นต่ำที่กฎหมายกำหนดแยกไว้ตามระยะเวลาที่เกี่ยวข้อง",
+          "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
           "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
         ]
       ],
@@ -718,7 +718,7 @@
       [
         "อาหารและ iCloud",
         [
-          "อาหารยังอยู่หลังออกจากระบบหรือลบบัญชี ลบในแอปโดยตรงและระวังผลต่ออุปกรณ์อื่นเมื่อซิงค์ หากซิงค์มีปัญหา ตรวจสอบบัญชี Apple และการตั้งค่า iCloud"
+          "อาหารบันทึกในอุปกรณ์ก่อน และการทำงานของเซิร์ฟเวอร์ไม่ขัดขวางการใช้แอป ตรวจสอบบัญชี Pantrip การเปิดซิงค์อาหารและการเชื่อมต่อ การเปลี่ยนแปลงออฟไลน์จะลองอีกครั้งเมื่อเชื่อมต่อ อาหารในอุปกรณ์ยังอยู่หลังออกจากระบบ การลบขณะซิงค์อาจมีผลต่ออุปกรณ์อื่น"
         ]
       ]
     ],
@@ -740,8 +740,8 @@
       [
         "2. Хүнс ба зураг",
         [
-          "Хүнсний нэр, зураг, дуусах хугацаа, хадгалах газар, ашиглалтын түүх төхөөрөмжид хадгалагдана. iCloud ашиглавал таны Apple бүртгэлээр синк хийнэ. Зургийн бичвэр таних, дэвсгэр арилгах ажиллагаа төхөөрөмж дээр хийгдэнэ. Эдгээр зураг, таньсан эх бичвэр, хүнсний нэрийг Amplitude руу илгээхгүй. iCloud нь Pantrip-ийн сошиал нэвтрэлтээс тусдаа.",
-          "Системээс гарах эсвэл Pantrip бүртгэлээ устгах үед хүнсний жагсаалт үлдэнэ. Хүнсийг устгах бол апп дотор тусад нь устгана уу. iCloud синк асаалттай бол устгал бусад холбогдсон төхөөрөмжид мөн тусаж болно."
+          "Хүнсний нэр, зураг, огноо, тоо хэмжээ, тэмдэглэл, баркод, хадгалах байрлал, сонгосон загвар, ашиглалтын түүхийг анхнаасаа төхөөрөмжид хадгална. Apple эсвэл Google-ээр нэвтэрч хүнс синк хийхийг зөвшөөрвөл эдгээр мэдээлэл, зураг, жижиг зургийг бүртгэлтэй холбон Supabase өгөгдлийн сан, хувийн файл хадгалах санд илгээж бусад нэвтэрсэн төхөөрөмжтэй синк хийнэ. Зөвшөөрөхөөс өмнө энэ дамжуулалтыг эхлүүлэхгүй. iCloud синк ашиглахгүй. Бичвэр таних, дэвсгэр арилгахыг төхөөрөмж дээр хийж зураг, таньсан бичвэр, хүнсний нэрийг Amplitude руу илгээхгүй.",
+          "Гарах эсвэл бүртгэл устгахад төхөөрөмжийн хүнс, зураг үлдэнэ. Синк унтраах нь дамжуулалтыг зогсоохоос серверийн хуулбарыг устгахгүй; бүртгэл устгах үед хуулбарыг устгана. Синк асаалттай үед хүнс устгавал ижил бүртгэлийн бусад синк хийж буй төхөөрөмжид тусна. Өөр бүртгэлийн хүнсийг шинэ бүртгэлд автоматаар илгээхгүй. Хуучин хувилбараар төхөөрөмжид татсан мэдээллийг хадгална, зөвхөн iCloud-д байгаа мэдээллийг автоматаар шилжүүлэхгүй."
         ]
       ],
       [
@@ -784,7 +784,7 @@
       [
         "8. Бүртгэл устгах",
         [
-          "Аппын тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргаж болно. Шаардлагатай таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, худалдаж авсан гал тогоо, чимэглэлийн эрхийг устгах боломжийг нэвтрүүлсэн. Нэргүй бүртгэл мөн хамрагдана. Бүртгэсэн хүнс, зураг төхөөрөмж/iCloud-д үлдэнэ. Бүртгэл устгах нь төлбөр буцаах гэсэн үг биш; хуулиар шаардсан төлбөрийн хамгийн бага бүртгэлийг зохих хугацаанд тусад нь хадгална.",
+          "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
           "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
         ]
       ],
@@ -808,8 +808,8 @@
     "providersTitle": "Үйлчилгээ үзүүлэгч ба дамжуулах мэдээлэл",
     "providerLink": "Нууцлал ба холбоо барих",
     "providers": [
-      "Баталгаажуулалт, өгөгдлийн сан, сервер: бүртгэл, оноо, гүйлгээ, урамшуулал. Өгөгдлийн сан Солонгосын Сөүлд, компани Сингапурт байрлана. Олон улсын дэмжлэг, туслан гүйцэтгэгчид АНУ болон бусад улсад боловсруулж болно. Дээрх хадгалалтын дүрэм үйлчилнэ.",
-      "Сонгосон Apple нэвтрэлт, App Store, iCloud: таних дугаар, зөвшөөрсөн профиль, гүйлгээ, синк хийсэн хүнс. АНУ болон Apple-ийн мэдээлсэн бүсэд үйлчилгээ/аюулгүй байдлын зорилгоор боловсруулна. Apple/iCloud хадгалалтын тохиргоо мөн үйлчилнэ.",
+      "Нэвтрэлт, өгөгдлийн сан, хувийн файл, сервер: бүртгэл, оноо, гүйлгээ, урамшуулал болон синк зөвшөөрсөн үед хүнс, зураг, жижиг зураг. Өгөгдлийн сан БНСУ-ын Сөүлд, Supabase байгууллага Сингапурт байрлана. Олон улсын дэмжлэг, туслан гүйцэтгэгч нь АНУ болон бусад улсад боловсруулж болно. Дээрх хадгалалтын нөхцөл үйлчилнэ.",
+      "Сонгосон Apple нэвтрэлт, App Store төлбөр: таних дугаар, зөвшөөрсөн профиль, гүйлгээ. АНУ болон Apple-ийн мэдээлсэн бүсэд үйлчилгээ, аюулгүй байдлын зорилгоор боловсруулна. Apple бүртгэлийн хадгалалтын тохиргоо үйлчилнэ. Хүнсийг iCloud-аар шинээр синк хийхгүй.",
       "Google нэвтрэлт, AdMob: таних дугаар/профиль, зар, төхөөрөмж/холболт, урамшууллын шалгах утга. АНУ болон Google-ийн мэдээлсэн бүсэд нэвтрэлт, зар, аюулгүй байдлын зорилгоор, тухайн хадгалалт ба сонголтын дагуу боловсруулна. Дэмжлэгийн имэйлийг Gmail-ээр авна. Google илгээгчийн хаяг, захидал, хавсралт болон сайн дураар өгсөн бүртгэлийн ID-г имэйл үйлчилгээ үзүүлэхэд боловсруулна. Асуудал шийдэхэд шаардлагатай хүрээнд ашиглаж, маргааны бүртгэлийн үүрэг болон нийлүүлэгчийн нөхцөлийг ялгана.",
       "Төлбөр баталгаажуулах, гүйлгээ удирдах: бүртгэлийн ID, бүтээгдэхүүн, гүйлгээ, баримт, буцаалт. Бодит боловсруулах улс, нийлүүлэгчийн хадгалалтын хугацааг тодруулж байна. Шаардлагатай төлбөрийн баримтыг тусад нь хязгаарлагдмал хадгална.",
       "Ашиглалтын шинжилгээ: зөвшөөрөгдсөн үйл явдал/шинж чанар, таних дугаар, апп/төхөөрөмж. Төсөл АНУ-ын сервер ашиглана. Дээрх шинжилгээний нөхцөл үйлчилнэ.",
@@ -826,7 +826,7 @@
       [
         "Бүртгэл устгах",
         [
-          "Аппын тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргаж болно. Шаардлагатай таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, худалдаж авсан гал тогоо, чимэглэлийн эрхийг устгах боломжийг нэвтрүүлсэн. Нэргүй бүртгэл мөн хамрагдана. Бүртгэсэн хүнс, зураг төхөөрөмж/iCloud-д үлдэнэ. Бүртгэл устгах нь төлбөр буцаах гэсэн үг биш; хуулиар шаардсан төлбөрийн хамгийн бага бүртгэлийг зохих хугацаанд тусад нь хадгална.",
+          "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
           "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
         ]
       ],
@@ -839,7 +839,7 @@
       [
         "Хүнс ба iCloud",
         [
-          "Гарах, бүртгэл устгасны дараа хүнс үлдэнэ. Апп дотор тусад нь устгах бөгөөд синк асаалттай бол бусад төхөөрөмжид нөлөөлж болно. Синк асуудалтай бол Apple бүртгэл, iCloud тохиргоогоо шалгана уу."
+          "Хүнс эхлээд төхөөрөмжид хадгалагдаж серверийн ажиллагаа апп ашиглахад саад болохгүй. Pantrip бүртгэл, хүнсний синк тохиргоо, сүлжээг шалгана уу. Сүлжээгүй үеийн өөрчлөлтийг холбогдсоны дараа дахин илгээнэ. Гарсны дараа төхөөрөмжийн хүнс үлдэнэ. Синк хийж байхдаа устгах нь бусад төхөөрөмжид нөлөөлж болно."
         ]
       ]
     ],
