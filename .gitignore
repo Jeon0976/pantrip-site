@@ -1,0 +1,12 @@
+# Only the reviewed static policy site belongs in this repository.
+/*
+!/.gitignore
+!/README.md
+!/legal-content.json
+!/legal.css
+!/build-legal.mjs
+!/check-legal.mjs
+!/.github/
+!/public/
+.DS_Store
+.secrets/
