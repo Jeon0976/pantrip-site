@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { validateMutation, safeDashboardURL, makePKCE, walletState } from './app.js';
+import { validateMutation, safeDashboardURL, makePKCE, walletState, erasureQuery, erasureSteps } from './app.js';
 
 const base = { userID: 'a0000000-0000-0000-0000-000000000001', requestID: 'b0000000-0000-0000-0000-000000000001',
   namespace: 'test_store', expectedRevision: 4, reason: '인증 이벤트 지급', confirmation: 'APPLY', action: 'credit', points: 30000 };
@@ -46,4 +46,25 @@ test('rendering does not use HTML sinks and page exposes visible confirmation', 
   assert.doesNotMatch(script, /\.innerHTML\s*=|insertAdjacentHTML|document\.write\(/);
   assert.match(html, /<dialog id="confirm-dialog">/); assert.match(html, /aria-live="polite"/);
   assert.doesNotMatch(script, /localStorage|service_role/);
+});
+
+test('erasure queries use UUID filtering and explicit cursor pagination', () => {
+  assert.deepEqual(erasureQuery(), { userID: null, cursor: null });
+  assert.deepEqual(erasureQuery(` ${base.userID} `, base.requestID), { userID: base.userID, cursor: base.requestID });
+  assert.throws(() => erasureQuery('email@example.com'));
+  assert.throws(() => erasureQuery('', 'invalid'));
+});
+test('erasure lifecycle distinguishes Apple not required from incomplete work', () => {
+  assert.equal(erasureSteps({ appleRequired: false })[0], 'Apple 연결 해제: 해당 없음');
+  assert.equal(erasureSteps({ appleRequired: true })[0], 'Apple 연결 해제: 대기');
+  assert.equal(erasureSteps({ appleRequired: true, appleRevoked: true })[0], 'Apple 연결 해제: 완료');
+  assert.ok(erasureSteps({ authDeleted: true }).includes('인증 계정 삭제: 완료'));
+  assert.equal(erasureSteps().filter(value => value.endsWith('대기')).length, 6);
+});
+
+test('page IDs are unique so rendering cannot replace a containing section', async () => {
+  const html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length, 'Duplicate element IDs');
+  assert.match(html, /<tbody id="erasures"><\/tbody>/);
 });

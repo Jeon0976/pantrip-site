@@ -32,13 +32,27 @@ export function walletState(envelope) {
   return wallet;
 }
 
+export function erasureQuery(userID = '', cursor = null) {
+  userID = userID.trim();
+  if (userID && !uuid.test(userID)) throw Error('삭제 계정 ID를 확인하세요.');
+  if (cursor && !uuid.test(cursor)) throw Error('다음 페이지를 조회할 수 없습니다. 새로고침하세요.');
+  return { userID: userID || null, cursor };
+}
+export function erasureSteps(flags = {}) {
+  return [
+    ['Apple 연결 해제', flags.appleRevoked, flags.appleRequired === false],
+    ['RevenueCat 삭제', flags.revenuecatDeleted], ['Amplitude 삭제 요청', flags.amplitudeDeleted],
+    ['결제 증빙 정리', flags.paymentEvidenceReady], ['서버 데이터 삭제', flags.dataDeleted], ['인증 계정 삭제', flags.authDeleted],
+  ].map(([label, done, skipped]) => `${label}: ${skipped ? '해당 없음' : done ? '완료' : '대기'}`);
+}
+
 if (typeof document !== 'undefined') start();
 
 function start() {
   const $ = id => document.getElementById(id);
   const sessionKey = 'pantrip.operator.session';
   const verifierKey = 'pantrip.operator.pkce';
-  const state = { session: null, userID: null, wallet: null, cursor: null, users: [], busy: false, pending: null, operator: false };
+  const state = { session: null, userID: null, wallet: null, cursor: null, users: [], erasures: [], erasureCursor: null, erasureSearch: '', busy: false, pending: null, operator: false };
   const status = (message, error = false) => { $('status').textContent = message; $('status').classList.toggle('error', error); };
   const showJSON = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
   const textCell = (row, value) => { const cell = document.createElement('td'); cell.textContent = value == null ? '—' : String(value); row.append(cell); return cell; };
@@ -47,6 +61,7 @@ function start() {
     document.querySelectorAll('button,input,select,textarea').forEach(element => { element.disabled = state.busy; });
     $('prepare-action').disabled = state.busy || !state.wallet || !state.operator;
     $('more-users').disabled = state.busy || !state.cursor;
+    $('more-erasures').disabled = state.busy || !state.erasureCursor;
     if (!state.busy) for (const option of $('action').options) option.disabled = testActions.includes(option.value) && $('namespace').value !== 'test_store';
   }
   async function run(work) {
@@ -128,6 +143,27 @@ function start() {
     }
     $('user-count').textContent = `${state.users.length}명 표시`; status('사용자 목록을 불러왔습니다.');
   }
+  async function loadErasures(next = false) {
+    const search = next ? state.erasureSearch : $('erasure-search').value.trim();
+    const result = await api('erasures', erasureQuery(search, next ? state.erasureCursor : null));
+    state.erasureSearch = search;
+    state.erasures = next ? [...state.erasures, ...result.items] : result.items;
+    state.erasureCursor = result.nextCursor || null; $('erasures').replaceChildren();
+    for (const record of state.erasures) {
+      const row = document.createElement('tr');
+      textCell(row, `${record.userID} / ${record.requestID}`);
+      textCell(row, ({ completed: '완료', retrying: '재시도 대기', pending: '처리 대기' })[record.status] || '확인 필요');
+      const times = textCell(row, '');
+      for (const [label, date] of [['요청', record.requestedAt], ['갱신', record.updatedAt], ['완료', record.completedAt], ['재시도 예정', record.retryAt]]) {
+        if (date) { const line = document.createElement('div'); line.textContent = `${label}: ${formatDate(date)}`; times.append(line); }
+      }
+      const steps = textCell(row, '');
+      for (const step of erasureSteps(record.flags)) { const line = document.createElement('div'); line.textContent = step; steps.append(line); }
+      textCell(row, record.lastError || '없음'); $('erasures').append(row);
+    }
+    $('erasure-count').textContent = state.erasures.length ? `${state.erasures.length}건 표시` : '삭제 요청이 없습니다.';
+    status('계정 삭제 현황을 불러왔습니다. 실패한 단계는 서버가 자동으로 재시도합니다.');
+  }
   async function loadHealth() {
     const result = await api('health');
     const size = bytes => Number.isFinite(Number(bytes)) ? `${(Number(bytes) / 1024 / 1024).toLocaleString(undefined, { maximumFractionDigits: 2 })} MB` : '—';
@@ -157,6 +193,9 @@ function start() {
   $('search-form').onsubmit = event => { event.preventDefault(); run(() => loadUsers()); };
   $('refresh-users').onclick = () => run(() => loadUsers()); $('more-users').onclick = () => run(() => loadUsers(true));
   $('refresh-health').onclick = () => run(loadHealth);
+  $('erasure-search-form').onsubmit = event => { event.preventDefault(); run(() => loadErasures()); };
+  $('refresh-erasures').onclick = () => run(() => loadErasures());
+  $('more-erasures').onclick = () => run(() => loadErasures(true));
   $('table-form').onsubmit = event => { event.preventDefault(); run(async () => {
     if (!state.userID) throw Error('먼저 계정을 선택하세요.');
     showJSON('table-json', await api('table', { table: $('table').value, namespace: $('namespace').value, userID: state.userID }));
@@ -197,6 +236,7 @@ function start() {
     sessionStorage.removeItem(sessionKey); sessionStorage.removeItem(verifierKey); state.session = null; state.operator = false;
     clearAccount(); state.userID = null; $('workspace').hidden = true; $('login-panel').hidden = false; $('logout').hidden = true;
     $('users').replaceChildren(); $('table-json').textContent = ''; state.users = [];
+    $('erasures').replaceChildren(); state.erasures = []; state.erasureCursor = null; state.erasureSearch = ''; $('erasure-search').value = ''; $('erasure-count').textContent = '조회 전입니다.';
     if (token) { try { await fetch(`${config.supabaseURL}/auth/v1/logout?scope=local`, { method: 'POST', headers: { apikey: config.publicKey, Authorization: `Bearer ${token}` }, signal: AbortSignal.timeout(10000) }); } catch { /* Browser credentials are already removed. */ } }
     status('로그아웃했습니다.');
   });
@@ -215,6 +255,7 @@ function start() {
     $('logout').hidden = false;
     await loadHealth(); state.operator = true; $('workspace').hidden = false; $('login-panel').hidden = true;
     await loadUsers();
+    await loadErasures();
     try {
       const catalog = await api('catalog', { namespace: $('namespace').value });
       for (const item of catalog.items || []) { const option = document.createElement('option'); option.value = item.sku; option.label = typeof item.title === 'string' ? item.title : item.sku; $('catalog-skus').append(option); }
