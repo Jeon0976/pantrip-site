@@ -36,7 +36,7 @@
       [
         "5. 이용 분석과 광고",
         [
-          "Amplitude로 화면 이동, 식품 등록 방식(수동·카메라·사진·바코드), 온라인 검색 시도와 결과, 주방·상점·업적·광고·구매 흐름의 이벤트를 자동 수집합니다. 수집에는 분석 식별자, 앱 버전, 기기·운영체제 정보와 제한된 선택값·성공 여부·소요 시간이 포함됩니다. 별도 동의 팝업은 표시하지 않습니다. 사진, 식품명, 입력한 문장, 바코드 원문, 이메일과 인증 토큰은 분석 속성으로 보내지 않습니다. IP 주소를 이용한 자동 위치 추론은 SDK 설정에서 비활성화합니다. 전송 서버는 연결에 필요한 통신 정보를 처리할 수 있습니다. 새 계정 연동 분석은 expirycheck:<계정 UUID> 형태의 가명 식별자를 사용하며 이메일이나 이름을 분석 ID로 쓰지 않습니다.",
+          "Amplitude로 화면 이동, 식품 등록 방식(수동·카메라·사진·바코드), 온라인 검색 시도와 결과, 주방·상점·업적·광고·구매 흐름의 이벤트를 자동 수집합니다. 수집에는 분석 식별자, 앱 버전, 기기·운영체제 정보와 제한된 선택값·성공 여부·소요 시간이 포함됩니다. 별도 동의 팝업은 표시하지 않습니다. 사진, 식품명, 입력한 문장, 바코드 원문, 이메일과 인증 토큰은 분석 속성으로 보내지 않습니다. IP 주소를 이용한 자동 위치 추론은 SDK 설정에서 비활성화합니다. 전송 서버는 연결에 필요한 통신 정보를 처리할 수 있습니다. 소셜 로그인 후에는 로그인 제공자가 확인한 이메일을 Amplitude 사용자 ID로 전송합니다. Apple의 이메일 가리기를 사용하면 릴레이 주소일 수 있습니다. 익명 계정이거나 확인된 이메일이 없으면 expirycheck:<계정 UUID>를 사용합니다. 이메일은 이벤트 속성에 넣지 않지만 사용자 식별자로 Amplitude에 전달되며, 이름은 분석에 보내지 않습니다. 이전 UUID 기반 기록이 이메일 기반 기록과 자동으로 합쳐지는 것은 보장하지 않습니다.",
           "보상 광고는 사용자가 광고 보기를 선택할 때 제공합니다. Google의 동의 안내가 필요한 경우 해당 안내를 표시하며, iOS 추적 권한도 별도로 요청합니다. 추적 권한 거절만으로 광고 보상을 제한하지 않습니다. 현재 앱은 비개인화 광고를 요청합니다. 광고 SDK는 IP 주소, 기기·앱 정보, 광고 노출·반응 및 허용된 식별자를 처리할 수 있습니다. 필요한 경우 앱의 광고 개인정보 설정에서 선택을 변경할 수 있습니다."
         ]
       ],
@@ -59,7 +59,8 @@
         "8. 계정 삭제",
         [
           "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
-          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
+          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요.",
+          "서버는 인증된 계정 정보에서 확인한 분석용 이메일 ID를 계정에 연결해 기록합니다. 계정 삭제 시 기록한 이메일 ID와 기존 UUID 기반 ID의 Amplitude 데이터 삭제를 요청합니다."
         ]
       ],
       [
@@ -75,7 +76,8 @@
         [
           "전송 구간 암호화, 계정별 접근 제한, 서버 권한 분리와 비밀키 접근 제한을 적용합니다. 운영 로그에 인증 토큰·원문 사진을 남기지 않도록 제한합니다. 이 웹페이지에는 별도의 분석·광고 추적 스크립트를 넣지 않습니다. 웹 호스팅 제공자는 접속 IP 등의 보안 로그를 처리할 수 있습니다.",
           "처리 항목·목적·제공자 등 중요한 내용이 바뀌면 앱 또는 이 페이지에 알리고 시행일을 변경합니다. 새 동의가 필요한 변경은 별도로 안내합니다.",
-          "2026-09-29 변경 안내: 흰색·검정 문서 화면과 목차를 적용하고, 정보 수집 경로와 권리 행사 방법을 보완했습니다. 이번 문서 수정으로 새로운 개인정보 수집 항목을 추가하지 않았습니다. 이전 안내의 확인이 필요하면 위 이메일로 요청해 주세요."
+          "2026-09-29 변경 안내: 흰색·검정 문서 화면과 목차를 적용하고, 정보 수집 경로와 권리 행사 방법을 보완했습니다. 이번 문서 수정으로 새로운 개인정보 수집 항목을 추가하지 않았습니다. 이전 안내의 확인이 필요하면 위 이메일로 요청해 주세요.",
+          "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다."
         ]
       ]
     ],
@@ -86,7 +88,7 @@
       "사용자가 선택한 Apple 로그인·App Store 결제. 로그인 식별자와 허용한 프로필 및 거래 정보. 미국 및 Apple이 안내하는 운영 지역에서 서비스·보안 목적으로 처리하며 Apple 계정의 보관 설정도 적용됩니다. 새로운 식품 iCloud 동기화는 수행하지 않습니다.",
       "Google 로그인과 AdMob 보상 광고. 로그인 식별자·허용한 프로필, 광고·기기·통신 정보 및 보상 검증값. 미국 및 Google이 안내하는 운영 지역에서 인증·광고 제공·보안 목적으로 처리합니다. 광고 선택과 Google의 해당 서비스 보관 기준이 적용됩니다. 지원 이메일은 Gmail로 수신하므로 문의자의 이메일 주소, 문의 본문·첨부파일과 선택적으로 보낸 계정 ID를 Google이 이메일 제공 목적으로 처리합니다. 문의 해결에 필요한 범위로 사용하며, 해당되는 분쟁 기록 보관 의무와 공급자 보관 조건을 구분합니다.",
       "결제 검증·거래 관리: 계정 식별자, 상품·거래·영수증·환불 정보. 실제 처리 국가와 공급자 보관 기간은 확인 중입니다. 필요한 법정 결제 기록은 별도 제한 보관합니다.",
-      "이용 분석 위탁. 허용된 이벤트·속성, 분석 식별자와 앱·기기 정보. 프로젝트는 미국 서버를 사용합니다. 수집 조건과 보관·삭제는 위 이용 분석 항목을 따릅니다.",
+      "이용 분석 위탁. 허용된 이벤트·속성, 분석 식별자와 앱·기기 정보. 프로젝트는 미국 서버를 사용합니다. 수집 조건과 보관·삭제는 위 이용 분석 항목을 따릅니다. 분석 식별자에는 소셜 로그인 제공자가 확인한 이메일(Apple 릴레이 주소 포함) 또는 계정 UUID가 포함됩니다.",
       "온라인 검색을 실행하면 바코드 또는 입력한 검색어, 검색 언어와 IP 주소 등 통신 정보가 Open Food Facts에 전달됩니다. 사진은 이 검색에 업로드하지 않습니다. 온라인 검색을 실행하지 않으면 해당 요청은 보내지 않습니다.",
       "공식 웹페이지의 GitHub Pages 호스팅. 페이지 접속 IP, 브라우저·요청 정보. 미국 및 GitHub의 네트워크에서 전달·보안 목적으로 처리하며 GitHub의 로그 보관 기준이 적용됩니다. 웹페이지에는 앱 계정 토큰을 전달하지 않습니다."
     ],
@@ -101,7 +103,8 @@
         "계정 삭제",
         [
           "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
-          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요."
+          "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요.",
+          "서버는 인증된 계정 정보에서 확인한 분석용 이메일 ID를 계정에 연결해 기록합니다. 계정 삭제 시 기록한 이메일 ID와 기존 UUID 기반 ID의 Amplitude 데이터 삭제를 요청합니다."
         ]
       ],
       [
@@ -157,7 +160,7 @@
       [
         "5. Analytics and ads",
         [
-          "Amplitude automatically receives events about screens, food-entry methods (manual, camera, photo or barcode), online lookup attempts/results, and kitchen, store, achievement, ad and purchase flows. Data includes an analytics identifier, app version, device/OS details and limited choices, outcomes and durations. There is no separate analytics consent prompt. We do not send photos, food names, typed text, raw barcodes, email or authentication tokens as analytics properties. SDK settings disable automatic location inference from IP addresses. Receiving servers may still process connection information. New account-linked analytics uses the pseudonymous identifier expirycheck:<account UUID>, not an email address or name.",
+          "Amplitude automatically receives events about screens, food-entry methods (manual, camera, photo or barcode), online lookup attempts/results, and kitchen, store, achievement, ad and purchase flows. Data includes an analytics identifier, app version, device/OS details and limited choices, outcomes and durations. There is no separate analytics consent prompt. We do not send photos, food names, typed text, raw barcodes, email or authentication tokens as analytics properties. SDK settings disable automatic location inference from IP addresses. Receiving servers may still process connection information. After social sign-in, the provider-verified email is sent to Amplitude as the user ID. With Apple Hide My Email, this may be a relay address. Anonymous accounts and accounts without a verified email use expirycheck:<account UUID>. Email is not included in event properties but is transmitted to Amplitude as an identity; names are not sent for analytics. Earlier UUID-based records are not guaranteed to merge automatically with email-based records.",
           "Rewarded ads appear when you choose to watch one. We show Google consent messages where required and request iOS tracking permission separately. Denying tracking permission alone does not prevent rewards. The app currently requests non-personalized ads. The ad SDK may process IP addresses, device/app information, ad views/interactions and permitted identifiers. Where applicable, you can change your choices through the app’s ad privacy settings."
         ]
       ],
@@ -180,7 +183,8 @@
         "8. Deleting your account",
         [
           "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
-          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
+          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app.",
+          "The server records analytics email IDs verified from authenticated account data and associates them with the account. Account deletion requests Amplitude deletion for the recorded email IDs and legacy UUID-based IDs."
         ]
       ],
       [
@@ -196,7 +200,8 @@
         [
           "We use encrypted connections, account-level access controls, separated server privileges and restricted secret access. Logs are designed to exclude authentication tokens and original photos. This website has no added analytics or advertising scripts. Its hosting provider may process security logs such as connection IP addresses.",
           "We announce material changes to data, purposes or providers in the app or on this page and update the effective date. Changes requiring new consent are addressed separately.",
-          "2026-09-29 update: added a plain light/dark document layout and contents, and clarified collection methods and rights requests. This document update does not introduce new categories of personal data collection. Email us if you need to consult an earlier notice."
+          "2026-09-29 update: added a plain light/dark document layout and contents, and clarified collection methods and rights requests. This document update does not introduce new categories of personal data collection. Email us if you need to consult an earlier notice.",
+          "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion."
         ]
       ]
     ],
@@ -207,7 +212,7 @@
       "Optional Apple sign-in and App Store payments: provider identifiers, allowed profile fields and transactions. Processed in the US and Apple’s disclosed operating locations for service and security. Apple account retention settings apply. We no longer perform food synchronization through iCloud.",
       "Google sign-in and AdMob rewards: provider identifiers/allowed profiles, ad/device/connection data and reward verification values. Processed in the US and Google’s disclosed operating locations for authentication, ads and security. Ad choices and Google service retention rules apply. Support mail is received through Gmail. Google therefore processes the sender’s email address, message, attachments and any voluntarily supplied account ID to provide email services. We use these to resolve the inquiry; applicable dispute-record duties and provider retention conditions are distinguished.",
       "Payment verification and transaction management: account identifiers, products, transactions, receipts and refunds. Actual processing countries and provider retention periods are being verified. Required payment evidence is retained separately with restricted access.",
-      "Usage analytics: permitted events/properties, analytics identifiers and app/device information. This project uses US servers. Collection and retention follow the analytics sections above.",
+      "Usage analytics: permitted events/properties, analytics identifiers and app/device information. This project uses US servers. Collection and retention follow the analytics sections above. Analytics identifiers include the social provider-verified email (including Apple relay addresses) or account UUID.",
       "When you run an online search, Open Food Facts receives the barcode or entered search terms, search language and connection information such as your IP address. Photos are not uploaded for this search. No search request is sent unless you use the feature.",
       "GitHub Pages hosting: page-request IP, browser and request information are processed through US and GitHub network infrastructure for delivery/security under GitHub’s logging rules. App account tokens are not sent to these pages."
     ],
@@ -222,7 +227,8 @@
         "Delete an account",
         [
           "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
-          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app."
+          "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app.",
+          "The server records analytics email IDs verified from authenticated account data and associates them with the account. Account deletion requests Amplitude deletion for the recorded email IDs and legacy UUID-based IDs."
         ]
       ],
       [
@@ -278,7 +284,7 @@
       [
         "5. 利用分析と広告",
         [
-          "Amplitudeは画面遷移、食品登録方法（手入力・カメラ・写真・バーコード）、オンライン検索の試行と結果、キッチン・ストア・実績・広告・購入の操作イベントを自動収集します。分析用識別子、アプリ版、端末・OS情報、限定した選択値、成否、所要時間を含みます。分析専用の同意画面は表示しません。写真、食品名、入力文、バーコード原文、メールアドレス、認証トークンを分析属性として送信しません。IPアドレスによる自動的な位置推定はSDK設定で無効にしています。受信サーバーは通信情報を扱う場合があります。新しいアカウント連携分析はexpirycheck:<アカウントUUID>という仮名識別子を使い、メールアドレスや氏名を分析IDには使いません。",
+          "Amplitudeは画面遷移、食品登録方法（手入力・カメラ・写真・バーコード）、オンライン検索の試行と結果、キッチン・ストア・実績・広告・購入の操作イベントを自動収集します。分析用識別子、アプリ版、端末・OS情報、限定した選択値、成否、所要時間を含みます。分析専用の同意画面は表示しません。写真、食品名、入力文、バーコード原文、メールアドレス、認証トークンを分析属性として送信しません。IPアドレスによる自動的な位置推定はSDK設定で無効にしています。受信サーバーは通信情報を扱う場合があります。ソーシャルログイン後は、ログイン提供者が確認したメールアドレスをAmplitudeのユーザーIDとして送信します。Appleの「メールを非公開」では転送用アドレスの場合があります。匿名アカウントまたは確認済みメールがない場合はexpirycheck:<アカウントUUID>を使用します。メールはイベント属性には含めませんが、識別子としてAmplitudeに送信します。氏名は分析に送信しません。以前のUUIDによる記録とメールによる記録の自動統合は保証されません。",
           "報酬広告はユーザーが視聴を選択した場合に表示します。必要なGoogleの同意案内とiOSの追跡許可は別々に表示します。追跡許可の拒否だけを理由に報酬を制限しません。現在は非パーソナライズ広告を要求します。広告SDKはIP、端末・アプリ情報、広告表示・反応、許可された識別子を扱う場合があります。必要な地域ではアプリの広告プライバシー設定から選択を変更できます。"
         ]
       ],
@@ -301,7 +307,8 @@
         "8. アカウント削除",
         [
           "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
-          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
+          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。",
+          "サーバーは認証済みアカウント情報から確認した分析用メールIDをアカウントに関連付けて記録します。アカウント削除時は、記録したメールIDと従来のUUIDによるIDについてAmplitudeへ削除を依頼します。"
         ]
       ],
       [
@@ -317,7 +324,8 @@
         [
           "通信暗号化、アカウント別アクセス制限、サーバー権限分離、秘密鍵へのアクセス制限を適用します。認証トークンや原画像をログから除外するよう設計しています。本サイトに分析・広告スクリプトは追加していません。ホスティング業者はIP等の安全ログを扱う場合があります。",
           "データ、目的、提供者等の重要な変更はアプリまたは本ページで知らせ、施行日を更新します。新たな同意が必要な変更は別途案内します。",
-          "2026-09-29 更新：白・黒のシンプルな文書画面と目次を追加し、収集方法と権利行使の案内を補足しました。この文書更新で新たな個人情報の収集項目は追加していません。以前の案内を確認したい場合は、上記メールへお問い合わせください。"
+          "2026-09-29 更新：白・黒のシンプルな文書画面と目次を追加し、収集方法と権利行使の案内を補足しました。この文書更新で新たな個人情報の収集項目は追加していません。以前の案内を確認したい場合は、上記メールへお問い合わせください。",
+          "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。"
         ]
       ]
     ],
@@ -328,7 +336,7 @@
       "選択したAppleログインとApp Store決済。識別子、許可されたプロフィール、取引情報を米国およびAppleが開示する地域でサービス・安全目的に処理します。Appleアカウントの保存設定が適用されます。新たな食品のiCloud同期は行いません。",
       "Googleログイン・AdMob。識別子、許可されたプロフィール、広告・端末・通信情報、報酬検証値。米国およびGoogleが開示する地域で認証・広告・安全目的に処理し、広告選択と同社保存基準を適用します。 問い合わせメールはGmailで受信します。Googleはメール提供のため送信者のメールアドレス、本文・添付ファイル、任意で送ったアカウントIDを処理します。問い合わせ解決に必要な範囲で使い、該当する紛争記録の保存義務と提供者の保管条件を区別します。",
       "決済の検証・取引管理：アカウント識別子、商品、取引、レシート、返金情報。実際の処理国と提供者の保存期間は確認中です。必要な決済証憑はアクセスを制限して別途保存します。",
-      "利用分析委託。許可されたイベント・属性、分析識別子、アプリ・端末情報。プロジェクトは米国サーバーを使用し、収集・保存は上記分析項目に従います。",
+      "利用分析委託。許可されたイベント・属性、分析識別子、アプリ・端末情報。プロジェクトは米国サーバーを使用し、収集・保存は上記分析項目に従います。 分析識別子にはログイン提供者が確認したメールアドレス（Appleの転送用アドレスを含む）またはアカウントUUIDが含まれます。",
       "オンライン検索を実行すると、バーコードまたは入力した検索語、検索言語、IPアドレスなどの通信情報をOpen Food Factsに送信します。検索に写真はアップロードしません。機能を使わなければ検索要求は送信しません。",
       "GitHub Pages。ページ接続IP、ブラウザー・要求情報を米国およびGitHubのネットワークで配信・安全目的に処理し、同社ログ方針を適用します。アカウントトークンは送りません。"
     ],
@@ -343,7 +351,8 @@
         "アカウント削除",
         [
           "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
-          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。"
+          "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。",
+          "サーバーは認証済みアカウント情報から確認した分析用メールIDをアカウントに関連付けて記録します。アカウント削除時は、記録したメールIDと従来のUUIDによるIDについてAmplitudeへ削除を依頼します。"
         ]
       ],
       [
@@ -399,7 +408,7 @@
       [
         "5. Analítica y anuncios",
         [
-          "Amplitude recopila automáticamente eventos de pantallas, método de registro (manual, cámara, foto o código), intentos/resultados de búsqueda y acciones de cocina, tienda, logros, anuncios y compras. Incluye identificadores analíticos, versión de app, dispositivo/SO, opciones limitadas, resultados y duración. No hay una pantalla separada de consentimiento para analítica. No enviamos fotos, nombres de alimentos, texto introducido, códigos originales, correos ni tokens como propiedades analíticas. La configuración del SDK desactiva la inferencia automática de ubicación por IP. El servidor receptor puede tratar datos de conexión. La nueva analítica vinculada a cuentas usa el identificador seudónimo expirycheck:<UUID de cuenta>, no un correo o nombre.",
+          "Amplitude recopila automáticamente eventos de pantallas, método de registro (manual, cámara, foto o código), intentos/resultados de búsqueda y acciones de cocina, tienda, logros, anuncios y compras. Incluye identificadores analíticos, versión de app, dispositivo/SO, opciones limitadas, resultados y duración. No hay una pantalla separada de consentimiento para analítica. No enviamos fotos, nombres de alimentos, texto introducido, códigos originales, correos ni tokens como propiedades analíticas. La configuración del SDK desactiva la inferencia automática de ubicación por IP. El servidor receptor puede tratar datos de conexión. Tras iniciar sesión social, se envía a Amplitude el correo verificado por el proveedor como ID de usuario. Con Ocultar mi correo de Apple, puede ser una dirección de retransmisión. Las cuentas anónimas o sin correo verificado usan expirycheck:<UUID de cuenta>. El correo no se incluye en las propiedades de eventos, pero se transmite a Amplitude como identidad; no se envían nombres para analítica. No se garantiza que los registros anteriores basados en UUID se fusionen automáticamente con los basados en correo.",
           "Los anuncios con recompensa aparecen si eliges verlos. Mostramos los avisos de consentimiento de Google cuando proceda y solicitamos por separado el permiso de seguimiento de iOS. Rechazarlo no impide por sí solo recibir recompensas. Actualmente solicitamos anuncios no personalizados. El SDK puede tratar IP, datos de dispositivo/app, impresiones/interacciones e identificadores permitidos. Cuando corresponda, puedes cambiar tus opciones de privacidad publicitaria en la app."
         ]
       ],
@@ -422,7 +431,8 @@
         "8. Eliminar la cuenta",
         [
           "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
-          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
+          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app.",
+          "El servidor registra los ID de correo para analítica verificados a partir de los datos de la cuenta autenticada y los vincula a la cuenta. Al eliminar la cuenta, solicita a Amplitude borrar los datos de esos ID y de los ID anteriores basados en UUID."
         ]
       ],
       [
@@ -438,7 +448,8 @@
         [
           "Usamos cifrado en tránsito, controles por cuenta, separación de privilegios y acceso restringido a claves. Los registros están diseñados para excluir tokens y fotos originales. Este sitio no añade scripts de analítica ni anuncios; el alojamiento puede tratar IP y registros de seguridad.",
           "Anunciamos cambios importantes en datos, finalidades o proveedores en la app o en esta página y actualizamos la fecha. Las modificaciones que requieran nuevo consentimiento se comunican por separado.",
-          "Actualización del 2026-09-29: añadimos un diseño sencillo claro/oscuro y un índice, y aclaramos los métodos de recopilación y las solicitudes de derechos. Esta actualización del documento no añade nuevas categorías de datos recopilados. Escríbenos para consultar un aviso anterior."
+          "Actualización del 2026-09-29: añadimos un diseño sencillo claro/oscuro y un índice, y aclaramos los métodos de recopilación y las solicitudes de derechos. Esta actualización del documento no añade nuevas categorías de datos recopilados. Escríbenos para consultar un aviso anterior.",
+          "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta."
         ]
       ]
     ],
@@ -449,7 +460,7 @@
       "Inicio de sesión con Apple y pagos de App Store opcionales: identificadores, perfil permitido y transacciones. Tratados en EE. UU. y regiones indicadas por Apple para servicio y seguridad, con sus ajustes de conservación. Ya no sincronizamos alimentos mediante iCloud.",
       "Google y AdMob: identificadores/perfiles, anuncios, dispositivo/conexión y verificación de recompensas. Tratamiento en EE. UU. y ubicaciones declaradas por Google para autenticación, publicidad y seguridad, según sus plazos y tus opciones. El correo de soporte se recibe en Gmail. Google trata la dirección del remitente, el mensaje, los adjuntos y el ID de cuenta aportado voluntariamente para prestar el servicio de correo. Se usan para resolver la consulta; se distinguen las obligaciones sobre disputas de los plazos del proveedor.",
       "Verificación y gestión de pagos: identificadores de cuenta, productos, transacciones, recibos y reembolsos. Se están verificando los países reales de tratamiento y los plazos del proveedor. Los justificantes exigidos se guardan por separado con acceso limitado.",
-      "Analítica: eventos/propiedades permitidos, identificadores y datos de app/dispositivo. El proyecto usa servidores de EE. UU. Se aplican los apartados anteriores de analítica.",
+      "Analítica: eventos/propiedades permitidos, identificadores y datos de app/dispositivo. El proyecto usa servidores de EE. UU. Se aplican los apartados anteriores de analítica. Los identificadores incluyen el correo verificado por el proveedor social (incluidas las direcciones de retransmisión de Apple) o el UUID de la cuenta.",
       "Al buscar en línea, Open Food Facts recibe el código de barras o los términos introducidos, el idioma de búsqueda y datos de conexión como la IP. No se suben fotos para esta búsqueda. Si no utiliza la función, no se envía la solicitud.",
       "GitHub Pages: IP, navegador y solicitudes tratados en EE. UU. y la red de GitHub para entrega/seguridad conforme a sus reglas. No enviamos tokens de cuenta a estas páginas."
     ],
@@ -464,7 +475,8 @@
         "Eliminar una cuenta",
         [
           "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
-          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app."
+          "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app.",
+          "El servidor registra los ID de correo para analítica verificados a partir de los datos de la cuenta autenticada y los vincula a la cuenta. Al eliminar la cuenta, solicita a Amplitude borrar los datos de esos ID y de los ID anteriores basados en UUID."
         ]
       ],
       [
@@ -520,7 +532,7 @@
       [
         "5. Аналитика и реклама",
         [
-          "Amplitude автоматически получает события экранов, способы добавления (вручную, камера, фото, штрихкод), попытки и результаты поиска, действия с кухней, магазином, достижениями, рекламой и покупками. Данные включают аналитический идентификатор, версию приложения, устройство/ОС, ограниченные варианты выбора, результат и длительность. Отдельного окна согласия на аналитику нет. Фотографии, названия продуктов, введённый текст, исходные штрихкоды, почта и токены не передаются как свойства аналитики. Настройки SDK отключают автоматическое определение местоположения по IP. Сервер может обрабатывать сведения о соединении. Новая аналитика аккаунта использует псевдоним expirycheck:<UUID аккаунта>, а не email или имя.",
+          "Amplitude автоматически получает события экранов, способы добавления (вручную, камера, фото, штрихкод), попытки и результаты поиска, действия с кухней, магазином, достижениями, рекламой и покупками. Данные включают аналитический идентификатор, версию приложения, устройство/ОС, ограниченные варианты выбора, результат и длительность. Отдельного окна согласия на аналитику нет. Фотографии, названия продуктов, введённый текст, исходные штрихкоды, почта и токены не передаются как свойства аналитики. Настройки SDK отключают автоматическое определение местоположения по IP. Сервер может обрабатывать сведения о соединении. После входа через социальный сервис подтверждённый провайдером адрес электронной почты передаётся Amplitude как ID пользователя. При использовании «Скрыть e-mail» Apple это может быть адрес ретрансляции. Анонимные аккаунты и аккаунты без подтверждённой почты используют expirycheck:<UUID аккаунта>. Почта не включается в свойства событий, но передаётся Amplitude как идентификатор; имена для аналитики не передаются. Автоматическое объединение прежних записей на основе UUID с записями на основе почты не гарантируется.",
           "Реклама с наградой показывается по вашему выбору. При необходимости отображается форма согласия Google, отдельно запрашивается разрешение iOS на отслеживание. Сам по себе отказ от отслеживания не лишает награды. Сейчас приложение запрашивает неперсонализированную рекламу. SDK может обрабатывать IP, данные устройства/приложения, показы, взаимодействия и разрешённые идентификаторы. Где требуется, выбор можно изменить в настройках конфиденциальности рекламы приложения."
         ]
       ],
@@ -543,7 +555,8 @@
         "8. Удаление аккаунта",
         [
           "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
-          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
+          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com.",
+          "Сервер сохраняет аналитические ID электронной почты, проверенные по данным аутентифицированного аккаунта, и связывает их с аккаунтом. При удалении аккаунта запрашивается удаление данных Amplitude для сохранённых почтовых ID и прежних ID на основе UUID."
         ]
       ],
       [
@@ -559,7 +572,8 @@
         [
           "Мы используем шифрование передачи, разграничение доступа по аккаунтам, разделение серверных прав и ограничение доступа к ключам. Журналы спроектированы без токенов и исходных фотографий. На этом сайте нет добавленных скриптов аналитики и рекламы; хостинг может обрабатывать IP и журналы безопасности.",
           "О важных изменениях данных, целей и поставщиков сообщаем в приложении или здесь, обновляя дату. Изменения, требующие нового согласия, рассматриваются отдельно.",
-          "Обновление от 2026-09-29: добавлены простой светлый/тёмный дизайн и содержание, уточнены способы сбора данных и обращения для реализации прав. Это обновление документа не добавляет новые категории собираемых персональных данных. Чтобы ознакомиться с предыдущим уведомлением, напишите нам."
+          "Обновление от 2026-09-29: добавлены простой светлый/тёмный дизайн и содержание, уточнены способы сбора данных и обращения для реализации прав. Это обновление документа не добавляет новые категории собираемых персональных данных. Чтобы ознакомиться с предыдущим уведомлением, напишите нам.",
+          "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта."
         ]
       ]
     ],
@@ -570,7 +584,7 @@
       "Выбранные вход Apple и платежи App Store: идентификаторы, разрешённый профиль и операции. Обработка в США и раскрытых Apple регионах для сервиса и безопасности с учётом настроек хранения Apple. Новая синхронизация продуктов через iCloud не выполняется.",
       "Google и AdMob: идентификаторы/профиль, реклама, устройство, соединение и проверка награды. Обработка в США и указанных Google регионах для входа, рекламы и безопасности по соответствующим срокам и настройкам. Письма поддержки принимаются в Gmail. Google обрабатывает адрес отправителя, текст, вложения и добровольно указанный ID аккаунта для предоставления почты. Мы используем их для решения обращения; обязанности хранения записей споров отделяются от сроков поставщика.",
       "Проверка платежей и управление операциями: идентификаторы аккаунта, товары, операции, чеки и возвраты. Фактические страны обработки и сроки поставщика уточняются. Обязательные платёжные документы хранятся отдельно с ограниченным доступом.",
-      "Аналитика: допустимые события/свойства, идентификаторы, приложение и устройство. Проект использует серверы США; сбор и хранение описаны выше.",
+      "Аналитика: допустимые события/свойства, идентификаторы, приложение и устройство. Проект использует серверы США; сбор и хранение описаны выше. Идентификаторы включают подтверждённую социальным провайдером почту (в том числе адреса ретрансляции Apple) или UUID аккаунта.",
       "При онлайн-поиске Open Food Facts получает штрихкод или введённый запрос, язык поиска и сетевые данные, включая IP. Фотографии для этого поиска не загружаются. Без использования функции запрос не отправляется.",
       "GitHub Pages: IP, браузер и запросы обрабатываются в США и сети GitHub для доставки/безопасности по правилам хостинга. Токены аккаунта на страницы не передаются."
     ],
@@ -585,7 +599,8 @@
         "Удалить аккаунт",
         [
           "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
-          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com."
+          "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com.",
+          "Сервер сохраняет аналитические ID электронной почты, проверенные по данным аутентифицированного аккаунта, и связывает их с аккаунтом. При удалении аккаунта запрашивается удаление данных Amplitude для сохранённых почтовых ID и прежних ID на основе UUID."
         ]
       ],
       [
@@ -641,7 +656,7 @@
       [
         "5. การวิเคราะห์และโฆษณา",
         [
-          "Amplitude เก็บเหตุการณ์การเปิดหน้าจอ วิธีเพิ่มอาหาร (พิมพ์เอง กล้อง รูปภาพ บาร์โค้ด) การลองค้นหาและผลลัพธ์ ตลอดจนการใช้ครัว ร้านค้า ความสำเร็จ โฆษณาและการซื้อโดยอัตโนมัติ ข้อมูลรวมรหัสวิเคราะห์ รุ่นแอป อุปกรณ์/ระบบปฏิบัติการ ตัวเลือกที่จำกัด ผลสำเร็จ และระยะเวลา ไม่มีหน้าต่างขอความยินยอมด้านวิเคราะห์แยกต่างหาก เราไม่ส่งรูป ชื่ออาหาร ข้อความที่พิมพ์ บาร์โค้ดต้นฉบับ อีเมล หรือโทเค็นเป็นคุณสมบัติวิเคราะห์ การตั้งค่า SDK ปิดการอนุมานตำแหน่งอัตโนมัติจาก IP แต่เซิร์ฟเวอร์ยังอาจประมวลผลข้อมูลการเชื่อมต่อ การวิเคราะห์ที่เชื่อมกับบัญชีใหม่ใช้รหัสนามแฝง expirycheck:<UUID บัญชี> ไม่ใช่อีเมลหรือชื่อ",
+          "Amplitude เก็บเหตุการณ์การเปิดหน้าจอ วิธีเพิ่มอาหาร (พิมพ์เอง กล้อง รูปภาพ บาร์โค้ด) การลองค้นหาและผลลัพธ์ ตลอดจนการใช้ครัว ร้านค้า ความสำเร็จ โฆษณาและการซื้อโดยอัตโนมัติ ข้อมูลรวมรหัสวิเคราะห์ รุ่นแอป อุปกรณ์/ระบบปฏิบัติการ ตัวเลือกที่จำกัด ผลสำเร็จ และระยะเวลา ไม่มีหน้าต่างขอความยินยอมด้านวิเคราะห์แยกต่างหาก เราไม่ส่งรูป ชื่ออาหาร ข้อความที่พิมพ์ บาร์โค้ดต้นฉบับ อีเมล หรือโทเค็นเป็นคุณสมบัติวิเคราะห์ การตั้งค่า SDK ปิดการอนุมานตำแหน่งอัตโนมัติจาก IP แต่เซิร์ฟเวอร์ยังอาจประมวลผลข้อมูลการเชื่อมต่อ หลังเข้าสู่ระบบโซเชียล เราส่งอีเมลที่ผู้ให้บริการยืนยันแล้วให้ Amplitude เป็น ID ผู้ใช้ หากใช้ซ่อนอีเมลของ Apple อาจเป็นที่อยู่อีเมลส่งต่อ บัญชีผู้เยี่ยมชมหรือบัญชีที่ไม่มีอีเมลยืนยันใช้ expirycheck:<UUID บัญชี> อีเมลไม่อยู่ในคุณสมบัติเหตุการณ์ แต่ส่งให้ Amplitude เป็นตัวระบุผู้ใช้ และไม่ส่งชื่อเพื่อการวิเคราะห์ ไม่รับประกันว่าประวัติเดิมที่ใช้ UUID จะรวมกับประวัติที่ใช้อีเมลโดยอัตโนมัติ",
           "โฆษณารับรางวัลแสดงเมื่อคุณเลือกดู เราแสดงข้อความความยินยอมของ Google เมื่อจำเป็น และขอสิทธิการติดตาม iOS แยกกัน การปฏิเสธการติดตามเพียงอย่างเดียวไม่ตัดสิทธิรางวัล ขณะนี้แอปขอโฆษณาที่ไม่ปรับตามบุคคล SDK อาจประมวลผล IP ข้อมูลอุปกรณ์/แอป การแสดงและตอบสนองต่อโฆษณา และรหัสที่ได้รับอนุญาต ในกรณีที่ใช้บังคับ คุณเปลี่ยนตัวเลือกได้ในการตั้งค่าความเป็นส่วนตัวโฆษณาในแอป"
         ]
       ],
@@ -664,7 +679,8 @@
         "8. การลบบัญชี",
         [
           "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
-          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
+          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com",
+          "เซิร์ฟเวอร์บันทึก ID อีเมลสำหรับการวิเคราะห์ที่ตรวจสอบจากข้อมูลบัญชีที่ยืนยันตัวตนแล้ว และเชื่อมกับบัญชี เมื่อลบบัญชี ระบบจะขอให้ Amplitude ลบข้อมูลของ ID อีเมลที่บันทึกไว้และ ID เดิมที่ใช้ UUID"
         ]
       ],
       [
@@ -680,7 +696,8 @@
         [
           "ใช้การเข้ารหัสระหว่างส่ง ควบคุมการเข้าถึงรายบัญชี แยกสิทธิเซิร์ฟเวอร์ และจำกัดการเข้าถึงคีย์ ออกแบบบันทึกให้ไม่รวมโทเค็นและรูปต้นฉบับ เว็บไซต์นี้ไม่มีสคริปต์วิเคราะห์หรือโฆษณาที่เพิ่มไว้ ผู้ให้บริการโฮสต์อาจจัดการ IP และบันทึกความปลอดภัย",
           "แจ้งการเปลี่ยนแปลงสำคัญของข้อมูล วัตถุประสงค์หรือผู้ให้บริการในแอปหรือหน้านี้และปรับวันที่ หากต้องขอความยินยอมใหม่จะแจ้งแยกต่างหาก",
-          "อัปเดต 2026-09-29: เพิ่มหน้าข้อความแบบเรียบง่ายพื้นขาว/ดำและสารบัญ พร้อมชี้แจงวิธีรวบรวมข้อมูลและการใช้สิทธิ การแก้ไขเอกสารครั้งนี้ไม่ได้เพิ่มประเภทข้อมูลส่วนบุคคลที่รวบรวม หากต้องการดูประกาศก่อนหน้า โปรดติดต่อทางอีเมล"
+          "อัปเดต 2026-09-29: เพิ่มหน้าข้อความแบบเรียบง่ายพื้นขาว/ดำและสารบัญ พร้อมชี้แจงวิธีรวบรวมข้อมูลและการใช้สิทธิ การแก้ไขเอกสารครั้งนี้ไม่ได้เพิ่มประเภทข้อมูลส่วนบุคคลที่รวบรวม หากต้องการดูประกาศก่อนหน้า โปรดติดต่อทางอีเมล",
+          "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี"
         ]
       ]
     ],
@@ -691,7 +708,7 @@
       "Apple เข้าสู่ระบบและ App Store ตามที่เลือก: รหัส โปรไฟล์ที่อนุญาต และธุรกรรม ประมวลผลในสหรัฐและพื้นที่ที่ Apple แจ้งเพื่อบริการและความปลอดภัย ใช้การตั้งค่าการเก็บของบัญชี Apple ไม่มีการซิงค์อาหารใหม่ผ่าน iCloud",
       "Google และ AdMob: รหัส/โปรไฟล์ โฆษณา อุปกรณ์ การเชื่อมต่อและค่าตรวจสอบรางวัล ประมวลผลในสหรัฐและพื้นที่ที่ Google เปิดเผยเพื่อยืนยันตัวตน โฆษณาและความปลอดภัย ตามตัวเลือกและนโยบายเก็บของบริการ อีเมลสนับสนุนรับผ่าน Gmail ดังนั้น Google ประมวลผลอีเมลผู้ส่ง เนื้อหา ไฟล์แนบ และ ID บัญชีที่ส่งโดยสมัครใจเพื่อให้บริการอีเมล ใช้เท่าที่จำเป็นแก้ไขคำถาม โดยแยกหน้าที่เก็บบันทึกข้อพิพาทกับเงื่อนไขของผู้ให้บริการ",
       "ตรวจสอบและจัดการการชำระเงิน: รหัสบัญชี สินค้า ธุรกรรม ใบเสร็จ และคืนเงิน ประเทศประมวลผลจริงและระยะเก็บของผู้ให้บริการยังอยู่ระหว่างตรวจสอบ หลักฐานที่กฎหมายกำหนดเก็บแยกโดยจำกัดการเข้าถึง",
-      "วิเคราะห์การใช้: เหตุการณ์/คุณสมบัติที่อนุญาต รหัสวิเคราะห์และข้อมูลแอป/อุปกรณ์ โครงการใช้เซิร์ฟเวอร์สหรัฐ ตามเงื่อนไขวิเคราะห์ข้างต้น",
+      "วิเคราะห์การใช้: เหตุการณ์/คุณสมบัติที่อนุญาต รหัสวิเคราะห์และข้อมูลแอป/อุปกรณ์ โครงการใช้เซิร์ฟเวอร์สหรัฐ ตามเงื่อนไขวิเคราะห์ข้างต้น ตัวระบุการวิเคราะห์รวมอีเมลที่ผู้ให้บริการโซเชียลยืนยัน (รวมอีเมลส่งต่อของ Apple) หรือ UUID บัญชี",
       "เมื่อค้นหาออนไลน์ Open Food Facts จะได้รับบาร์โค้ดหรือคำค้นที่ป้อน ภาษาค้นหา และข้อมูลการเชื่อมต่อเช่น IP ไม่มีการอัปโหลดภาพในการค้นหานี้ หากไม่ใช้ฟังก์ชันจะไม่มีการส่งคำขอ",
       "GitHub Pages: IP เบราว์เซอร์และคำขอหน้าเว็บประมวลผลในสหรัฐและเครือข่าย GitHub เพื่อส่งหน้า/ความปลอดภัยตามนโยบายบันทึก ไม่ส่งโทเค็นบัญชีแอปไปหน้าเว็บ"
     ],
@@ -706,7 +723,8 @@
         "ลบบัญชี",
         [
           "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
-          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com"
+          "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com",
+          "เซิร์ฟเวอร์บันทึก ID อีเมลสำหรับการวิเคราะห์ที่ตรวจสอบจากข้อมูลบัญชีที่ยืนยันตัวตนแล้ว และเชื่อมกับบัญชี เมื่อลบบัญชี ระบบจะขอให้ Amplitude ลบข้อมูลของ ID อีเมลที่บันทึกไว้และ ID เดิมที่ใช้ UUID"
         ]
       ],
       [
@@ -762,7 +780,7 @@
       [
         "5. Ашиглалтын шинжилгээ ба зар",
         [
-          "Amplitude нь дэлгэцийн шилжилт, хүнс нэмэх арга (гараар, камер, зураг, баркод), онлайн хайлтын оролдлого/үр дүн, гал тогоо, дэлгүүр, амжилт, зар, худалдан авалтын үйл явдлыг автоматаар цуглуулна. Шинжилгээний таних дугаар, аппын хувилбар, төхөөрөмж/үйлдлийн систем, хязгаарлагдмал сонголт, үр дүн, зарцуулсан хугацаа орно. Шинжилгээний тусдаа зөвшөөрлийн цонх харуулахгүй. Зураг, хүнсний нэр, бичсэн өгүүлбэр, эх баркод, имэйл, токеныг шинжилгээний шинж чанар болгон илгээхгүй. SDK тохиргоо IP-ээр байршлыг автоматаар таамаглахыг унтраана. Сервер холболтын мэдээлэл боловсруулж болно. Шинэ бүртгэлтэй холбогдсон шинжилгээ имэйл, нэрийн оронд expirycheck:<бүртгэлийн UUID> нууц нэрийн таних дугаар ашиглана.",
+          "Amplitude нь дэлгэцийн шилжилт, хүнс нэмэх арга (гараар, камер, зураг, баркод), онлайн хайлтын оролдлого/үр дүн, гал тогоо, дэлгүүр, амжилт, зар, худалдан авалтын үйл явдлыг автоматаар цуглуулна. Шинжилгээний таних дугаар, аппын хувилбар, төхөөрөмж/үйлдлийн систем, хязгаарлагдмал сонголт, үр дүн, зарцуулсан хугацаа орно. Шинжилгээний тусдаа зөвшөөрлийн цонх харуулахгүй. Зураг, хүнсний нэр, бичсэн өгүүлбэр, эх баркод, имэйл, токеныг шинжилгээний шинж чанар болгон илгээхгүй. SDK тохиргоо IP-ээр байршлыг автоматаар таамаглахыг унтраана. Сервер холболтын мэдээлэл боловсруулж болно. Сошиал нэвтрэлтийн дараа үйлчилгээ үзүүлэгчийн баталгаажуулсан имэйлийг Amplitude-ийн хэрэглэгчийн ID болгон илгээнэ. Apple-ийн имэйл нуух боломжийг ашиглавал дамжуулах хаяг байж болно. Зочин бүртгэл эсвэл баталгаажсан имэйлгүй бүртгэл expirycheck:<бүртгэлийн UUID> ашиглана. Имэйл нь үйл явдлын шинж чанарт орохгүй боловч таних мэдээлэл хэлбэрээр Amplitude-д дамжина; нэрийг шинжилгээнд илгээхгүй. Өмнөх UUID-д суурилсан түүх имэйлд суурилсан түүхтэй автоматаар нэгдэх баталгаа байхгүй.",
           "Урамшуулалт зарыг та үзэхээр сонгосон үед харуулна. Шаардлагатай Google зөвшөөрлийн тайлбарыг үзүүлж, iOS мөрдөх зөвшөөрлийг тусад нь авна. Зөвхөн мөрдөхөөс татгалзсанаар урамшууллыг хориглохгүй. Одоогоор хувь хүнд тохируулаагүй зар хүсдэг. Зарны SDK нь IP, төхөөрөмж/апп, зар үзэлт/харилцан үйлдэл, зөвшөөрөгдсөн таних дугаарыг боловсруулж болно. Хамаарах тохиолдолд аппын зарны нууцлалын тохиргооноос сонголтоо өөрчилж болно."
         ]
       ],
@@ -785,7 +803,8 @@
         "8. Бүртгэл устгах",
         [
           "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
-          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
+          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу.",
+          "Сервер баталгаажуулсан бүртгэлийн мэдээллээс шалгасан шинжилгээний имэйл ID-г бүртгэлтэй холбон хадгална. Бүртгэл устгахад хадгалсан имэйл ID болон хуучин UUID-д суурилсан ID-гийн өгөгдлийг Amplitude-ээс устгах хүсэлт илгээнэ."
         ]
       ],
       [
@@ -801,7 +820,8 @@
         [
           "Дамжуулалтын шифрлэлт, бүртгэл тус бүрийн хандалтын хяналт, серверийн эрхийн тусгаарлалт, нууц түлхүүрийн хандалтын хязгаарлалт хэрэглэнэ. Токен болон эх зургийг логт оруулахгүй байхаар зохиосон. Энэ сайтад нэмэлт шинжилгээ, зарны скрипт байхгүй. Хостинг үйлчилгээ IP зэрэг аюулгүй байдлын лог боловсруулж болно.",
           "Мэдээлэл, зорилго, үйлчилгээ үзүүлэгчийн чухал өөрчлөлтийг апп эсвэл энэ хуудсаар зарлаж, хүчинтэй огноог шинэчилнэ. Шинэ зөвшөөрөл шаардсан өөрчлөлтийг тусад нь тайлбарлана.",
-          "2026-09-29 шинэчлэлт: цагаан/хар дэвсгэртэй энгийн баримт бичгийн загвар, агуулгын жагсаалт нэмж, мэдээлэл цуглуулах болон эрхээ хэрэгжүүлэх аргыг тодрууллаа. Энэ баримт бичгийн шинэчлэлтээр цуглуулах хувийн мэдээллийн шинэ төрөл нэмээгүй. Өмнөх мэдэгдэлтэй танилцах бол имэйлээр хандана уу."
+          "2026-09-29 шинэчлэлт: цагаан/хар дэвсгэртэй энгийн баримт бичгийн загвар, агуулгын жагсаалт нэмж, мэдээлэл цуглуулах болон эрхээ хэрэгжүүлэх аргыг тодрууллаа. Энэ баримт бичгийн шинэчлэлтээр цуглуулах хувийн мэдээллийн шинэ төрөл нэмээгүй. Өмнөх мэдэгдэлтэй танилцах бол имэйлээр хандана уу.",
+          "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв."
         ]
       ]
     ],
@@ -812,7 +832,7 @@
       "Сонгосон Apple нэвтрэлт, App Store төлбөр: таних дугаар, зөвшөөрсөн профиль, гүйлгээ. АНУ болон Apple-ийн мэдээлсэн бүсэд үйлчилгээ, аюулгүй байдлын зорилгоор боловсруулна. Apple бүртгэлийн хадгалалтын тохиргоо үйлчилнэ. Хүнсийг iCloud-аар шинээр синк хийхгүй.",
       "Google нэвтрэлт, AdMob: таних дугаар/профиль, зар, төхөөрөмж/холболт, урамшууллын шалгах утга. АНУ болон Google-ийн мэдээлсэн бүсэд нэвтрэлт, зар, аюулгүй байдлын зорилгоор, тухайн хадгалалт ба сонголтын дагуу боловсруулна. Дэмжлэгийн имэйлийг Gmail-ээр авна. Google илгээгчийн хаяг, захидал, хавсралт болон сайн дураар өгсөн бүртгэлийн ID-г имэйл үйлчилгээ үзүүлэхэд боловсруулна. Асуудал шийдэхэд шаардлагатай хүрээнд ашиглаж, маргааны бүртгэлийн үүрэг болон нийлүүлэгчийн нөхцөлийг ялгана.",
       "Төлбөр баталгаажуулах, гүйлгээ удирдах: бүртгэлийн ID, бүтээгдэхүүн, гүйлгээ, баримт, буцаалт. Бодит боловсруулах улс, нийлүүлэгчийн хадгалалтын хугацааг тодруулж байна. Шаардлагатай төлбөрийн баримтыг тусад нь хязгаарлагдмал хадгална.",
-      "Ашиглалтын шинжилгээ: зөвшөөрөгдсөн үйл явдал/шинж чанар, таних дугаар, апп/төхөөрөмж. Төсөл АНУ-ын сервер ашиглана. Дээрх шинжилгээний нөхцөл үйлчилнэ.",
+      "Ашиглалтын шинжилгээ: зөвшөөрөгдсөн үйл явдал/шинж чанар, таних дугаар, апп/төхөөрөмж. Төсөл АНУ-ын сервер ашиглана. Дээрх шинжилгээний нөхцөл үйлчилнэ. Шинжилгээний таних мэдээлэлд сошиал үйлчилгээ үзүүлэгчийн баталгаажуулсан имэйл (Apple-ийн дамжуулах хаяг орно) эсвэл бүртгэлийн UUID орно.",
       "Онлайн хайлт хийхэд Open Food Facts-д баркод эсвэл оруулсан хайлтын үг, хайлтын хэл, IP зэрэг холболтын мэдээлэл очно. Энэ хайлтад зураг байршуулахгүй. Үйлдлийг ашиглахгүй бол хүсэлт илгээхгүй.",
       "GitHub Pages: хуудасны IP, хөтөч, хүсэлтийг АНУ болон GitHub сүлжээнд түгээлт/аюулгүй байдлын зорилгоор, логийн дүрмийн дагуу боловсруулна. Аппын токен дамжуулахгүй."
     ],
@@ -827,7 +847,8 @@
         "Бүртгэл устгах",
         [
           "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
-          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу."
+          "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу.",
+          "Сервер баталгаажуулсан бүртгэлийн мэдээллээс шалгасан шинжилгээний имэйл ID-г бүртгэлтэй холбон хадгална. Бүртгэл устгахад хадгалсан имэйл ID болон хуучин UUID-д суурилсан ID-гийн өгөгдлийг Amplitude-ээс устгах хүсэлт илгээнэ."
         ]
       ],
       [
