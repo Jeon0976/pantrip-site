@@ -12,7 +12,9 @@ let checked=0;
 for(const lang of langs){
  assert.equal(data[lang].sections.length,10);
  assert.equal(data[lang].providers.length,7);
- assert.equal(data[lang].support.length,4);
+ assert.equal(data[lang].support.length,5);
+ assert(data[lang].sections[6][1].some(p=>p.includes('SHA-256')));
+ assert(data[lang].support[4][1][0].includes('P'));
  assert(data[lang].contentsTitle && data[lang].languageTitle);
  assert(data[lang].sections[9][1].some(p=>p.includes('2026-09-29')));
  for(const kind of ['privacy','support']){

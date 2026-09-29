@@ -51,6 +51,7 @@
         "7. 보관 기간과 파기",
         [
           "법정 보관이 필요한 계약·결제·공급 기록은 원 거래 시각부터 5년, 소비자 불만·분쟁 기록은 해당 기록에 적용되는 기준부터 3년간 필요한 최소 항목만 제한 보관합니다. 모든 활동·사진의 5년 보관을 의미하지 않습니다. 삭제 처리 상태와 복구 조회 기록은 삭제 완료 후 30일 보관하도록 서버에 구현되어 있습니다. 서버가 정기적으로 보관 기간을 확인하고 기간이 지난 해당 기록을 삭제합니다. 처리 중인 요청은 완료와 구분하여 안내합니다.",
+          "최초 소셜 계정 연결 보상의 중복 지급과 부정 수령을 막기 위해, 로그인 제공자와 제공자 고유 식별자를 결합한 SHA-256 해시, 지갑 환경 구분, 중복 수령 방지 기록 생성 시각을 별도 보관합니다. 이 기록에는 이메일, 원본 소셜 식별자, 앱 계정 ID를 보관하지 않습니다. 해시도 가명 처리된 개인정보이며 익명정보가 아닙니다. 계정 삭제 후에도 이 일회성 보상 제도를 운영하는 동안 보관하고, 제도 종료로 목적이 없어지면 삭제합니다. 이 기록은 보상 재수령 방지 목적으로만 접근을 제한해 처리합니다.",
           "이용 분석 이벤트는 분석 목적이 유지되는 동안 보관하며, 적용 가능한 삭제 요청이 확인되면 공급업체의 삭제 절차를 진행합니다. 현재 자동 12개월 삭제 설정은 완료되지 않았으므로 12개월이 지나면 자동으로 지워진다고 보장하지 않습니다. 기존의 계정과 연결되지 않은 기기 기반 분석 기록은 계정 ID만으로 찾아 삭제할 수 없을 수 있습니다. 관련 요청 시 확인 가능한 범위와 추가 절차를 안내합니다.",
           "개인정보는 보관 목적이 끝나면 복구하기 어렵도록 삭제합니다. 공급업체의 삭제 처리와 제한된 보안·백업 보관에는 시간이 걸릴 수 있습니다. 삭제 요청 상태와 외부 처리 완료를 구분해 안내하며, 법정 보관 정보는 기간 만료 후 파기합니다."
         ]
@@ -60,7 +61,8 @@
         [
           "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
           "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요.",
-          "서버는 인증된 계정 정보에서 확인한 분석용 이메일 ID를 계정에 연결해 기록합니다. 계정 삭제 시 기록한 이메일 ID와 기존 UUID 기반 ID의 Amplitude 데이터 삭제를 요청합니다."
+          "서버는 인증된 계정 정보에서 확인한 분석용 이메일 ID를 계정에 연결해 기록합니다. 계정 삭제 시 기록한 이메일 ID와 기존 UUID 기반 ID의 Amplitude 데이터 삭제를 요청합니다.",
+          "계정 삭제의 예외로, 최초 소셜 연결 보상의 중복 수령 방지 기록은 제7항의 기간 동안 남습니다."
         ]
       ],
       [
@@ -77,7 +79,8 @@
           "전송 구간 암호화, 계정별 접근 제한, 서버 권한 분리와 비밀키 접근 제한을 적용합니다. 운영 로그에 인증 토큰·원문 사진을 남기지 않도록 제한합니다. 이 웹페이지에는 별도의 분석·광고 추적 스크립트를 넣지 않습니다. 웹 호스팅 제공자는 접속 IP 등의 보안 로그를 처리할 수 있습니다.",
           "처리 항목·목적·제공자 등 중요한 내용이 바뀌면 앱 또는 이 페이지에 알리고 시행일을 변경합니다. 새 동의가 필요한 변경은 별도로 안내합니다.",
           "2026-09-29 변경 안내: 흰색·검정 문서 화면과 목차를 적용하고, 정보 수집 경로와 권리 행사 방법을 보완했습니다. 이번 문서 수정으로 새로운 개인정보 수집 항목을 추가하지 않았습니다. 이전 안내의 확인이 필요하면 위 이메일로 요청해 주세요.",
-          "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다."
+          "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다.",
+          "2026-09-30 추가 변경: 최초 소셜 연결 보상의 중복 방지 기록과 탈퇴 후 보관 예외를 안내했습니다."
         ]
       ]
     ],
@@ -117,6 +120,12 @@
         "식품과 iCloud",
         [
           "식품은 기기에 먼저 저장하며 서버 작업 중에도 앱을 사용할 수 있습니다. 동기화 문제는 같은 Pantrip 계정인지, 식품 동기화가 켜져 있는지와 네트워크 연결을 확인해 주세요. 오프라인 변경은 연결 후 재시도합니다. 로그아웃 후에도 기기 식품은 남습니다. 동기화 중 식품 삭제는 다른 연결 기기에 반영될 수 있습니다."
+        ]
+      ],
+      [
+        "시작 및 계정 연결 포인트",
+        [
+          "시작 포인트는 계정당 한 번 1,000P입니다. Apple 또는 Google을 처음 연결하면 계정당 한 번, 소셜 계정당 한 번 1,000P를 추가로 받습니다. 소셜 계정으로 바로 가입하면 두 보상을 합쳐 2,000P입니다. 기존에 받은 시작 포인트 1,500P는 차감하지 않으므로, 첫 소셜 연결 보상까지 받으면 총 2,500P가 될 수 있습니다. 재연결이나 탈퇴 후 재가입으로 같은 소셜 계정의 연결 보상을 다시 받을 수 없습니다. 지급과 중복 확인은 서버에서 처리합니다."
         ]
       ]
     ],
@@ -175,6 +184,7 @@
         "7. Retention and erasure",
         [
           "Minimum legally required contract, payment and supply records are retained for five years from the original transaction time; complaint/dispute records for three years under the applicable record-specific rule. This does not mean retaining all activity or photos for five years. The server implements retention of deletion status and recovery records for 30 days after completion. The server regularly checks retention periods and deletes the applicable records when those periods have ended. Pending requests are distinguished from completed deletion.",
+          "To prevent duplicate or fraudulent first social-link rewards, we separately retain a SHA-256 hash of the sign-in provider and its stable account identifier, the wallet environment, and the duplicate-claim record creation time. This record does not retain an email address, raw social identifier, or app account ID. The hash is pseudonymous personal data, not anonymous data. It remains after account deletion while this one-time reward program operates and is erased when the program ends and the purpose no longer applies. Access is restricted to preventing repeat reward claims.",
           "Analytics events are retained while the analytics purpose remains; verified applicable deletion requests are handled through the provider. Automatic 12-month deletion has not been configured, so we do not promise that events disappear after 12 months. Older device-based analytics not linked to an account may not be identifiable from the account ID alone. We explain the available scope and additional steps for such requests.",
           "When the retention purpose ends, we erase data to make recovery difficult. Provider erasure and limited security/backup retention can take time. We distinguish request receipt from external completion. Statutorily retained data is erased when its period ends."
         ]
@@ -184,7 +194,8 @@
         [
           "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
           "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app.",
-          "The server records analytics email IDs verified from authenticated account data and associates them with the account. Account deletion requests Amplitude deletion for the recorded email IDs and legacy UUID-based IDs."
+          "The server records analytics email IDs verified from authenticated account data and associates them with the account. Account deletion requests Amplitude deletion for the recorded email IDs and legacy UUID-based IDs.",
+          "As an exception to account deletion, the record preventing duplicate first social-link rewards remains for the period in section 7."
         ]
       ],
       [
@@ -201,7 +212,8 @@
           "We use encrypted connections, account-level access controls, separated server privileges and restricted secret access. Logs are designed to exclude authentication tokens and original photos. This website has no added analytics or advertising scripts. Its hosting provider may process security logs such as connection IP addresses.",
           "We announce material changes to data, purposes or providers in the app or on this page and update the effective date. Changes requiring new consent are addressed separately.",
           "2026-09-29 update: added a plain light/dark document layout and contents, and clarified collection methods and rights requests. This document update does not introduce new categories of personal data collection. Email us if you need to consult an earlier notice.",
-          "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion."
+          "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion.",
+          "2026-09-30 additional update: disclosed first social-link reward duplicate-claim records and the retention exception after account deletion."
         ]
       ]
     ],
@@ -241,6 +253,12 @@
         "Food and iCloud",
         [
           "Food is saved on your device first, and server work does not block the app. For sync problems, check your Pantrip account, food-sync setting and network connection. Offline changes retry when connected. Local food remains after logout. Deleting food while syncing can also affect other connected devices."
+        ]
+      ],
+      [
+        "Starting and account-link points",
+        [
+          "Starting points are 1,000P once per app account. The first Apple or Google connection adds 1,000P, once per app account and once per social account. Signing up directly with a social account gives both rewards, totaling 2,000P. Previously awarded 1,500P starting points are preserved, so an eligible first social connection can bring that total to 2,500P. Reconnecting or deleting and rejoining does not renew the same social account’s link reward. The server controls awards and duplicate checks."
         ]
       ]
     ],
@@ -299,6 +317,7 @@
         "7. 保存期間と消去",
         [
           "法定保存が必要な契約・決済・供給の最小限の記録は元の取引時刻から5年間、苦情・紛争記録は当該記録に適用される基準から3年間、アクセスを制限して保存します。すべての活動・写真を5年保存する意味ではありません。削除状況と復旧照会記録を完了後30日間保存する処理はサーバーに実装済みです。サーバーが定期的に保存期間を確認し、期間を過ぎた対象記録を削除します。処理中と削除完了を区別して案内します。",
+          "初回ソーシャル連携報酬の重複受領や不正受領を防ぐため、ログイン提供元とそのアカウント固有識別子を組み合わせたSHA-256ハッシュ、ウォレット環境、重複受領防止記録の作成日時を別途保存します。この記録にはメールアドレス、元のソーシャル識別子、アプリのアカウントIDは保存しません。ハッシュは仮名化された個人情報であり、匿名情報ではありません。アカウント削除後も、この一回限りの報酬制度を運営する間保存し、制度終了により目的がなくなった時点で削除します。重複受領防止の目的にアクセスを制限します。",
           "分析イベントは分析目的が続く間保存し、対象となる削除依頼を確認した場合は提供者の削除手続きを行います。12か月後の自動削除設定は未完了のため、12か月で必ず消えるとは保証しません。過去のアカウントに結び付かない端末ベースの分析は、アカウントIDだけでは特定できない場合があります。確認できる範囲と追加手続きを案内します。",
           "保存目的が終了すると復元が困難な方法で消去します。提供者の処理や限定的な安全・バックアップ保存には時間がかかることがあります。受付と外部処理完了は区別し、法定保存情報は期間満了後に消去します。"
         ]
@@ -308,7 +327,8 @@
         [
           "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
           "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。",
-          "サーバーは認証済みアカウント情報から確認した分析用メールIDをアカウントに関連付けて記録します。アカウント削除時は、記録したメールIDと従来のUUIDによるIDについてAmplitudeへ削除を依頼します。"
+          "サーバーは認証済みアカウント情報から確認した分析用メールIDをアカウントに関連付けて記録します。アカウント削除時は、記録したメールIDと従来のUUIDによるIDについてAmplitudeへ削除を依頼します。",
+          "アカウント削除の例外として、初回ソーシャル連携報酬の重複受領防止記録は第7項の期間中残ります。"
         ]
       ],
       [
@@ -325,7 +345,8 @@
           "通信暗号化、アカウント別アクセス制限、サーバー権限分離、秘密鍵へのアクセス制限を適用します。認証トークンや原画像をログから除外するよう設計しています。本サイトに分析・広告スクリプトは追加していません。ホスティング業者はIP等の安全ログを扱う場合があります。",
           "データ、目的、提供者等の重要な変更はアプリまたは本ページで知らせ、施行日を更新します。新たな同意が必要な変更は別途案内します。",
           "2026-09-29 更新：白・黒のシンプルな文書画面と目次を追加し、収集方法と権利行使の案内を補足しました。この文書更新で新たな個人情報の収集項目は追加していません。以前の案内を確認したい場合は、上記メールへお問い合わせください。",
-          "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。"
+          "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。",
+          "2026-09-30 追加更新：初回ソーシャル連携報酬の重複防止記録とアカウント削除後の保存例外を明記しました。"
         ]
       ]
     ],
@@ -365,6 +386,12 @@
         "食品とiCloud",
         [
           "食品はまず端末に保存し、サーバー処理中もアプリを使えます。同じPantripアカウント、食品同期設定、通信状態を確認してください。オフラインの変更は接続後に再試行します。ログアウト後も食品は残ります。同期中の削除は他の端末にも反映されることがあります。"
+        ]
+      ],
+      [
+        "開始・アカウント連携ポイント",
+        [
+          "開始ポイントはアカウントごとに一度1,000Pです。AppleまたはGoogleとの初回連携で、アカウントごと・ソーシャルアカウントごとに一度1,000Pを追加します。ソーシャルアカウントで直接登録すると合計2,000Pです。以前の開始ポイント1,500Pは減額しないため、対象となる初回連携で合計2,500Pになる場合があります。再連携や退会後の再登録で同じソーシャルアカウントの連携報酬を再受領することはできません。付与と重複確認はサーバーが管理します。"
         ]
       ]
     ],
@@ -423,6 +450,7 @@
         "7. Conservación y borrado",
         [
           "Los registros mínimos de contratos, pagos y suministro exigidos por ley se conservan cinco años desde la transacción original; las reclamaciones y disputas, tres años según la regla aplicable a cada registro. No supone guardar toda la actividad o fotos cinco años. El servidor implementa la conservación del estado y los datos de recuperación de la eliminación durante 30 días tras completarla. El servidor revisa periódicamente los plazos de conservación y elimina los registros correspondientes cuando vencen. Se distingue una solicitud pendiente de una eliminación terminada.",
+          "Para evitar recompensas duplicadas o fraudulentas por la primera vinculación social, conservamos por separado un hash SHA-256 del proveedor de acceso y su identificador estable de cuenta, el entorno del monedero y la fecha de creación del registro de prevención de cobros repetidos. Este registro no conserva el correo electrónico, el identificador social original ni el ID de cuenta de la app. El hash es un dato personal seudonimizado, no anónimo. Permanece tras eliminar la cuenta mientras funcione este programa de recompensa única y se borra cuando finaliza el programa y deja de existir la finalidad. El acceso se limita a impedir cobros repetidos.",
           "Los eventos analíticos se conservan mientras persista su finalidad; las solicitudes aplicables verificadas se tramitan con el proveedor. No está configurado el borrado automático a los 12 meses y no garantizamos ese plazo. Es posible que los eventos antiguos basados en el dispositivo y no vinculados a una cuenta no puedan localizarse solo con su ID. Explicaremos el alcance verificable y los pasos adicionales.",
           "Al terminar la finalidad, borramos los datos de modo que su recuperación resulte difícil. El borrado externo y la retención limitada de seguridad/copias pueden tardar. Distinguimos recepción y finalización externa. Los registros legales se borran al vencer su plazo."
         ]
@@ -432,7 +460,8 @@
         [
           "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
           "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app.",
-          "El servidor registra los ID de correo para analítica verificados a partir de los datos de la cuenta autenticada y los vincula a la cuenta. Al eliminar la cuenta, solicita a Amplitude borrar los datos de esos ID y de los ID anteriores basados en UUID."
+          "El servidor registra los ID de correo para analítica verificados a partir de los datos de la cuenta autenticada y los vincula a la cuenta. Al eliminar la cuenta, solicita a Amplitude borrar los datos de esos ID y de los ID anteriores basados en UUID.",
+          "Como excepción al borrado de la cuenta, el registro que evita recompensas duplicadas por la primera vinculación social permanece durante el plazo de la sección 7."
         ]
       ],
       [
@@ -449,7 +478,8 @@
           "Usamos cifrado en tránsito, controles por cuenta, separación de privilegios y acceso restringido a claves. Los registros están diseñados para excluir tokens y fotos originales. Este sitio no añade scripts de analítica ni anuncios; el alojamiento puede tratar IP y registros de seguridad.",
           "Anunciamos cambios importantes en datos, finalidades o proveedores en la app o en esta página y actualizamos la fecha. Las modificaciones que requieran nuevo consentimiento se comunican por separado.",
           "Actualización del 2026-09-29: añadimos un diseño sencillo claro/oscuro y un índice, y aclaramos los métodos de recopilación y las solicitudes de derechos. Esta actualización del documento no añade nuevas categorías de datos recopilados. Escríbenos para consultar un aviso anterior.",
-          "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta."
+          "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta.",
+          "Actualización adicional del 2026-09-30: se explicaron los registros para impedir recompensas sociales duplicadas y su conservación tras eliminar la cuenta."
         ]
       ]
     ],
@@ -489,6 +519,12 @@
         "Alimentos e iCloud",
         [
           "Los alimentos se guardan primero en el dispositivo y el servidor no bloquea la app. Comprueba la cuenta de Pantrip, la opción de sincronización y la conexión. Los cambios sin conexión se reintentan al conectar. Los alimentos locales permanecen tras cerrar sesión. Borrar alimentos sincronizados puede afectar a otros dispositivos."
+        ]
+      ],
+      [
+        "Puntos iniciales y por vinculación",
+        [
+          "Los puntos iniciales son 1.000P una vez por cuenta. La primera conexión con Apple o Google añade 1.000P, una vez por cuenta de la app y por cuenta social. Registrarse directamente con una cuenta social concede ambas recompensas: 2.000P. Los 1.500P iniciales concedidos anteriormente se conservan, por lo que una primera vinculación válida puede sumar 2.500P. Reconectar o eliminar la cuenta y registrarse de nuevo no renueva la recompensa de esa cuenta social. El servidor gestiona los abonos y comprueba duplicados."
         ]
       ]
     ],
@@ -547,6 +583,7 @@
         "7. Сроки хранения и уничтожение",
         [
           "Минимальные обязательные договорные, платёжные и поставочные записи хранятся пять лет с исходной даты операции; жалобы и споры — три года по применимому к записи правилу. Это не означает хранение всех действий или фото пять лет. На сервере реализовано хранение статуса удаления и данных восстановления в течение 30 дней после завершения. Сервер регулярно проверяет сроки хранения и удаляет соответствующие записи после их истечения. Ожидающая заявка отличается от завершённого удаления.",
+          "Для предотвращения повторного или мошеннического получения награды за первое подключение социальной учётной записи мы отдельно храним SHA-256-хеш провайдера входа и его постоянного идентификатора аккаунта, среду кошелька и время создания записи для предотвращения повторных начислений. Эта запись не содержит адрес электронной почты, исходный социальный идентификатор или ID аккаунта приложения. Хеш является псевдонимизированными персональными данными, а не анонимными данными. Он сохраняется после удаления аккаунта, пока действует программа разовой награды, и удаляется после её окончания, когда цель хранения отпадает. Доступ ограничен предотвращением повторных начислений.",
           "Аналитика сохраняется пока действует её цель; проверенные применимые запросы направляются поставщику для удаления. Автоматическое удаление через 12 месяцев ещё не настроено, и такой срок не гарантируется. Старые события устройства, не связанные с аккаунтом, могут не определяться только по ID аккаунта. Мы объясним доступный объём и дополнительные действия.",
           "По окончании цели данные удаляются способом, затрудняющим восстановление. Внешняя обработка удаления и ограниченное хранение для безопасности/резервирования могут занять время. Получение запроса отличается от завершения внешнего удаления. Обязательные записи уничтожаются по истечении срока."
         ]
@@ -556,7 +593,8 @@
         [
           "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
           "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com.",
-          "Сервер сохраняет аналитические ID электронной почты, проверенные по данным аутентифицированного аккаунта, и связывает их с аккаунтом. При удалении аккаунта запрашивается удаление данных Amplitude для сохранённых почтовых ID и прежних ID на основе UUID."
+          "Сервер сохраняет аналитические ID электронной почты, проверенные по данным аутентифицированного аккаунта, и связывает их с аккаунтом. При удалении аккаунта запрашивается удаление данных Amplitude для сохранённых почтовых ID и прежних ID на основе UUID.",
+          "Исключение при удалении аккаунта: запись для предотвращения повторной награды за первое социальное подключение сохраняется в течение срока из раздела 7."
         ]
       ],
       [
@@ -573,7 +611,8 @@
           "Мы используем шифрование передачи, разграничение доступа по аккаунтам, разделение серверных прав и ограничение доступа к ключам. Журналы спроектированы без токенов и исходных фотографий. На этом сайте нет добавленных скриптов аналитики и рекламы; хостинг может обрабатывать IP и журналы безопасности.",
           "О важных изменениях данных, целей и поставщиков сообщаем в приложении или здесь, обновляя дату. Изменения, требующие нового согласия, рассматриваются отдельно.",
           "Обновление от 2026-09-29: добавлены простой светлый/тёмный дизайн и содержание, уточнены способы сбора данных и обращения для реализации прав. Это обновление документа не добавляет новые категории собираемых персональных данных. Чтобы ознакомиться с предыдущим уведомлением, напишите нам.",
-          "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта."
+          "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта.",
+          "Дополнение от 2026-09-30: описаны записи для предотвращения повторной социальной награды и исключение для их хранения после удаления аккаунта."
         ]
       ]
     ],
@@ -613,6 +652,12 @@
         "Продукты и iCloud",
         [
           "Продукты сначала сохраняются на устройстве, серверная работа не блокирует приложение. Проверьте аккаунт Pantrip, настройку синхронизации и подключение. Изменения без сети повторно передаются после подключения. После выхода локальные продукты остаются. Удаление при синхронизации может затронуть другие устройства."
+        ]
+      ],
+      [
+        "Стартовые баллы и подключение аккаунта",
+        [
+          "Стартовые баллы — 1 000P один раз на аккаунт. Первое подключение Apple или Google добавляет 1 000P один раз на аккаунт приложения и один раз на социальную учётную запись. При регистрации сразу через социальную учётную запись обе награды дают 2 000P. Ранее начисленные стартовые 1 500P сохраняются: с допустимой первой наградой за подключение сумма может составить 2 500P. Переподключение или удаление и повторная регистрация не дают повторную награду для той же социальной учётной записи. Начисления и проверку повторов выполняет сервер."
         ]
       ]
     ],
@@ -671,6 +716,7 @@
         "7. ระยะเวลาเก็บและการทำลาย",
         [
           "เก็บเฉพาะบันทึกสัญญา การชำระเงิน และการส่งมอบที่กฎหมายกำหนดห้าปีนับจากเวลาธุรกรรมเดิม ส่วนข้อร้องเรียนและข้อพิพาทสามปีตามเกณฑ์ของบันทึกนั้น ไม่ใช่เก็บทุกกิจกรรมหรือภาพห้าปี เซิร์ฟเวอร์มีการจัดเก็บสถานะและข้อมูลกู้คืนการลบเป็นเวลา 30 วันหลังเสร็จสิ้นแล้ว เซิร์ฟเวอร์ตรวจสอบระยะเวลาเก็บรักษาเป็นประจำและลบบันทึกที่เกี่ยวข้องเมื่อครบกำหนด แยกคำขอที่รอดำเนินการจากการลบเสร็จแล้ว",
+          "เพื่อป้องกันการรับรางวัลเชื่อมบัญชีโซเชียลครั้งแรกซ้ำหรือโดยทุจริต เราเก็บแฮช SHA-256 ของผู้ให้บริการเข้าสู่ระบบรวมกับรหัสบัญชีถาวรของผู้ให้บริการ สภาพแวดล้อมกระเป๋าพอยต์ และเวลาที่สร้างบันทึกป้องกันการรับรางวัลซ้ำแยกไว้ บันทึกนี้ไม่เก็บอีเมล รหัสโซเชียลต้นฉบับ หรือรหัสบัญชีแอป แฮชยังเป็นข้อมูลส่วนบุคคลที่ใช้นามแฝง ไม่ใช่ข้อมูลนิรนาม บันทึกจะคงอยู่หลังลบบัญชีตราบที่โครงการรางวัลครั้งเดียวนี้ดำเนินอยู่ และจะถูกลบเมื่อโครงการสิ้นสุดและหมดวัตถุประสงค์การเก็บ จำกัดการเข้าถึงเพื่อป้องกันการรับรางวัลซ้ำเท่านั้น",
           "เหตุการณ์วิเคราะห์เก็บตราบที่ยังมีวัตถุประสงค์ เมื่อยืนยันคำขอลบที่ใช้บังคับจะดำเนินผ่านผู้ให้บริการ ยังไม่ได้ตั้งลบอัตโนมัติเมื่อครบ 12 เดือน จึงไม่รับรองระยะเวลานั้น เหตุการณ์เก่าที่อิงอุปกรณ์และไม่เชื่อมกับบัญชีอาจหาไม่ได้จากรหัสบัญชีเพียงอย่างเดียว เราจะแจ้งขอบเขตที่ตรวจสอบได้และขั้นตอนเพิ่มเติม",
           "เมื่อหมดวัตถุประสงค์จะลบด้วยวิธีที่กู้คืนได้ยาก การลบของผู้ให้บริการและการเก็บจำกัดเพื่อความปลอดภัย/สำรองอาจใช้เวลา เราแยกการรับคำขอจากการลบภายนอกสำเร็จ และลบข้อมูลตามกฎหมายเมื่อครบกำหนด"
         ]
@@ -680,7 +726,8 @@
         [
           "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
           "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com",
-          "เซิร์ฟเวอร์บันทึก ID อีเมลสำหรับการวิเคราะห์ที่ตรวจสอบจากข้อมูลบัญชีที่ยืนยันตัวตนแล้ว และเชื่อมกับบัญชี เมื่อลบบัญชี ระบบจะขอให้ Amplitude ลบข้อมูลของ ID อีเมลที่บันทึกไว้และ ID เดิมที่ใช้ UUID"
+          "เซิร์ฟเวอร์บันทึก ID อีเมลสำหรับการวิเคราะห์ที่ตรวจสอบจากข้อมูลบัญชีที่ยืนยันตัวตนแล้ว และเชื่อมกับบัญชี เมื่อลบบัญชี ระบบจะขอให้ Amplitude ลบข้อมูลของ ID อีเมลที่บันทึกไว้และ ID เดิมที่ใช้ UUID",
+          "ข้อยกเว้นในการลบบัญชี: บันทึกป้องกันการรับรางวัลเชื่อมโซเชียลครั้งแรกซ้ำจะคงอยู่ตามระยะเวลาในข้อ 7"
         ]
       ],
       [
@@ -697,7 +744,8 @@
           "ใช้การเข้ารหัสระหว่างส่ง ควบคุมการเข้าถึงรายบัญชี แยกสิทธิเซิร์ฟเวอร์ และจำกัดการเข้าถึงคีย์ ออกแบบบันทึกให้ไม่รวมโทเค็นและรูปต้นฉบับ เว็บไซต์นี้ไม่มีสคริปต์วิเคราะห์หรือโฆษณาที่เพิ่มไว้ ผู้ให้บริการโฮสต์อาจจัดการ IP และบันทึกความปลอดภัย",
           "แจ้งการเปลี่ยนแปลงสำคัญของข้อมูล วัตถุประสงค์หรือผู้ให้บริการในแอปหรือหน้านี้และปรับวันที่ หากต้องขอความยินยอมใหม่จะแจ้งแยกต่างหาก",
           "อัปเดต 2026-09-29: เพิ่มหน้าข้อความแบบเรียบง่ายพื้นขาว/ดำและสารบัญ พร้อมชี้แจงวิธีรวบรวมข้อมูลและการใช้สิทธิ การแก้ไขเอกสารครั้งนี้ไม่ได้เพิ่มประเภทข้อมูลส่วนบุคคลที่รวบรวม หากต้องการดูประกาศก่อนหน้า โปรดติดต่อทางอีเมล",
-          "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี"
+          "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี",
+          "อัปเดตเพิ่มเติม 2026-09-30: ระบุบันทึกป้องกันการรับรางวัลเชื่อมโซเชียลซ้ำและข้อยกเว้นการเก็บหลังลบบัญชี"
         ]
       ]
     ],
@@ -737,6 +785,12 @@
         "อาหารและ iCloud",
         [
           "อาหารบันทึกในอุปกรณ์ก่อน และการทำงานของเซิร์ฟเวอร์ไม่ขัดขวางการใช้แอป ตรวจสอบบัญชี Pantrip การเปิดซิงค์อาหารและการเชื่อมต่อ การเปลี่ยนแปลงออฟไลน์จะลองอีกครั้งเมื่อเชื่อมต่อ อาหารในอุปกรณ์ยังอยู่หลังออกจากระบบ การลบขณะซิงค์อาจมีผลต่ออุปกรณ์อื่น"
+        ]
+      ],
+      [
+        "พอยต์เริ่มต้นและเชื่อมบัญชี",
+        [
+          "พอยต์เริ่มต้นคือ 1,000P ต่อบัญชีหนึ่งครั้ง การเชื่อม Apple หรือ Google ครั้งแรกได้รับเพิ่ม 1,000P หนึ่งครั้งต่อบัญชีแอปและหนึ่งครั้งต่อบัญชีโซเชียล สมัครด้วยบัญชีโซเชียลโดยตรงจะได้ทั้งสองรางวัลรวม 2,000P พอยต์เริ่มต้น 1,500P ที่เคยได้รับจะไม่ถูกหัก จึงอาจรวมเป็น 2,500P เมื่อมีสิทธิ์รับรางวัลเชื่อมครั้งแรก การเชื่อมใหม่หรือการลบบัญชีแล้วสมัครใหม่ไม่ทำให้บัญชีโซเชียลเดิมรับรางวัลซ้ำได้ เซิร์ฟเวอร์ควบคุมการให้รางวัลและตรวจสอบการรับซ้ำ"
         ]
       ]
     ],
@@ -795,6 +849,7 @@
         "7. Хадгалах хугацаа ба устгал",
         [
           "Хуулиар шаардсан гэрээ, төлбөр, нийлүүлэлтийн хамгийн бага бүртгэлийг анхны гүйлгээний цагаас таван жил, гомдол/маргааны бүртгэлийг холбогдох журмаар гурван жил хязгаарлагдмал хадгална. Бүх үйлдэл, зургийг таван жил хадгалах гэсэн үг биш. Устгалын төлөв, сэргээх лавлагааг дууссанаас хойш 30 хоног хадгалах ажиллагааг серверт хэрэгжүүлсэн. Сервер хадгалах хугацааг тогтмол шалгаж, хугацаа нь дууссан холбогдох бүртгэлийг устгана. Хүлээгдэж буй хүсэлт ба дууссан устгалыг ялгаж мэдээлнэ.",
+          "Сошиал бүртгэл анх холбосны урамшууллыг давхар эсвэл залилангаар авахаас сэргийлж, нэвтрэх үйлчилгээ үзүүлэгч болон түүний бүртгэлийн тогтмол таних утгыг нэгтгэсэн SHA-256 хэш, онооны түрийвчний орчин, давхар урамшууллаас сэргийлэх бичлэг үүсгэсэн цагийг тусад нь хадгална. Энэ бичлэгт цахим шуудан, сошиал бүртгэлийн эх таних утга, аппын бүртгэлийн ID хадгалахгүй. Хэш нь нэрийг орлуулсан хувийн мэдээлэл бөгөөд нэргүй мэдээлэл биш. Бүртгэл устгасны дараа ч нэг удаагийн урамшууллын хөтөлбөр хэрэгжих хугацаанд хадгалж, хөтөлбөр дуусаж хадгалах зорилго арилмагц устгана. Хандалтыг зөвхөн давтан урамшуулал авахаас сэргийлэхэд хязгаарлана.",
           "Шинжилгээний үйл явдлыг зорилго үргэлжлэх хугацаанд хадгалж, хамаарах устгах хүсэлтийг шалгасны дараа үйлчилгээ үзүүлэгчээр устгуулна. 12 сарын автомат устгал тохируулагдаагүй тул 12 сар болоод заавал устна гэж батлахгүй. Бүртгэлтэй холбогдоогүй хуучин төхөөрөмжийн үйл явдлыг зөвхөн бүртгэлийн ID-аар олж чадахгүй байж болно. Шалгаж болох хүрээ, нэмэлт алхмыг тайлбарлана.",
           "Зорилго дуусмагц сэргээхэд хүндрэлтэй аргаар устгана. Гадаад үйлчилгээний устгал, хязгаарлагдмал аюулгүй байдал/нөөц хадгалалт хугацаа шаардаж болно. Хүсэлт хүлээн авсан болон гадаад устгал дууссаныг ялгаж мэдээлнэ. Хуульд заасан мэдээллийг хугацаа дуусахад устгана."
         ]
@@ -804,7 +859,8 @@
         [
           "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
           "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу.",
-          "Сервер баталгаажуулсан бүртгэлийн мэдээллээс шалгасан шинжилгээний имэйл ID-г бүртгэлтэй холбон хадгална. Бүртгэл устгахад хадгалсан имэйл ID болон хуучин UUID-д суурилсан ID-гийн өгөгдлийг Amplitude-ээс устгах хүсэлт илгээнэ."
+          "Сервер баталгаажуулсан бүртгэлийн мэдээллээс шалгасан шинжилгээний имэйл ID-г бүртгэлтэй холбон хадгална. Бүртгэл устгахад хадгалсан имэйл ID болон хуучин UUID-д суурилсан ID-гийн өгөгдлийг Amplitude-ээс устгах хүсэлт илгээнэ.",
+          "Бүртгэл устгах үеийн үл хамаарах зүйл: сошиал бүртгэл анх холбосны урамшууллыг давхар авахаас сэргийлэх бичлэг 7-р хэсэгт заасан хугацаанд үлдэнэ."
         ]
       ],
       [
@@ -821,7 +877,8 @@
           "Дамжуулалтын шифрлэлт, бүртгэл тус бүрийн хандалтын хяналт, серверийн эрхийн тусгаарлалт, нууц түлхүүрийн хандалтын хязгаарлалт хэрэглэнэ. Токен болон эх зургийг логт оруулахгүй байхаар зохиосон. Энэ сайтад нэмэлт шинжилгээ, зарны скрипт байхгүй. Хостинг үйлчилгээ IP зэрэг аюулгүй байдлын лог боловсруулж болно.",
           "Мэдээлэл, зорилго, үйлчилгээ үзүүлэгчийн чухал өөрчлөлтийг апп эсвэл энэ хуудсаар зарлаж, хүчинтэй огноог шинэчилнэ. Шинэ зөвшөөрөл шаардсан өөрчлөлтийг тусад нь тайлбарлана.",
           "2026-09-29 шинэчлэлт: цагаан/хар дэвсгэртэй энгийн баримт бичгийн загвар, агуулгын жагсаалт нэмж, мэдээлэл цуглуулах болон эрхээ хэрэгжүүлэх аргыг тодрууллаа. Энэ баримт бичгийн шинэчлэлтээр цуглуулах хувийн мэдээллийн шинэ төрөл нэмээгүй. Өмнөх мэдэгдэлтэй танилцах бол имэйлээр хандана уу.",
-          "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв."
+          "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв.",
+          "2026-09-30 нэмэлт: сошиал холболтын давхар урамшууллаас сэргийлэх бичлэг болон бүртгэл устгасны дараах хадгалалтын үл хамаарах нөхцөлийг тайлбарлав."
         ]
       ]
     ],
@@ -861,6 +918,12 @@
         "Хүнс ба iCloud",
         [
           "Хүнс эхлээд төхөөрөмжид хадгалагдаж серверийн ажиллагаа апп ашиглахад саад болохгүй. Pantrip бүртгэл, хүнсний синк тохиргоо, сүлжээг шалгана уу. Сүлжээгүй үеийн өөрчлөлтийг холбогдсоны дараа дахин илгээнэ. Гарсны дараа төхөөрөмжийн хүнс үлдэнэ. Синк хийж байхдаа устгах нь бусад төхөөрөмжид нөлөөлж болно."
+        ]
+      ],
+      [
+        "Эхлэх болон бүртгэл холбох оноо",
+        [
+          "Эхлэх оноо нь бүртгэл бүрд нэг удаа 1,000P. Apple эсвэл Google-ийг анх холбоход аппын бүртгэл болон сошиал бүртгэл тус бүрд нэг удаа нэмэлт 1,000P олгоно. Сошиал бүртгэлээр шууд бүртгүүлбэл хоёр урамшууллыг нийлүүлэн 2,000P авна. Өмнө олгосон 1,500P эхлэх оноог хасахгүй тул анхны холболтын урамшуулал авах эрхтэй бол нийт 2,500P болж болно. Дахин холбох, бүртгэл устгаад дахин бүртгүүлэх нь ижил сошиал бүртгэлийн урамшууллыг дахин авах эрх үүсгэхгүй. Олголт болон давхардлын шалгалтыг сервер удирдана."
         ]
       ]
     ],
