@@ -79,7 +79,8 @@
           "전송 구간 암호화, 계정별 접근 제한, 서버 권한 분리와 비밀키 접근 제한을 적용합니다. 운영 로그에 인증 토큰·원문 사진을 남기지 않도록 제한합니다. 이 웹페이지에는 별도의 분석·광고 추적 스크립트를 넣지 않습니다. 웹 호스팅 제공자는 접속 IP 등의 보안 로그를 처리할 수 있습니다.",
           "처리 항목·목적·제공자 등 중요한 내용이 바뀌면 앱 또는 이 페이지에 알리고 시행일을 변경합니다. 새 동의가 필요한 변경은 별도로 안내합니다.",
           "2026-09-29 변경 안내: 흰색·검정 문서 화면과 목차를 적용하고, 정보 수집 경로와 권리 행사 방법을 보완했습니다. 이번 문서 수정으로 새로운 개인정보 수집 항목을 추가하지 않았습니다. 이전 안내의 확인이 필요하면 위 이메일로 요청해 주세요.",
-          "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다."
+          "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다.",
+          "2026-09-30 추가 변경: 최초 소셜 연결 보상의 중복 방지 기록과 탈퇴 후 보관 예외를 안내했습니다."
         ]
       ]
     ],
@@ -211,7 +212,8 @@
           "We use encrypted connections, account-level access controls, separated server privileges and restricted secret access. Logs are designed to exclude authentication tokens and original photos. This website has no added analytics or advertising scripts. Its hosting provider may process security logs such as connection IP addresses.",
           "We announce material changes to data, purposes or providers in the app or on this page and update the effective date. Changes requiring new consent are addressed separately.",
           "2026-09-29 update: added a plain light/dark document layout and contents, and clarified collection methods and rights requests. This document update does not introduce new categories of personal data collection. Email us if you need to consult an earlier notice.",
-          "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion."
+          "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion.",
+          "2026-09-30 additional update: disclosed first social-link reward duplicate-claim records and the retention exception after account deletion."
         ]
       ]
     ],
@@ -343,7 +345,8 @@
           "通信暗号化、アカウント別アクセス制限、サーバー権限分離、秘密鍵へのアクセス制限を適用します。認証トークンや原画像をログから除外するよう設計しています。本サイトに分析・広告スクリプトは追加していません。ホスティング業者はIP等の安全ログを扱う場合があります。",
           "データ、目的、提供者等の重要な変更はアプリまたは本ページで知らせ、施行日を更新します。新たな同意が必要な変更は別途案内します。",
           "2026-09-29 更新：白・黒のシンプルな文書画面と目次を追加し、収集方法と権利行使の案内を補足しました。この文書更新で新たな個人情報の収集項目は追加していません。以前の案内を確認したい場合は、上記メールへお問い合わせください。",
-          "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。"
+          "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。",
+          "2026-09-30 追加更新：初回ソーシャル連携報酬の重複防止記録とアカウント削除後の保存例外を明記しました。"
         ]
       ]
     ],
@@ -475,7 +478,8 @@
           "Usamos cifrado en tránsito, controles por cuenta, separación de privilegios y acceso restringido a claves. Los registros están diseñados para excluir tokens y fotos originales. Este sitio no añade scripts de analítica ni anuncios; el alojamiento puede tratar IP y registros de seguridad.",
           "Anunciamos cambios importantes en datos, finalidades o proveedores en la app o en esta página y actualizamos la fecha. Las modificaciones que requieran nuevo consentimiento se comunican por separado.",
           "Actualización del 2026-09-29: añadimos un diseño sencillo claro/oscuro y un índice, y aclaramos los métodos de recopilación y las solicitudes de derechos. Esta actualización del documento no añade nuevas categorías de datos recopilados. Escríbenos para consultar un aviso anterior.",
-          "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta."
+          "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta.",
+          "Actualización adicional del 2026-09-30: se explicaron los registros para impedir recompensas sociales duplicadas y su conservación tras eliminar la cuenta."
         ]
       ]
     ],
@@ -607,7 +611,8 @@
           "Мы используем шифрование передачи, разграничение доступа по аккаунтам, разделение серверных прав и ограничение доступа к ключам. Журналы спроектированы без токенов и исходных фотографий. На этом сайте нет добавленных скриптов аналитики и рекламы; хостинг может обрабатывать IP и журналы безопасности.",
           "О важных изменениях данных, целей и поставщиков сообщаем в приложении или здесь, обновляя дату. Изменения, требующие нового согласия, рассматриваются отдельно.",
           "Обновление от 2026-09-29: добавлены простой светлый/тёмный дизайн и содержание, уточнены способы сбора данных и обращения для реализации прав. Это обновление документа не добавляет новые категории собираемых персональных данных. Чтобы ознакомиться с предыдущим уведомлением, напишите нам.",
-          "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта."
+          "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта.",
+          "Дополнение от 2026-09-30: описаны записи для предотвращения повторной социальной награды и исключение для их хранения после удаления аккаунта."
         ]
       ]
     ],
@@ -739,7 +744,8 @@
           "ใช้การเข้ารหัสระหว่างส่ง ควบคุมการเข้าถึงรายบัญชี แยกสิทธิเซิร์ฟเวอร์ และจำกัดการเข้าถึงคีย์ ออกแบบบันทึกให้ไม่รวมโทเค็นและรูปต้นฉบับ เว็บไซต์นี้ไม่มีสคริปต์วิเคราะห์หรือโฆษณาที่เพิ่มไว้ ผู้ให้บริการโฮสต์อาจจัดการ IP และบันทึกความปลอดภัย",
           "แจ้งการเปลี่ยนแปลงสำคัญของข้อมูล วัตถุประสงค์หรือผู้ให้บริการในแอปหรือหน้านี้และปรับวันที่ หากต้องขอความยินยอมใหม่จะแจ้งแยกต่างหาก",
           "อัปเดต 2026-09-29: เพิ่มหน้าข้อความแบบเรียบง่ายพื้นขาว/ดำและสารบัญ พร้อมชี้แจงวิธีรวบรวมข้อมูลและการใช้สิทธิ การแก้ไขเอกสารครั้งนี้ไม่ได้เพิ่มประเภทข้อมูลส่วนบุคคลที่รวบรวม หากต้องการดูประกาศก่อนหน้า โปรดติดต่อทางอีเมล",
-          "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี"
+          "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี",
+          "อัปเดตเพิ่มเติม 2026-09-30: ระบุบันทึกป้องกันการรับรางวัลเชื่อมโซเชียลซ้ำและข้อยกเว้นการเก็บหลังลบบัญชี"
         ]
       ]
     ],
@@ -871,7 +877,8 @@
           "Дамжуулалтын шифрлэлт, бүртгэл тус бүрийн хандалтын хяналт, серверийн эрхийн тусгаарлалт, нууц түлхүүрийн хандалтын хязгаарлалт хэрэглэнэ. Токен болон эх зургийг логт оруулахгүй байхаар зохиосон. Энэ сайтад нэмэлт шинжилгээ, зарны скрипт байхгүй. Хостинг үйлчилгээ IP зэрэг аюулгүй байдлын лог боловсруулж болно.",
           "Мэдээлэл, зорилго, үйлчилгээ үзүүлэгчийн чухал өөрчлөлтийг апп эсвэл энэ хуудсаар зарлаж, хүчинтэй огноог шинэчилнэ. Шинэ зөвшөөрөл шаардсан өөрчлөлтийг тусад нь тайлбарлана.",
           "2026-09-29 шинэчлэлт: цагаан/хар дэвсгэртэй энгийн баримт бичгийн загвар, агуулгын жагсаалт нэмж, мэдээлэл цуглуулах болон эрхээ хэрэгжүүлэх аргыг тодрууллаа. Энэ баримт бичгийн шинэчлэлтээр цуглуулах хувийн мэдээллийн шинэ төрөл нэмээгүй. Өмнөх мэдэгдэлтэй танилцах бол имэйлээр хандана уу.",
-          "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв."
+          "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв.",
+          "2026-09-30 нэмэлт: сошиал холболтын давхар урамшууллаас сэргийлэх бичлэг болон бүртгэл устгасны дараах хадгалалтын үл хамаарах нөхцөлийг тайлбарлав."
         ]
       ]
     ],
