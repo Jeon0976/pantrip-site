@@ -41,8 +41,18 @@
 - 안내: https://jeon0976.github.io/pantrip-site/
 - 개인정보: https://jeon0976.github.io/pantrip-site/privacy/en.html
 - 고객지원: https://jeon0976.github.io/pantrip-site/support/en.html
-- 운영자: https://jeon0976.github.io/pantrip-site/admin/
+- 운영자: https://admin.pantrip.app/ (이전 GitHub Pages `/admin/`은 이 주소로 이동)
 
 페이지 내부 링크·CSS·언어 전환·관리자 OAuth callback은 현재 페이지의 상대 경로로 계산하므로 저장소 경로를 하드코딩하지 않는다. GitHub 저장소 이름 변경 후 Pages를 다시 배포하고, Supabase Auth의 Redirect URLs에 위 관리자 URL을 추가해야 한다. 기존 허용 URL은 구버전 호환 확인 전 제거하지 않는다. GitHub 저장소 리다이렉트가 이전 Pages URL을 보장하는 것은 아니므로 앱과 외부 콘솔의 공개 URL도 함께 갱신한다.
 
 Supabase 프로젝트 ref, 키, OAuth client ID, 앱 bundle ID 및 `expirycheck:` 분석 식별자는 이름 변경 대상이 아니다.
+
+## 비공개 운영 도구 배포
+
+`node build-private-admin.mjs`는 `private-admin/src/`의 `index.html`, `app.js`, `config.js`, `style.css`만 `private-admin/out/`에 복사한다. 테스트 파일·공개 소개·개인정보·지원 문서는 포함하지 않는다. `node --test private-admin/src/admin.test.mjs`로 관리자 테스트를 실행한다. 공개 `public/admin/`에는 새 주소로 이동하는 안내 페이지만 남으며 관리자 앱 소스는 포함하지 않는다.
+
+Sites 프로젝트의 실제 ID를 `private-admin/.openai/hosting.json`에 저장하고 `static.directory`를 `out`으로 지정한다. 사이트 접근 범위는 소유자 비공개로 설정한다. 정적 파일 자체는 인증 게이트가 아니며 기존 서버의 관리자 권한·운영자 세션 검증을 계속 사용한다.
+
+새 도메인 `https://admin.pantrip.app/`는 Supabase Auth Redirect URLs에 정확히 추가해야 한다. OAuth callback은 현재 페이지 루트에서 계산한다. Google OAuth 제공자 callback은 기존 Supabase `/auth/v1/callback` 그대로이며 웹 도메인으로 바꾸지 않는다. operator Edge의 `OPERATOR_ALLOWED_ORIGINS`를 명시했다면 기존 origin을 보존하고 `https://admin.pantrip.app`를 추가한다. Sites 주소 `https://pantrip-admin.jsh097610.chatgpt.site`로 로그인 검증할 경우 해당 정확 origin과 루트 callback `https://pantrip-admin.jsh097610.chatgpt.site/`도 추가한다. 비공개 호스팅 로그인과 Pantrip 운영자 Google 로그인은 각각 필요하다.
+
+비로그인 접근 차단, 운영자 로그인·조회, 일반 사용자 거부와 앱 세션 공존이 새 도메인에서 확인된 후에만 기존 공개 관리자 페이지를 새 주소 안내로 교체한다. 빌드 성공만으로 비공개 배포나 OAuth 설정 완료를 주장하지 않는다.

@@ -5,7 +5,7 @@ const langs=['ko','en','ja','th','ru','es','mn'];
 const data=JSON.parse(await readFile('legal-content.json','utf8'));
 assert.deepEqual(Object.keys(data).sort(),[...langs].sort());
 assert.equal(await readFile('public/legal.css','utf8'),await readFile('legal.css','utf8'));
-for(const file of ['public/index.html','public/privacy.html','public/support.html']){
+for(const file of ['public/index.html','public/privacy.html','public/support.html','public/terms.html']){
  const html=await readFile(file,'utf8');assert(html.includes('Pantrip') && !html.includes('ExpiryCheck'));
 }
 let checked=0;
@@ -13,11 +13,18 @@ for(const lang of langs){
  assert.equal(data[lang].sections.length,10);
  assert.equal(data[lang].providers.length,7);
  assert.equal(data[lang].support.length,5);
- assert(data[lang].sections[6][1].some(p=>p.includes('SHA-256')));
+ assert.equal(data[lang].terms.length,9);
+ assert(data[lang].termsTitle && data[lang].termsSummary.includes("2026"));
+ assert(data[lang].terms[5][1][0].includes("reportaproblem.apple.com"));
+ assert(!JSON.stringify(data[lang]).includes('SHA-256'));
+ assert(data[lang].providers[6].includes('OpenAI / ChatGPT Sites'));
+ assert(!data[lang].providers[6].includes('GitHub'));
+ assert(data[lang].sections[6][1][1].includes('Pantrip'));
+ assert(data[lang].sections[7][1][3].includes('Pantrip'));
  assert(data[lang].support[4][1][0].includes('P'));
  assert(data[lang].contentsTitle && data[lang].languageTitle);
  assert(data[lang].sections[9][1].some(p=>p.includes('2026-09-29')));
- for(const kind of ['privacy','support']){
+ for(const kind of ['privacy','support','terms']){
   const file=resolve('public',kind,lang+'.html');
   const html=await readFile(file,'utf8');
   assert(html.includes(`<html lang="${lang}">`));

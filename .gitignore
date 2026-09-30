@@ -6,6 +6,14 @@
 !/legal.css
 !/build-legal.mjs
 !/check-legal.mjs
+!/check-public.mjs
+!/build-public.mjs
+!/.openai/
+!/build-private-admin.mjs
+!/private-admin/
+/private-admin/*
+!/private-admin/.openai/
+!/private-admin/src/
 !/.github/
 !/public/
 .DS_Store

@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node --test private-admin/src/admin.test.mjs
       - run: node build-legal.mjs && node check-legal.mjs
       - uses: actions/upload-pages-artifact@v3
         with:

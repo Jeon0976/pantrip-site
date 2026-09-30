@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Pantrip 운영 도구</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.js?v=20260930-sections"></script>
+</head>
+<body>
+  <header><div><span class="eyebrow">PANTRIP / OPERATIONS</span><h1>운영 도구</h1></div><button id="logout" hidden>로그아웃</button></header>
+  <main>
+    <div id="status" class="status" role="status" aria-live="polite">연결을 준비하고 있습니다.</div>
+    <section id="login-panel" class="panel"><h2>운영자 로그인</h2><p>승인된 Google 계정으로 로그인하세요. 권한은 서버에서 확인합니다.</p><button id="login" class="primary">Google로 계속하기</button></section>
+    <div id="workspace" hidden>
+      <nav aria-label="운영 메뉴"><a href="#accounts">사용자</a><a href="#account">계정 작업</a><a href="#erasure-section">계정 삭제 현황</a><a href="#database">데이터베이스</a></nav>
+      <section id="accounts" class="panel" tabindex="-1">
+        <div class="section-heading"><div><h2>사용자</h2><p>계정 ID 또는 이메일 전체 주소로 검색하세요.</p></div><button id="refresh-users">새로고침</button></div>
+        <form id="search-form" class="row"><label class="grow">계정 검색<input id="search" type="search" placeholder="계정 ID / 이메일" autocomplete="off"></label><button type="submit">검색</button></form>
+        <div class="table-wrap"><table><caption class="sr-only">사용자 목록</caption><thead><tr><th>계정 ID</th><th>이메일</th><th>로그인 방식</th><th>생성일</th><th>최근 로그인</th><th>선택</th></tr></thead><tbody id="users"></tbody></table></div>
+        <div class="row pagination"><span id="user-count"></span><button id="more-users" disabled>다음 50명</button></div>
+      </section>
+      <section id="account" class="panel" tabindex="-1">
+        <div class="section-heading"><div><h2>계정 작업</h2><p id="selected-account">위 목록에서 계정을 선택하세요.</p></div><label>지갑 환경<select id="namespace"><option value="test_store">Test Store · 개발 테스트</option><option value="app_store_sandbox">App Store Sandbox · 테스트 결제</option><option value="app_store_production">App Store · 실제 운영</option></select></label></div>
+        <div class="metrics"><div><span>잔액</span><strong id="balance">—</strong></div><div><span>지갑 버전</span><strong id="revision">—</strong></div><div><span>보유 상품</span><strong id="ownership-count">—</strong></div></div>
+        <form id="action-form">
+          <div class="form-grid"><label>작업<select id="action"><option value="credit">포인트 지급</option><option value="advance_24h">등록 보상 24시간 경과</option><option value="advance_day">출석 날짜 하루 경과</option><option value="achievement_grant">업적 지급</option><option value="achievement_reset">업적 초기화</option><option value="ownership_grant">상품 소유권 지급</option><option value="ownership_revoke">상품 소유권 회수</option></select></label>
+          <label id="points-field">지급 포인트<input id="points" type="number" min="1" max="1000000" step="1" value="30000"></label>
+          <label id="achievement-field" hidden>업적 ID<select id="achievement"></select></label>
+          <label id="sku-field" hidden>상품 SKU<input id="sku" list="catalog-skus" autocomplete="off" placeholder="상품 SKU"><datalist id="catalog-skus"></datalist></label>
+          <label id="timezone-field" hidden>사용자 시간대<input id="timezone" value="Asia/Seoul" autocomplete="off"></label></div>
+          <p id="action-note" class="hint"></p>
+          <label>작업 사유<textarea id="reason" minlength="3" maxlength="500" rows="2" placeholder="이벤트 인증 지급 / 고객 문의 번호 등" required></textarea></label>
+          <button id="prepare-action" type="submit" class="primary" disabled>변경 내용 확인</button>
+        </form>
+        <details><summary>지갑 상세 · 보상 · 구매 내역</summary><pre id="wallet-json">계정을 선택하세요.</pre></details>
+        <h3>운영 작업 기록</h3><div class="table-wrap"><table><thead><tr><th>시각</th><th>작업</th><th>사유</th><th>작업 ID</th></tr></thead><tbody id="audit"></tbody></table></div>
+      </section>
+      <section id="erasure-section" class="panel" tabindex="-1">
+        <div class="section-heading"><div><h2>계정 삭제 현황</h2><p>사용자가 삭제를 요청하면 서버가 자동 처리합니다. 운영자가 승인하는 절차는 없습니다.</p></div><button id="refresh-erasures">새로고침</button></div>
+        <p class="hint">계정·포인트·꾸미기 소유권과 서버에 동기화한 식품·사진을 삭제합니다. 기기에 남은 식품은 유지합니다. 실패한 단계는 서버가 재시도하며, 반복 실패 시 서버 로그에서 원인을 확인하세요. 이 화면은 조회 전용입니다.</p>
+        <form id="erasure-search-form" class="row"><label class="grow">삭제 계정 검색<input id="erasure-search" type="search" placeholder="계정 ID (비우면 전체)" autocomplete="off"></label><button type="submit">조회</button></form>
+        <div class="table-wrap"><table><caption class="sr-only">자동 계정 삭제 처리 현황</caption><thead><tr><th>계정 / 요청 ID</th><th>상태</th><th>처리 시각</th><th>단계별 진행</th><th>오류 코드</th></tr></thead><tbody id="erasures"></tbody></table></div>
+        <div class="row pagination"><span id="erasure-count">조회 전입니다.</span><button id="more-erasures" disabled>다음 50건</button></div>
+      </section>
+      <section id="database" class="panel" tabindex="-1">
+        <div class="section-heading"><div><h2>데이터베이스</h2><p>운영에 필요한 제한된 항목만 읽기 전용으로 확인합니다.</p></div><button id="refresh-health">사용량 새로고침</button></div>
+        <p id="db-size">—</p><div id="dashboard-links" class="row"></div>
+        <div class="table-wrap"><table><thead><tr><th>테이블</th><th>추정 행 수</th><th>사용 공간</th></tr></thead><tbody id="table-health"></tbody></table></div>
+        <form id="table-form" class="row"><label>조회 테이블<select id="table"><option value="wallets">지갑</option><option value="purchases">구매</option><option value="ledger">포인트 내역</option><option value="admin_audit">운영 감사 기록</option></select></label><button type="submit">선택 계정 조회</button></form>
+        <p class="hint">위에서 선택한 계정과 지갑 환경을 사용합니다. 최근 최대 50건을 표시합니다.</p><pre id="table-json">계정을 선택하세요.</pre>
+      </section>
+    </div>
+  </main>
+  <dialog id="confirm-dialog"><form method="dialog"><h2>변경 내용을 확인하세요</h2><pre id="confirmation-summary"></pre><p>계정과 지갑 환경을 확인한 뒤 <strong>APPLY</strong>를 입력하세요.</p><label>확인 문구<input id="confirmation" autocomplete="off" spellcheck="false"></label><div class="row"><button value="cancel">취소</button><button id="apply" type="button" class="danger">변경 적용</button></div></form></dialog>
+</body>
+</html>
