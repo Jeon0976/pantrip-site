@@ -1,12 +1,14 @@
 # Pantrip 공개 안내 페이지
 
-배포 대상은 `public/`입니다. 저장소 루트의 기존 소개 페이지·영상·이미지는 이번 개인정보 안내 수정 대상이 아닙니다. 공개 여부와 실제 주소는 호스팅 배포 결과로 확인합니다.
+공식 공개 사이트는 OpenAI / ChatGPT Sites의 `https://pantrip.app/`와 `https://www.pantrip.app/`입니다. `public/`의 소개 페이지·개인정보·이용약관·고객지원을 `node build-public.mjs`로 `out/`에 빌드합니다. 공개 Sites 설정은 `.openai/hosting.json`이며 `static.directory`는 `out`입니다. GitHub Pages는 `public/`을 배포하는 호환 미러이고, 공개 Sites 빌드는 관리자·API 문서를 제외합니다.
 
-## 개인정보·지원 페이지
+## 개인정보·이용약관·지원 페이지
 
 - 원문: `legal-content.json` — 한국어, 영어, 일본어, 태국어, 러시아어, 스페인어, 몽골어.
-- 생성: `node build-legal.mjs` → `public/privacy/<언어>.html`, `public/support/<언어>.html`.
-- 검증: `node check-legal.mjs` — 14개 페이지의 언어, 연락처, 언어 선택·내부 링크, 추적 스크립트 부재를 확인합니다.
+- 생성: `node build-legal.mjs` → `public/privacy/<언어>.html`, `public/terms/<언어>.html`, `public/support/<언어>.html`.
+- 검증: `node check-legal.mjs` — 21개 페이지의 언어, 연락처, 언어 선택·내부 링크, 추적 스크립트 부재를 확인합니다.
+- 소개 페이지 검증: `node check-public.mjs`.
+- 공개 빌드: `node build-legal.mjs && node check-legal.mjs && node check-public.mjs && node build-public.mjs`.
 - 미리보기: `python3 -m http.server 8770 --bind 127.0.0.1 --directory public`.
 
 생성한 HTML만 직접 수정하지 말고 원문을 수정한 뒤 다시 생성합니다. 페이지에 분석·광고 스크립트나 앱 계정 토큰을 넣지 않습니다. 문의: 전성훈 / jsh097610@gmail.com.
@@ -35,15 +37,19 @@
 
 사업자 정보/공개 연락 주소는 제공받지 않았으므로 임의로 만들지 않았습니다. 실제 처리국가·세부 보관기간·국외 이전 근거 등 위의 출시 확인 항목이 남아 있으며, 간결한 UI나 추가 안내가 그 법적 확인을 대신하지 않습니다. 이전 안내가 필요한 이용자는 공개 연락처로 요청할 수 있고, 기존 원문은 저장소 변경 이력으로 보존합니다.
 
-## 공개 주소와 저장소 이름 변경
+## 공개 주소와 배포 (2026-09-30)
 
 - 저장소: https://github.com/Jeon0976/pantrip-site
-- 안내: https://jeon0976.github.io/pantrip-site/
-- 개인정보: https://jeon0976.github.io/pantrip-site/privacy/en.html
-- 고객지원: https://jeon0976.github.io/pantrip-site/support/en.html
-- 운영자: https://admin.pantrip.app/ (이전 GitHub Pages `/admin/`은 이 주소로 이동)
+- 공식 안내: https://pantrip.app/ · https://www.pantrip.app/
+- 개인정보: https://pantrip.app/privacy.html (언어 선택) · https://pantrip.app/privacy/en.html
+- 이용약관: https://pantrip.app/terms.html (언어 선택) · https://pantrip.app/terms/en.html
+- 고객지원: https://pantrip.app/support.html (언어 선택) · https://pantrip.app/support/en.html
+- AdMob 인증 파일: https://pantrip.app/app-ads.txt — 기존 https://jeon0976.github.io/app-ads.txt 도 계속 제공하며 동일한 게시자 선언을 유지합니다.
+- GitHub Pages 호환 미러: https://jeon0976.github.io/pantrip-site/
+- 운영자 전용: https://admin.pantrip.app/ (소유자 비공개; 이전 GitHub Pages `/admin/`은 이 주소로 이동)
+- API 문서: https://api.pantrip.app/ (소유자 비공개)
 
-페이지 내부 링크·CSS·언어 전환·관리자 OAuth callback은 현재 페이지의 상대 경로로 계산하므로 저장소 경로를 하드코딩하지 않는다. GitHub 저장소 이름 변경 후 Pages를 다시 배포하고, Supabase Auth의 Redirect URLs에 위 관리자 URL을 추가해야 한다. 기존 허용 URL은 구버전 호환 확인 전 제거하지 않는다. GitHub 저장소 리다이렉트가 이전 Pages URL을 보장하는 것은 아니므로 앱과 외부 콘솔의 공개 URL도 함께 갱신한다.
+2026-09-30 공개 루트와 7개 언어의 정책 21개 URL에서 HTTP 200을 확인했습니다. 페이지 내부 링크·CSS·언어 전환·관리자 OAuth callback은 현재 페이지의 상대 경로로 계산합니다. GitHub 저장소 리다이렉트가 이전 Pages URL을 보장하지 않으므로 기존 미러와 공식 도메인을 구분합니다.
 
 Supabase 프로젝트 ref, 키, OAuth client ID, 앱 bundle ID 및 `expirycheck:` 분석 식별자는 이름 변경 대상이 아니다.
 
@@ -51,8 +57,8 @@ Supabase 프로젝트 ref, 키, OAuth client ID, 앱 bundle ID 및 `expirycheck:
 
 `node build-private-admin.mjs`는 `private-admin/src/`의 `index.html`, `app.js`, `config.js`, `style.css`만 `private-admin/out/`에 복사한다. 테스트 파일·공개 소개·개인정보·지원 문서는 포함하지 않는다. `node --test private-admin/src/admin.test.mjs`로 관리자 테스트를 실행한다. 공개 `public/admin/`에는 새 주소로 이동하는 안내 페이지만 남으며 관리자 앱 소스는 포함하지 않는다.
 
-Sites 프로젝트의 실제 ID를 `private-admin/.openai/hosting.json`에 저장하고 `static.directory`를 `out`으로 지정한다. 사이트 접근 범위는 소유자 비공개로 설정한다. 정적 파일 자체는 인증 게이트가 아니며 기존 서버의 관리자 권한·운영자 세션 검증을 계속 사용한다.
+비공개 관리자 Sites 설정은 `private-admin/.openai/hosting.json`이며 `static.directory`는 해당 폴더 기준 `out`이다. 사이트 접근 범위는 소유자 비공개로 적용했다. 정적 파일 자체는 인증 게이트가 아니며 기존 서버의 관리자 권한·운영자 세션 검증을 계속 사용한다.
 
-새 도메인 `https://admin.pantrip.app/`는 Supabase Auth Redirect URLs에 정확히 추가해야 한다. OAuth callback은 현재 페이지 루트에서 계산한다. Google OAuth 제공자 callback은 기존 Supabase `/auth/v1/callback` 그대로이며 웹 도메인으로 바꾸지 않는다. operator Edge의 `OPERATOR_ALLOWED_ORIGINS`를 명시했다면 기존 origin을 보존하고 `https://admin.pantrip.app`를 추가한다. Sites 주소 `https://pantrip-admin.jsh097610.chatgpt.site`로 로그인 검증할 경우 해당 정확 origin과 루트 callback `https://pantrip-admin.jsh097610.chatgpt.site/`도 추가한다. 비공개 호스팅 로그인과 Pantrip 운영자 Google 로그인은 각각 필요하다.
+2026-09-30 Supabase Auth Redirect URLs와 operator Edge CORS 허용 origin에 관리자 도메인을 적용했다. 관리자의 OAuth callback은 `https://admin.pantrip.app/`이며 현재 페이지 루트에서 계산한다. Sites 주소 `https://pantrip-admin.jsh097610.chatgpt.site/`의 callback과 origin도 허용했다. Google OAuth 제공자 callback은 기존 Supabase `/auth/v1/callback` 그대로다. 비공개 호스팅 로그인과 Pantrip 운영자 Google 로그인은 각각 필요하다.
 
-비로그인 접근 차단, 운영자 로그인·조회, 일반 사용자 거부와 앱 세션 공존이 새 도메인에서 확인된 후에만 기존 공개 관리자 페이지를 새 주소 안내로 교체한다. 빌드 성공만으로 비공개 배포나 OAuth 설정 완료를 주장하지 않는다.
+같은 날 소유자 접근 게이트, 운영자 Google 로그인, DB 화면 이동을 확인했다. 기존 공개 관리자 경로는 새 주소 안내로 교체했다. 이 확인은 일반 사용자 서버 권한 거부, 앱 세션 공존 또는 외부 공급자의 계정 삭제 완료까지 검증했다는 의미는 아니다. 계정 삭제 관련 미검증 항목은 위 출시 확인 항목을 따른다.
