@@ -51,7 +51,7 @@
         "7. 보관 기간과 파기",
         [
           "법정 보관이 필요한 계약·결제·공급 기록은 원 거래 시각부터 5년, 소비자 불만·분쟁 기록은 해당 기록에 적용되는 기준부터 3년간 필요한 최소 항목만 제한 보관합니다. 모든 활동·사진의 5년 보관을 의미하지 않습니다. 삭제 처리 상태와 복구 조회 기록은 삭제 완료 후 30일 보관하도록 서버에 구현되어 있습니다. 서버가 정기적으로 보관 기간을 확인하고 기간이 지난 해당 기록을 삭제합니다. 처리 중인 요청은 완료와 구분하여 안내합니다.",
-          "최초 소셜 계정 연결 보상의 중복 지급과 부정 수령을 막기 위해, 로그인 제공자와 제공자 고유 식별자를 결합한 SHA-256 해시, 지갑 환경 구분, 중복 수령 방지 기록 생성 시각을 별도 보관합니다. 이 기록에는 이메일, 원본 소셜 식별자, 앱 계정 ID를 보관하지 않습니다. 해시도 가명 처리된 개인정보이며 익명정보가 아닙니다. 계정 삭제 후에도 이 일회성 보상 제도를 운영하는 동안 보관하고, 제도 종료로 목적이 없어지면 삭제합니다. 이 기록은 보상 재수령 방지 목적으로만 접근을 제한해 처리합니다.",
+          "시작·소셜 연결 보상과 지급 내역은 Pantrip 앱 계정별로 관리하며 계정 삭제 시 함께 삭제합니다. 법정 보관 대상 결제 기록은 위 기간 동안 별도 보관합니다. 탈퇴 후 같은 소셜 계정으로 재가입하는 것을 막기 위한 계정 간 식별 기록은 별도 보관하지 않습니다.",
           "이용 분석 이벤트는 분석 목적이 유지되는 동안 보관하며, 적용 가능한 삭제 요청이 확인되면 공급업체의 삭제 절차를 진행합니다. 현재 자동 12개월 삭제 설정은 완료되지 않았으므로 12개월이 지나면 자동으로 지워진다고 보장하지 않습니다. 기존의 계정과 연결되지 않은 기기 기반 분석 기록은 계정 ID만으로 찾아 삭제할 수 없을 수 있습니다. 관련 요청 시 확인 가능한 범위와 추가 절차를 안내합니다.",
           "개인정보는 보관 목적이 끝나면 복구하기 어렵도록 삭제합니다. 공급업체의 삭제 처리와 제한된 보안·백업 보관에는 시간이 걸릴 수 있습니다. 삭제 요청 상태와 외부 처리 완료를 구분해 안내하며, 법정 보관 정보는 기간 만료 후 파기합니다."
         ]
@@ -62,7 +62,7 @@
           "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 인증·거래 확인 후 서버 계정, 포인트, 구매한 주방·장식 소유권과 동기화한 식품·사진을 삭제합니다. 익명 계정도 대상이며 기기의 식품·사진은 유지합니다. 계정 삭제는 환불이 아니며 법정 보관 대상 결제 기록은 필요한 기간 별도 보관합니다.",
           "외부 처리업체의 데이터 삭제는 계정 삭제와 별도로 진행되므로 완료 시점이 다를 수 있습니다. 서버에서 삭제 요청을 자동 처리하고 실패한 작업을 재시도합니다. 실제 Apple 계정의 인증·권한 철회와 기존 Amplitude 이벤트의 삭제 완료는 검증이 남아 있습니다. 접수·처리 중·계정 삭제 완료·외부 삭제 완료를 구분해 안내합니다. 진행 확인이나 앱 이용이 어려우면 jsh097610@gmail.com으로 연락해 주세요.",
           "서버는 인증된 계정 정보에서 확인한 분석용 이메일 ID를 계정에 연결해 기록합니다. 계정 삭제 시 기록한 이메일 ID와 기존 UUID 기반 ID의 Amplitude 데이터 삭제를 요청합니다.",
-          "계정 삭제의 예외로, 최초 소셜 연결 보상의 중복 수령 방지 기록은 제7항의 기간 동안 남습니다."
+          "계정 삭제가 완료된 뒤 재가입하면 새 Pantrip 계정이 생성되며 해당 계정에 적용되는 시작·연결 보상을 받을 수 있습니다. 기존 계정에서 연결을 해제했다가 다시 연결하는 것은 추가 보상 대상이 아닙니다."
         ]
       ],
       [
@@ -80,7 +80,7 @@
           "처리 항목·목적·제공자 등 중요한 내용이 바뀌면 앱 또는 이 페이지에 알리고 시행일을 변경합니다. 새 동의가 필요한 변경은 별도로 안내합니다.",
           "2026-09-29 변경 안내: 흰색·검정 문서 화면과 목차를 적용하고, 정보 수집 경로와 권리 행사 방법을 보완했습니다. 이번 문서 수정으로 새로운 개인정보 수집 항목을 추가하지 않았습니다. 이전 안내의 확인이 필요하면 위 이메일로 요청해 주세요.",
           "2026-09-30 변경 안내: 소셜 로그인 시 확인된 이메일을 Amplitude 사용자 ID로 사용하는 방식과 계정 삭제 시 해당 식별자를 처리하는 범위를 추가했습니다.",
-          "2026-09-30 추가 변경: 최초 소셜 연결 보상의 중복 방지 기록과 탈퇴 후 보관 예외를 안내했습니다."
+          "2026-09-30 정정: 최초 소셜 연결 보상은 앱 계정당 한 번 지급하며, 계정 삭제 후 별도 중복 방지 식별 기록을 보관한다는 안내를 정정했습니다. 공개 웹페이지 호스팅 제공자를 OpenAI / ChatGPT Sites로 변경했습니다."
         ]
       ]
     ],
@@ -93,7 +93,7 @@
       "결제 검증·거래 관리: 계정 식별자, 상품·거래·영수증·환불 정보. 실제 처리 국가와 공급자 보관 기간은 확인 중입니다. 필요한 법정 결제 기록은 별도 제한 보관합니다.",
       "이용 분석 위탁. 허용된 이벤트·속성, 분석 식별자와 앱·기기 정보. 프로젝트는 미국 서버를 사용합니다. 수집 조건과 보관·삭제는 위 이용 분석 항목을 따릅니다. 분석 식별자에는 소셜 로그인 제공자가 확인한 이메일(Apple 릴레이 주소 포함) 또는 계정 UUID가 포함됩니다.",
       "온라인 검색을 실행하면 바코드 또는 입력한 검색어, 검색 언어와 IP 주소 등 통신 정보가 Open Food Facts에 전달됩니다. 사진은 이 검색에 업로드하지 않습니다. 온라인 검색을 실행하지 않으면 해당 요청은 보내지 않습니다.",
-      "공식 웹페이지의 GitHub Pages 호스팅. 페이지 접속 IP, 브라우저·요청 정보. 미국 및 GitHub의 네트워크에서 전달·보안 목적으로 처리하며 GitHub의 로그 보관 기준이 적용됩니다. 웹페이지에는 앱 계정 토큰을 전달하지 않습니다."
+      "공개 웹페이지의 OpenAI / ChatGPT Sites 호스팅. 페이지 접속 IP, 브라우저·기기 정보와 요청 메타데이터가 페이지 제공과 보안을 위한 접속 로그로 처리될 수 있습니다. 앱의 식품 기록·사진·계정 인증 토큰을 이 공개 사이트로 전송하지 않습니다. 호스팅 제공자의 개인정보 처리방침이 적용됩니다."
     ],
     "support": [
       [
@@ -125,14 +125,72 @@
       [
         "시작 및 계정 연결 포인트",
         [
-          "시작 보상은 계정당 한 번 2,000P입니다. 첫 Apple 또는 Google 연결 보상은 계정당 한 번, 소셜 계정당 한 번 2,500P입니다. 새 소셜 계정으로 바로 가입하면 두 보상 합계 4,500P를 받습니다. 이전에 받은 시작·연결 보상은 그대로 유지하며 차액을 추가 지급하거나 차감하지 않습니다. 이미 연결 보상을 받은 소셜 계정은 재연결·탈퇴 후 재가입으로 다시 받을 수 없습니다. 서버가 지급과 중복 여부를 확인합니다.",
+          "시작 보상은 Pantrip 앱 계정당 한 번 2,000P입니다. 첫 Apple 또는 Google 연결 보상은 앱 계정당 한 번 2,500P입니다. 소셜 로그인으로 새 계정을 만들면 두 보상 합계 4,500P를 받습니다. 이전에 받은 시작·연결 보상은 그대로 유지하며 차액을 추가 지급하거나 차감하지 않습니다. 기존 계정에 다시 연결해도 추가 보상은 없습니다. 계정 삭제가 완료된 뒤 재가입하면 새 계정에 적용되는 시작·연결 보상을 받을 수 있습니다. 서버가 계정별 지급과 중복 여부를 확인합니다.",
           "물품 등록은 건당 10P, 하루 최대 3건이며 기한 내 완료는 건당 15P, 하루 최대 2건입니다. 두 활동을 합쳐 하루 최대 50P를 받을 수 있습니다. 별도의 24시간 대기 없이 서버가 활동을 확인하면 지급하며, 오프라인 활동은 연결 후 확인합니다. 한 주 동안 서로 다른 3일에 활동 포인트를 얻으면 70P를 추가 지급합니다. 개별 업적에는 별도 달성 조건이 적용됩니다. 광고 보상은 하루 최대 3회, 50P·30P·20P이며 회차 사이 최소 1시간을 기다려야 합니다.",
           "일일 한도는 UTC 00:00에 초기화되고, 주간 집계는 UTC 월요일부터 일요일까지입니다."
         ]
       ]
     ],
     "contentsTitle": "목차",
-    "languageTitle": "언어"
+    "languageTitle": "언어",
+    "termsTitle": "서비스 이용약관",
+    "termsSummary": "Pantrip: Food & Kitchen의 계정, 식품 기록, 포인트, 구매 및 서비스 이용 조건을 안내합니다. 시행일: 2026-09-30.",
+    "terms": [
+      [
+        "1. 서비스와 운영자",
+        [
+          "Pantrip: Food & Kitchen은 식품과 유통기한을 기록하고 주방을 꾸미는 앱입니다. 운영자는 전성훈이며 문의는 jsh097610@gmail.com으로 받습니다. 이 약관은 앱과 관련 계정 서비스에 적용됩니다. 서비스는 만 16세 이상을 대상으로 하며, 거주 국가 법률에 따라 법정대리인의 동의가 필요한 경우 해당 요건을 충족해야 합니다."
+        ]
+      ],
+      [
+        "2. 계정과 로그인",
+        [
+          "익명 계정으로 시작하거나 Apple 또는 Google 계정을 연결할 수 있습니다. 소셜 로그인은 Pantrip 계정을 다시 이용하고 계정에 연결된 포인트와 구매 내역을 확인하는 데 사용합니다. 로그인 수단을 안전하게 관리하고 다른 사람의 계정을 허락 없이 사용하지 마세요. 익명 계정은 로그인 수단을 연결하지 않은 상태에서 접근 정보를 잃으면 복구가 어려울 수 있습니다."
+        ]
+      ],
+      [
+        "3. 식품 기록과 확인",
+        [
+          "등록한 날짜, 사진, 바코드 조회 결과와 날짜 인식 결과를 확인하고 필요하면 수정해 주세요. 앱의 기록·알림은 실제 식품의 안전성이나 섭취 가능 여부를 판단하지 않습니다. 포장에 표시된 날짜와 보관 방법, 식품 상태를 직접 확인해야 합니다. 사용자가 등록한 사진과 기록의 권리는 사용자에게 남으며, 동기화에 동의한 경우 서비스 제공에 필요한 저장·전송·표시에 사용합니다."
+        ]
+      ],
+      [
+        "4. 기기 저장과 선택적 동기화",
+        [
+          "식품과 사진은 기본적으로 기기에 저장합니다. Apple·Google 로그인 후 식품 동기화에 별도로 동의하면 계정에 연결하여 서버와 다른 로그인 기기에 동기화합니다. 로그인만으로 동기화에 동의한 것으로 보지 않습니다. 동기화를 끄면 추가 전송을 멈추지만 서버 사본을 즉시 삭제하지는 않습니다. 동기화 중의 식품 삭제는 연결된 다른 기기에도 반영될 수 있습니다. 처리 항목과 삭제 방법은 개인정보 처리방침을 따릅니다."
+        ]
+      ],
+      [
+        "5. 포인트와 꾸미기 아이템",
+        [
+          "포인트는 앱에서 안내하는 활동·보상 또는 제공되는 App Store 상품 구매로 얻고, 주방·상품 모양·장식 등 앱에 표시된 디지털 아이템에 사용합니다. 포인트는 현금이나 예금이 아니며 현금 인출·다른 계정으로의 양도 기능을 제공하지 않습니다. 지급 조건, 한도, 가격과 이용 가능 여부는 해당 앱 화면의 안내를 확인해 주세요. 보상과 구매는 서버 확인 후 반영될 수 있으며, 같은 보상을 중복 수령할 수 있는 권리를 뜻하지 않습니다. 디지털 아이템 이용은 해당 계정에 연결됩니다."
+        ]
+      ],
+      [
+        "6. 결제와 환불",
+        [
+          "현금 결제는 제공되는 경우 Apple의 App Store 결제 절차를 통해 진행합니다. 결제 전 상품, 금액과 조건을 확인해 주세요. 결제 오류·누락은 지원 이메일로 문의할 수 있고, Apple 결제 환불은 reportaproblem.apple.com에서 요청할 수 있습니다. 환불이나 결제 취소 결과에 따라 해당 거래의 포인트·아이템 상태가 조정될 수 있습니다. 이 안내는 관련 법률에 따른 청약철회, 환불 또는 소비자 권리를 제한하지 않습니다."
+        ]
+      ],
+      [
+        "7. 공정한 이용",
+        [
+          "다른 사람의 권리를 침해하는 자료를 등록하거나, 계정을 도용하거나, 허위 활동·변조된 요청으로 포인트와 보상을 부정하게 얻거나, 서비스 보안과 정상 운영을 방해해서는 안 됩니다. 문제가 확인되면 피해 방지와 사실 확인에 필요한 범위에서 해당 기능이나 계정 이용을 제한할 수 있습니다. 가능한 경우 이유와 문의 방법을 알리며, 오류라고 생각하면 지원 이메일로 확인을 요청할 수 있습니다."
+        ]
+      ],
+      [
+        "8. 계정 삭제와 지원",
+        [
+          "앱 설정의 내 정보에서 계정 삭제를 요청할 수 있습니다. 삭제하면 서버 계정, 포인트, 꾸미기 아이템 소유권과 동기화한 식품·사진이 삭제되며 다시 이용하기 어려울 수 있으므로 화면 안내를 확인해 주세요. 기기에 남은 식품·사진은 별도로 유지됩니다. 계정 삭제는 자동 환불이 아니며 필요한 법정 거래 기록 등은 개인정보 처리방침의 기간 동안 별도 보관할 수 있습니다. 외부 제공자의 삭제 처리 시점은 다를 수 있습니다. 앱을 이용할 수 없거나 처리 상태 확인이 필요하면 지원 이메일로 문의해 주세요."
+        ]
+      ],
+      [
+        "9. 변경과 이용자의 권리",
+        [
+          "계정 확인, 동기화, 결제·보상 검증 등 온라인 기능에는 네트워크가 필요하며 점검이나 장애로 일시 지연될 수 있습니다. 서비스나 이 약관의 중요한 변경은 앱 또는 공식 웹페이지에 적용 시점과 함께 안내하고 법률상 동의가 필요하면 별도로 받습니다. 이 약관은 거주 국가에서 적용되는 강행 법규와 소비자 권리를 배제하지 않습니다. 해석이나 이용에 관한 문의는 지원 이메일로 보내 주세요."
+        ]
+      ]
+    ]
   },
   "en": {
     "privacyTitle": "Privacy Policy",
@@ -186,7 +244,7 @@
         "7. Retention and erasure",
         [
           "Minimum legally required contract, payment and supply records are retained for five years from the original transaction time; complaint/dispute records for three years under the applicable record-specific rule. This does not mean retaining all activity or photos for five years. The server implements retention of deletion status and recovery records for 30 days after completion. The server regularly checks retention periods and deletes the applicable records when those periods have ended. Pending requests are distinguished from completed deletion.",
-          "To prevent duplicate or fraudulent first social-link rewards, we separately retain a SHA-256 hash of the sign-in provider and its stable account identifier, the wallet environment, and the duplicate-claim record creation time. This record does not retain an email address, raw social identifier, or app account ID. The hash is pseudonymous personal data, not anonymous data. It remains after account deletion while this one-time reward program operates and is erased when the program ends and the purpose no longer applies. Access is restricted to preventing repeat reward claims.",
+          "Starting and social-link rewards and their ledger records are managed per Pantrip app account and erased with account deletion. Legally required payment records are retained separately for the periods above. We do not separately retain cross-account identity records to prevent rejoining with the same social account after deletion.",
           "Analytics events are retained while the analytics purpose remains; verified applicable deletion requests are handled through the provider. Automatic 12-month deletion has not been configured, so we do not promise that events disappear after 12 months. Older device-based analytics not linked to an account may not be identifiable from the account ID alone. We explain the available scope and additional steps for such requests.",
           "When the retention purpose ends, we erase data to make recovery difficult. Provider erasure and limited security/backup retention can take time. We distinguish request receipt from external completion. Statutorily retained data is erased when its period ends."
         ]
@@ -197,7 +255,7 @@
           "You can request account deletion in My information in settings. After identity and transaction checks, we delete the server account, points, purchased kitchen/decor ownership and synced food and photos. Guest accounts are also covered; local food and photos remain. Account deletion is not a refund. Legally required payment records are retained separately for the necessary period.",
           "External providers erase data separately from account deletion, so completion times may differ. The server processes deletion requests automatically and retries failed tasks. Authentication and token revocation for real Apple accounts, and completed erasure of existing Amplitude events, still require verification. We distinguish receipt of a request, processing, account deletion and completed external erasure. Contact jsh097610@gmail.com to check progress or if you cannot use the app.",
           "The server records analytics email IDs verified from authenticated account data and associates them with the account. Account deletion requests Amplitude deletion for the recorded email IDs and legacy UUID-based IDs.",
-          "As an exception to account deletion, the record preventing duplicate first social-link rewards remains for the period in section 7."
+          "After account erasure is completed, rejoining creates a new Pantrip account that can receive the applicable starting and linking rewards. Disconnecting and reconnecting within an existing account does not award another bonus."
         ]
       ],
       [
@@ -215,7 +273,7 @@
           "We announce material changes to data, purposes or providers in the app or on this page and update the effective date. Changes requiring new consent are addressed separately.",
           "2026-09-29 update: added a plain light/dark document layout and contents, and clarified collection methods and rights requests. This document update does not introduce new categories of personal data collection. Email us if you need to consult an earlier notice.",
           "2026-09-30 update: added the use of verified social-login email as the Amplitude user ID and how those identifiers are handled during account deletion.",
-          "2026-09-30 additional update: disclosed first social-link reward duplicate-claim records and the retention exception after account deletion."
+          "2026-09-30 correction: the first social-link reward is granted once per app account. We corrected the statement that separate duplicate-prevention identity records remain after account deletion. Public webpage hosting changed to OpenAI / ChatGPT Sites."
         ]
       ]
     ],
@@ -228,7 +286,7 @@
       "Payment verification and transaction management: account identifiers, products, transactions, receipts and refunds. Actual processing countries and provider retention periods are being verified. Required payment evidence is retained separately with restricted access.",
       "Usage analytics: permitted events/properties, analytics identifiers and app/device information. This project uses US servers. Collection and retention follow the analytics sections above. Analytics identifiers include the social provider-verified email (including Apple relay addresses) or account UUID.",
       "When you run an online search, Open Food Facts receives the barcode or entered search terms, search language and connection information such as your IP address. Photos are not uploaded for this search. No search request is sent unless you use the feature.",
-      "GitHub Pages hosting: page-request IP, browser and request information are processed through US and GitHub network infrastructure for delivery/security under GitHub’s logging rules. App account tokens are not sent to these pages."
+      "OpenAI / ChatGPT Sites hosts the public webpages. Connection IP addresses, browser and device information, and request metadata may be processed in access logs to serve and secure the pages. App food records, photos and account authentication tokens are not sent to this public site. The hosting provider’s privacy policy applies."
     ],
     "support": [
       [
@@ -260,14 +318,72 @@
       [
         "Starting and account-link points",
         [
-          "Starting rewards are 2,000P once per app account. The first Apple or Google connection awards 2,500P, once per app account and once per social account. A new social account signing up directly receives both rewards, totaling 4,500P. Previously awarded starting and linking rewards stay unchanged; no difference is topped up or deducted. A social account that already received the linking reward cannot claim it again by reconnecting or deleting and rejoining. The server checks awards and duplicate claims.",
+          "Starting rewards are 2,000P once per Pantrip app account. The first Apple or Google connection awards 2,500P once per app account. Creating a new account through social sign-in receives both rewards, totaling 4,500P. Previously awarded starting and linking rewards stay unchanged; no difference is topped up or deducted. Reconnecting an existing account does not grant another bonus. After completed account erasure, rejoining creates a new account eligible for the applicable starting and linking rewards. The server checks awards and duplicate claims per app account.",
           "Registering an item earns 10P, up to 3 items a day. Finishing an item by its date earns 15P, up to 2 items a day. These activities share a 50P daily cap. Rewards are granted after server confirmation without a separate 24-hour wait; offline activity is checked after reconnection. Earning activity points on 3 different days in a week adds 70P. Individual achievements retain their own completion conditions. Ad rewards are available up to 3 times a day for 50P, 30P and 20P, with at least 1 hour between rewards.",
           "Daily limits reset at 00:00 UTC; weekly totals run from Monday through Sunday in UTC."
         ]
       ]
     ],
     "contentsTitle": "Contents",
-    "languageTitle": "Language"
+    "languageTitle": "Language",
+    "termsTitle": "Terms of Service",
+    "termsSummary": "Terms for accounts, food records, points, purchases, and use of Pantrip: Food & Kitchen. Effective September 30, 2026.",
+    "terms": [
+      [
+        "1. Service and operator",
+        [
+          "Pantrip: Food & Kitchen helps you record food and expiry dates and personalize a kitchen. The operator is Seonghun Jeon; contact jsh097610@gmail.com. These terms apply to the app and related account services. The service is intended for people aged 16 or older. Where the law in your country requires consent from a parent or legal representative, that requirement must also be met."
+        ]
+      ],
+      [
+        "2. Accounts and sign-in",
+        [
+          "You can start with an anonymous account or connect Apple or Google. Social sign-in lets you return to your Pantrip account and access its points and purchase history. Keep your sign-in methods secure and do not use someone else's account without permission. An anonymous account may be difficult to recover if you lose access before connecting a sign-in method."
+        ]
+      ],
+      [
+        "3. Food records and checks",
+        [
+          "Check the dates, photos, barcode lookup results, and recognized dates you enter, and correct them when needed. App records and reminders do not determine whether food is safe to eat. Check the package dates, storage instructions, and the food's actual condition. You retain rights to the photos and records you add. If you enable sync, they are stored, transmitted, and displayed as needed to provide the service."
+        ]
+      ],
+      [
+        "4. Device storage and optional sync",
+        [
+          "Food records and photos are stored on your device by default. After Apple or Google sign-in, you can separately consent to syncing them with the server and other signed-in devices. Signing in alone does not enable food sync. Turning sync off stops further uploads but does not immediately delete server copies. Deleting food while sync is on may also affect other connected devices. The Privacy Policy explains processing and deletion."
+        ]
+      ],
+      [
+        "5. Points and cosmetic items",
+        [
+          "Points can be earned through activities and rewards described in the app or through App Store products when offered. They can be used for the digital kitchens, product shapes, decorations, and other items shown in the app. Points are not cash or deposits; there is no cash-out or transfer-to-another-account feature. Check the relevant app screen for conditions, limits, prices, and availability. Rewards and purchases may appear after server verification. A reward does not confer a right to receive it repeatedly. Digital item access is linked to the relevant account."
+        ]
+      ],
+      [
+        "6. Payments and refunds",
+        [
+          "When offered, payments use Apple's App Store purchase process. Check the product, price, and terms before paying. Contact support about payment errors or missing credit; Apple purchase refunds can be requested at reportaproblem.apple.com. Points or item status associated with a transaction may be adjusted following a refund or reversal. This information does not limit statutory cancellation, refund, or consumer rights."
+        ]
+      ],
+      [
+        "7. Fair use",
+        [
+          "Do not add material that infringes others' rights, misuse another account, obtain points or rewards through fabricated activity or tampered requests, or interfere with security or normal operation. If a problem is identified, the affected function or account may be restricted to the extent needed to prevent harm and investigate. Where possible, we explain the reason and how to contact us. If you believe there is an error, request a review through the support email."
+        ]
+      ],
+      [
+        "8. Account deletion and support",
+        [
+          "You can request account deletion in Settings under your account information. Deletion removes the server account, points, cosmetic ownership, and synced food records and photos; restoring access may not be possible, so review the in-app explanation first. Food records and photos on the device remain separately. Deletion is not an automatic refund. Required transaction records and other exceptions may be retained separately for the periods stated in the Privacy Policy. External providers may complete deletion at different times. Contact support if you cannot use the app or need a status update."
+        ]
+      ],
+      [
+        "9. Changes and your rights",
+        [
+          "Online features such as account checks, sync, and payment or reward verification need a network connection and may be delayed during maintenance or outages. Important changes to the service or these terms will be announced in the app or on the official website with their effective timing; separate consent will be requested where required by law. These terms do not exclude mandatory laws or consumer rights applicable in your country. Send questions about these terms or the service to support."
+        ]
+      ]
+    ]
   },
   "ja": {
     "privacyTitle": "プライバシーポリシー",
@@ -321,7 +437,7 @@
         "7. 保存期間と消去",
         [
           "法定保存が必要な契約・決済・供給の最小限の記録は元の取引時刻から5年間、苦情・紛争記録は当該記録に適用される基準から3年間、アクセスを制限して保存します。すべての活動・写真を5年保存する意味ではありません。削除状況と復旧照会記録を完了後30日間保存する処理はサーバーに実装済みです。サーバーが定期的に保存期間を確認し、期間を過ぎた対象記録を削除します。処理中と削除完了を区別して案内します。",
-          "初回ソーシャル連携報酬の重複受領や不正受領を防ぐため、ログイン提供元とそのアカウント固有識別子を組み合わせたSHA-256ハッシュ、ウォレット環境、重複受領防止記録の作成日時を別途保存します。この記録にはメールアドレス、元のソーシャル識別子、アプリのアカウントIDは保存しません。ハッシュは仮名化された個人情報であり、匿名情報ではありません。アカウント削除後も、この一回限りの報酬制度を運営する間保存し、制度終了により目的がなくなった時点で削除します。重複受領防止の目的にアクセスを制限します。",
+          "開始報酬・ソーシャル連携報酬と付与履歴はPantripアプリのアカウント単位で管理し、アカウント削除時に削除します。法定保存が必要な決済記録は上記の期間、別途保存します。削除後に同じソーシャルアカウントで再登録することを防ぐための、アカウントをまたぐ識別記録は別途保存しません。",
           "分析イベントは分析目的が続く間保存し、対象となる削除依頼を確認した場合は提供者の削除手続きを行います。12か月後の自動削除設定は未完了のため、12か月で必ず消えるとは保証しません。過去のアカウントに結び付かない端末ベースの分析は、アカウントIDだけでは特定できない場合があります。確認できる範囲と追加手続きを案内します。",
           "保存目的が終了すると復元が困難な方法で消去します。提供者の処理や限定的な安全・バックアップ保存には時間がかかることがあります。受付と外部処理完了は区別し、法定保存情報は期間満了後に消去します。"
         ]
@@ -332,7 +448,7 @@
           "設定のマイ情報からアカウント削除を申請できます。本人・取引確認後、サーバーのアカウント、ポイント、購入したキッチン・装飾の所有権、同期した食品と写真を削除します。匿名アカウントも対象です。端末の食品・写真は残ります。削除は返金ではなく、法定決済記録は必要期間、別途保管します。",
           "外部サービスのデータ削除はアカウント削除とは別に進むため、完了時期が異なる場合があります。サーバーが削除リクエストを自動処理し、失敗した処理を再試行します。実際のAppleアカウントの認証・権限取り消しと、既存のAmplitudeイベントの削除完了は検証が残っています。受付、処理中、アカウント削除完了、外部データ削除完了を区別して案内します。進捗確認やアプリを利用できない場合は jsh097610@gmail.com にご連絡ください。",
           "サーバーは認証済みアカウント情報から確認した分析用メールIDをアカウントに関連付けて記録します。アカウント削除時は、記録したメールIDと従来のUUIDによるIDについてAmplitudeへ削除を依頼します。",
-          "アカウント削除の例外として、初回ソーシャル連携報酬の重複受領防止記録は第7項の期間中残ります。"
+          "アカウント削除の完了後に再登録すると新しいPantripアカウントが作成され、適用される開始・連携報酬を受け取れます。既存アカウントで連携を解除して再連携しても追加報酬はありません。"
         ]
       ],
       [
@@ -350,7 +466,7 @@
           "データ、目的、提供者等の重要な変更はアプリまたは本ページで知らせ、施行日を更新します。新たな同意が必要な変更は別途案内します。",
           "2026-09-29 更新：白・黒のシンプルな文書画面と目次を追加し、収集方法と権利行使の案内を補足しました。この文書更新で新たな個人情報の収集項目は追加していません。以前の案内を確認したい場合は、上記メールへお問い合わせください。",
           "2026-09-30 更新：ソーシャルログインで確認したメールをAmplitudeのユーザーIDとして使うことと、アカウント削除時の識別子の扱いを追加しました。",
-          "2026-09-30 追加更新：初回ソーシャル連携報酬の重複防止記録とアカウント削除後の保存例外を明記しました。"
+          "2026-09-30 訂正：初回ソーシャル連携報酬はアプリアカウントにつき1回です。削除後も重複防止用の識別記録を別途保存するという案内を訂正しました。公開ウェブページのホスティングをOpenAI / ChatGPT Sitesに変更しました。"
         ]
       ]
     ],
@@ -363,7 +479,7 @@
       "決済の検証・取引管理：アカウント識別子、商品、取引、レシート、返金情報。実際の処理国と提供者の保存期間は確認中です。必要な決済証憑はアクセスを制限して別途保存します。",
       "利用分析委託。許可されたイベント・属性、分析識別子、アプリ・端末情報。プロジェクトは米国サーバーを使用し、収集・保存は上記分析項目に従います。 分析識別子にはログイン提供者が確認したメールアドレス（Appleの転送用アドレスを含む）またはアカウントUUIDが含まれます。",
       "オンライン検索を実行すると、バーコードまたは入力した検索語、検索言語、IPアドレスなどの通信情報をOpen Food Factsに送信します。検索に写真はアップロードしません。機能を使わなければ検索要求は送信しません。",
-      "GitHub Pages。ページ接続IP、ブラウザー・要求情報を米国およびGitHubのネットワークで配信・安全目的に処理し、同社ログ方針を適用します。アカウントトークンは送りません。"
+      "公開ウェブページはOpenAI / ChatGPT Sitesでホスティングします。ページ提供とセキュリティのため、接続IP、ブラウザー・端末情報、リクエストのメタデータがアクセスログで処理される場合があります。アプリの食品記録・写真・アカウント認証トークンはこの公開サイトに送信しません。ホスティング提供者のプライバシーポリシーが適用されます。"
     ],
     "support": [
       [
@@ -395,14 +511,72 @@
       [
         "開始・アカウント連携ポイント",
         [
-          "開始報酬はアプリのアカウントごとに一度2,000Pです。初回のAppleまたはGoogle連携は、アプリのアカウントごと・ソーシャルアカウントごとに一度2,500Pです。新しいソーシャルアカウントで直接登録すると合計4,500Pを受け取れます。以前の開始・連携報酬は維持し、差額の追加付与や減額はしません。連携報酬を受領済みのソーシャルアカウントは、再連携や退会後の再登録で再受領できません。サーバーが付与と重複を確認します。",
+          "開始報酬はPantripアカウントにつき1回2,000Pです。初回AppleまたはGoogle連携報酬はアプリアカウントにつき1回2,500Pです。ソーシャルログインで新しいアカウントを作成すると合計4,500Pを受け取れます。過去の付与額は変更せず、差額の追加・減額はしません。既存アカウントの再連携では追加付与されません。アカウント削除完了後の再登録では、新しいアカウントに適用される開始・連携報酬を受け取れます。サーバーがアカウント単位で付与と重複を確認します。",
           "物品登録は1件10Pで1日3件まで、期限内の完了は1件15Pで1日2件までです。両方を合わせて1日最大50Pです。別途24時間待つ必要はなく、サーバー確認後に付与します。オフラインの活動は再接続後に確認します。同じ週の異なる3日に活動ポイントを得ると70Pを追加します。各実績には固有の達成条件が適用されます。広告報酬は1日最大3回、50P・30P・20Pで、各回の間に最低1時間必要です。",
           "日次上限はUTCの00:00にリセットし、週次集計はUTCの月曜日から日曜日までです。"
         ]
       ]
     ],
     "contentsTitle": "目次",
-    "languageTitle": "言語"
+    "languageTitle": "言語",
+    "termsTitle": "利用規約",
+    "termsSummary": "Pantrip: Food & Kitchenのアカウント、食品記録、ポイント、購入およびサービス利用に関する条件です。施行日：2026年9月30日。",
+    "terms": [
+      [
+        "1. サービスと運営者",
+        [
+          "Pantrip: Food & Kitchenは食品と期限を記録し、キッチンをカスタマイズするアプリです。運営者はSeonghun Jeon（전성훈）、連絡先はjsh097610@gmail.comです。本規約はアプリと関連アカウントサービスに適用されます。16歳以上を対象とし、居住国の法律で保護者などの同意が必要な場合は、その要件も満たす必要があります。"
+        ]
+      ],
+      [
+        "2. アカウントとログイン",
+        [
+          "匿名アカウントで始めるか、AppleまたはGoogleを連携できます。ソーシャルログインはPantripアカウントに再ログインし、ポイントや購入履歴を利用するために使用します。ログイン手段を安全に管理し、許可なく他人のアカウントを使用しないでください。ログイン手段を連携する前に匿名アカウントへのアクセスを失うと、復旧が難しい場合があります。"
+        ]
+      ],
+      [
+        "3. 食品記録の確認",
+        [
+          "登録した日付、写真、バーコード検索結果、日付の読み取り結果を確認し、必要に応じて修正してください。記録や通知は食品を安全に食べられるかどうかを判断するものではありません。包装に記載された日付、保存方法、食品の状態をご自身で確認してください。登録した写真や記録の権利は利用者に残ります。同期に同意した場合、サービス提供に必要な保存、送信、表示に使用します。"
+        ]
+      ],
+      [
+        "4. 端末保存と任意の同期",
+        [
+          "食品情報と写真は通常、端末に保存します。AppleまたはGoogleでログイン後、別途同意するとサーバーと他のログイン済み端末に同期します。ログインだけで同期が有効になることはありません。同期をオフにすると追加送信は停止しますが、サーバー上のコピーはすぐには削除されません。同期中に食品を削除すると、接続された他の端末にも反映される場合があります。処理内容と削除方法はプライバシーポリシーをご覧ください。"
+        ]
+      ],
+      [
+        "5. ポイントとカスタマイズアイテム",
+        [
+          "ポイントはアプリに記載された活動・報酬や、提供される場合のApp Store商品購入で取得し、アプリ内のキッチン、商品形状、装飾などのデジタルアイテムに使用します。現金や預金ではなく、出金や別アカウントへの譲渡機能はありません。条件、上限、価格、提供状況は該当画面をご確認ください。報酬や購入の反映にはサーバー確認が必要な場合があります。同じ報酬を繰り返し受け取る権利を意味するものではありません。アイテムの利用は該当アカウントに紐づきます。"
+        ]
+      ],
+      [
+        "6. 支払いと返金",
+        [
+          "現金決済を提供する場合、AppleのApp Store購入手続きを使用します。購入前に商品、金額、条件を確認してください。決済エラーやポイント未反映はサポートにご連絡ください。Apple決済の返金はreportaproblem.apple.comから申請できます。返金や決済取消に応じて、その取引のポイントやアイテム状態が調整される場合があります。法令に基づく解約、返金、消費者の権利を制限するものではありません。"
+        ]
+      ],
+      [
+        "7. 公正な利用",
+        [
+          "他人の権利を侵害する情報の登録、アカウントの不正使用、架空の活動や改ざんしたリクエストによるポイント・報酬の不正取得、セキュリティや通常運営への妨害は禁止します。問題が確認された場合、被害防止と調査に必要な範囲で機能やアカウントを制限することがあります。可能な場合は理由と問い合わせ方法を案内します。誤りと思われる場合はサポートメールで確認を依頼できます。"
+        ]
+      ],
+      [
+        "8. アカウント削除とサポート",
+        [
+          "設定のアカウント情報から削除を依頼できます。サーバー上のアカウント、ポイント、カスタマイズアイテムの所有情報、同期した食品情報と写真が削除され、復旧できない場合があるため、画面の説明を確認してください。端末内の食品と写真は別途残ります。アカウント削除は自動返金ではありません。必要な取引記録などはプライバシーポリシーに定める期間、別途保管される場合があります。外部提供者の削除完了時期は異なることがあります。アプリを利用できない場合や進捗確認はサポートへご連絡ください。"
+        ]
+      ],
+      [
+        "9. 変更と利用者の権利",
+        [
+          "アカウント確認、同期、決済・報酬の検証などには通信接続が必要で、保守や障害により遅延する場合があります。サービスや規約の重要な変更は、適用時期とともにアプリまたは公式サイトで案内し、法律で必要な場合は別途同意を得ます。本規約は居住国で適用される強行法規や消費者の権利を排除しません。規約や利用に関する質問はサポートへお寄せください。"
+        ]
+      ]
+    ]
   },
   "es": {
     "privacyTitle": "Política de privacidad",
@@ -456,7 +630,7 @@
         "7. Conservación y borrado",
         [
           "Los registros mínimos de contratos, pagos y suministro exigidos por ley se conservan cinco años desde la transacción original; las reclamaciones y disputas, tres años según la regla aplicable a cada registro. No supone guardar toda la actividad o fotos cinco años. El servidor implementa la conservación del estado y los datos de recuperación de la eliminación durante 30 días tras completarla. El servidor revisa periódicamente los plazos de conservación y elimina los registros correspondientes cuando vencen. Se distingue una solicitud pendiente de una eliminación terminada.",
-          "Para evitar recompensas duplicadas o fraudulentas por la primera vinculación social, conservamos por separado un hash SHA-256 del proveedor de acceso y su identificador estable de cuenta, el entorno del monedero y la fecha de creación del registro de prevención de cobros repetidos. Este registro no conserva el correo electrónico, el identificador social original ni el ID de cuenta de la app. El hash es un dato personal seudonimizado, no anónimo. Permanece tras eliminar la cuenta mientras funcione este programa de recompensa única y se borra cuando finaliza el programa y deja de existir la finalidad. El acceso se limita a impedir cobros repetidos.",
+          "Las recompensas iniciales y de vinculación social y su historial se gestionan por cuenta de Pantrip y se borran al eliminarla. Los registros de pago exigidos por ley se conservan por separado durante los plazos anteriores. No conservamos registros de identidad entre cuentas para impedir el nuevo registro con la misma cuenta social tras la eliminación.",
           "Los eventos analíticos se conservan mientras persista su finalidad; las solicitudes aplicables verificadas se tramitan con el proveedor. No está configurado el borrado automático a los 12 meses y no garantizamos ese plazo. Es posible que los eventos antiguos basados en el dispositivo y no vinculados a una cuenta no puedan localizarse solo con su ID. Explicaremos el alcance verificable y los pasos adicionales.",
           "Al terminar la finalidad, borramos los datos de modo que su recuperación resulte difícil. El borrado externo y la retención limitada de seguridad/copias pueden tardar. Distinguimos recepción y finalización externa. Los registros legales se borran al vencer su plazo."
         ]
@@ -467,7 +641,7 @@
           "Puedes solicitar la eliminación de la cuenta en Mi información, en ajustes. Tras comprobar identidad y transacciones, eliminamos la cuenta del servidor, puntos, propiedad de cocinas y decoraciones y alimentos y fotos sincronizados. También incluye cuentas anónimas. Los alimentos y fotos locales permanecen. No equivale a un reembolso; conservamos aparte los registros de pago legalmente necesarios durante el plazo correspondiente.",
           "Los proveedores externos borran los datos por separado de la cuenta, por lo que pueden finalizar en momentos distintos. El servidor procesa automáticamente las solicitudes y vuelve a intentar las tareas que fallan. Queda por verificar la autenticación y revocación de permisos de cuentas Apple reales, y el borrado completo de eventos existentes en Amplitude. Distinguimos la recepción, el procesamiento, la eliminación de la cuenta y el borrado externo completado. Contacta con jsh097610@gmail.com para consultar el estado o si no puedes usar la app.",
           "El servidor registra los ID de correo para analítica verificados a partir de los datos de la cuenta autenticada y los vincula a la cuenta. Al eliminar la cuenta, solicita a Amplitude borrar los datos de esos ID y de los ID anteriores basados en UUID.",
-          "Como excepción al borrado de la cuenta, el registro que evita recompensas duplicadas por la primera vinculación social permanece durante el plazo de la sección 7."
+          "Tras completarse la eliminación, volver a registrarse crea una nueva cuenta de Pantrip que puede recibir las recompensas iniciales y de vinculación aplicables. Desvincular y volver a vincular una cuenta existente no concede otra recompensa."
         ]
       ],
       [
@@ -485,7 +659,7 @@
           "Anunciamos cambios importantes en datos, finalidades o proveedores en la app o en esta página y actualizamos la fecha. Las modificaciones que requieran nuevo consentimiento se comunican por separado.",
           "Actualización del 2026-09-29: añadimos un diseño sencillo claro/oscuro y un índice, y aclaramos los métodos de recopilación y las solicitudes de derechos. Esta actualización del documento no añade nuevas categorías de datos recopilados. Escríbenos para consultar un aviso anterior.",
           "Actualización 2026-09-30: se añadió el uso del correo verificado del inicio de sesión social como ID de usuario de Amplitude y su tratamiento al eliminar la cuenta.",
-          "Actualización adicional del 2026-09-30: se explicaron los registros para impedir recompensas sociales duplicadas y su conservación tras eliminar la cuenta."
+          "2026-09-30, corrección: la primera vinculación social se recompensa una vez por cuenta de la aplicación. Se corrigió la afirmación sobre conservar identificadores para evitar duplicados tras eliminar la cuenta. El alojamiento de las páginas públicas cambió a OpenAI / ChatGPT Sites."
         ]
       ]
     ],
@@ -498,7 +672,7 @@
       "Verificación y gestión de pagos: identificadores de cuenta, productos, transacciones, recibos y reembolsos. Se están verificando los países reales de tratamiento y los plazos del proveedor. Los justificantes exigidos se guardan por separado con acceso limitado.",
       "Analítica: eventos/propiedades permitidos, identificadores y datos de app/dispositivo. El proyecto usa servidores de EE. UU. Se aplican los apartados anteriores de analítica. Los identificadores incluyen el correo verificado por el proveedor social (incluidas las direcciones de retransmisión de Apple) o el UUID de la cuenta.",
       "Al buscar en línea, Open Food Facts recibe el código de barras o los términos introducidos, el idioma de búsqueda y datos de conexión como la IP. No se suben fotos para esta búsqueda. Si no utiliza la función, no se envía la solicitud.",
-      "GitHub Pages: IP, navegador y solicitudes tratados en EE. UU. y la red de GitHub para entrega/seguridad conforme a sus reglas. No enviamos tokens de cuenta a estas páginas."
+      "OpenAI / ChatGPT Sites aloja las páginas públicas. La dirección IP, la información del navegador y del dispositivo y los metadatos de las solicitudes pueden tratarse en registros de acceso para servir y proteger las páginas. Los registros de alimentos, las fotos y los tokens de autenticación de la aplicación no se envían a este sitio público. Se aplica la política de privacidad del proveedor de alojamiento."
     ],
     "support": [
       [
@@ -530,14 +704,72 @@
       [
         "Puntos iniciales y por vinculación",
         [
-          "La recompensa inicial es de 2.000P una vez por cuenta de la app. La primera conexión con Apple o Google concede 2.500P, una vez por cuenta de la app y por cuenta social. Una cuenta social nueva que se registra directamente recibe ambas: 4.500P. Las recompensas iniciales y de vinculación anteriores se conservan sin abonar ni descontar diferencias. Una cuenta social que ya recibió la recompensa no puede repetirla al reconectarse o eliminar la cuenta y volver a registrarse. El servidor comprueba los abonos y duplicados.",
+          "La recompensa inicial es de 2.000P una vez por cuenta de Pantrip. La primera conexión con Apple o Google concede 2.500P una vez por cuenta de la aplicación. Crear una cuenta nueva mediante acceso social concede ambas recompensas, un total de 4.500P. Las recompensas anteriores no cambian; no se añade ni se descuenta la diferencia. Volver a vincular una cuenta existente no concede otro bono. Tras completarse la eliminación, una cuenta creada al registrarse de nuevo puede recibir las recompensas iniciales y de vinculación aplicables. El servidor verifica las concesiones y los duplicados por cuenta.",
           "Registrar un producto concede 10P, hasta 3 al día. Completarlo antes de su fecha concede 15P, hasta 2 al día. Ambas actividades comparten un límite diario de 50P. Se abonan tras la confirmación del servidor, sin esperar otras 24 horas; la actividad sin conexión se comprueba al reconectar. Ganar puntos de actividad en 3 días distintos de una semana añade 70P. Cada logro conserva sus propias condiciones. Los anuncios conceden 50P, 30P y 20P hasta 3 veces al día, con al menos 1 hora entre recompensas.",
           "Los límites diarios se restablecen a las 00:00 UTC; la semana se cuenta de lunes a domingo en UTC."
         ]
       ]
     ],
     "contentsTitle": "Contenido",
-    "languageTitle": "Idioma"
+    "languageTitle": "Idioma",
+    "termsTitle": "Condiciones del servicio",
+    "termsSummary": "Condiciones de las cuentas, registros de alimentos, puntos, compras y uso de Pantrip: Food & Kitchen. Vigentes desde el 30 de septiembre de 2026.",
+    "terms": [
+      [
+        "1. Servicio y responsable",
+        [
+          "Pantrip: Food & Kitchen permite registrar alimentos y fechas de caducidad y personalizar una cocina. El responsable es Seonghun Jeon; contacto: jsh097610@gmail.com. Estas condiciones se aplican a la app y a los servicios de cuenta relacionados. El servicio está dirigido a personas de 16 años o más. Si la legislación de su país exige el consentimiento de un progenitor o representante legal, también debe cumplirse ese requisito."
+        ]
+      ],
+      [
+        "2. Cuenta e inicio de sesión",
+        [
+          "Puede empezar con una cuenta anónima o vincular Apple o Google. El inicio de sesión social permite volver a su cuenta Pantrip y acceder a sus puntos e historial de compras. Proteja sus métodos de acceso y no utilice cuentas ajenas sin permiso. Recuperar una cuenta anónima puede ser difícil si pierde el acceso antes de vincular un método de inicio de sesión."
+        ]
+      ],
+      [
+        "3. Comprobación de los registros",
+        [
+          "Revise y corrija las fechas, fotos, resultados de búsqueda por código de barras y fechas reconocidas. Los registros y avisos no determinan si un alimento es seguro para consumir. Compruebe las fechas del envase, las instrucciones de conservación y el estado real del alimento. Conserva los derechos sobre las fotos y registros que añade. Si activa la sincronización, se almacenan, transmiten y muestran según lo necesario para prestar el servicio."
+        ]
+      ],
+      [
+        "4. Almacenamiento y sincronización opcional",
+        [
+          "Los alimentos y fotos se guardan por defecto en su dispositivo. Tras iniciar sesión con Apple o Google, puede consentir por separado su sincronización con el servidor y otros dispositivos conectados a la cuenta. Iniciar sesión no activa la sincronización automáticamente. Desactivarla detiene nuevos envíos, pero no elimina inmediatamente las copias del servidor. Borrar alimentos con la sincronización activada puede afectar a otros dispositivos conectados. Consulte el tratamiento y la eliminación en la Política de privacidad."
+        ]
+      ],
+      [
+        "5. Puntos y artículos decorativos",
+        [
+          "Puede obtener puntos mediante las actividades y recompensas descritas en la app o productos de App Store, cuando se ofrezcan. Se usan para cocinas, formas de productos, decoraciones y otros artículos digitales de la app. No son dinero ni depósitos y no existe función de retirada de efectivo o transferencia a otra cuenta. Consulte las condiciones, límites, precios y disponibilidad en la pantalla correspondiente. Las recompensas y compras pueden aparecer tras la verificación del servidor y no dan derecho a recibir una misma recompensa repetidamente. Los artículos están vinculados a la cuenta correspondiente."
+        ]
+      ],
+      [
+        "6. Pagos y reembolsos",
+        [
+          "Cuando se ofrecen, los pagos usan el proceso de compra de App Store de Apple. Compruebe el producto, precio y condiciones antes de pagar. Contacte con soporte por errores o créditos no recibidos. Puede solicitar reembolsos de compras de Apple en reportaproblem.apple.com. Un reembolso o anulación puede ajustar los puntos o artículos de esa transacción. Esta información no limita los derechos legales de desistimiento, reembolso o protección del consumidor."
+        ]
+      ],
+      [
+        "7. Uso legítimo",
+        [
+          "No añada material que vulnere derechos ajenos, use cuentas de terceros sin autorización, obtenga puntos o recompensas mediante actividades ficticias o solicitudes manipuladas, ni interfiera con la seguridad o funcionamiento normal. Si se detecta un problema, pueden limitarse la función o cuenta afectadas en la medida necesaria para evitar daños e investigar. Siempre que sea posible se explicará el motivo y cómo contactar. Si cree que existe un error, solicite una revisión por correo de soporte."
+        ]
+      ],
+      [
+        "8. Eliminación de la cuenta y soporte",
+        [
+          "Puede solicitar la eliminación desde la información de su cuenta en Ajustes. Se eliminan la cuenta del servidor, los puntos, la propiedad de artículos decorativos y los alimentos y fotos sincronizados; quizá no sea posible recuperarlos, por lo que debe revisar primero la explicación de la app. Los alimentos y fotos del dispositivo permanecen por separado. La eliminación no supone un reembolso automático. Los registros de transacciones exigidos y otras excepciones pueden conservarse separadamente durante los periodos indicados en la Política de privacidad. Los proveedores externos pueden completar su eliminación en momentos distintos. Contacte con soporte si no puede usar la app o necesita conocer el estado."
+        ]
+      ],
+      [
+        "9. Cambios y derechos",
+        [
+          "Las funciones en línea, como comprobar cuentas, sincronizar y verificar pagos o recompensas, requieren conexión y pueden retrasarse por mantenimiento o incidencias. Los cambios importantes del servicio o de estas condiciones se anunciarán en la app o web oficial con su fecha de aplicación; se solicitará consentimiento por separado cuando la ley lo exija. Estas condiciones no excluyen las normas imperativas ni los derechos del consumidor aplicables en su país. Envíe sus consultas a soporte."
+        ]
+      ]
+    ]
   },
   "ru": {
     "privacyTitle": "Политика конфиденциальности",
@@ -591,7 +823,7 @@
         "7. Сроки хранения и уничтожение",
         [
           "Минимальные обязательные договорные, платёжные и поставочные записи хранятся пять лет с исходной даты операции; жалобы и споры — три года по применимому к записи правилу. Это не означает хранение всех действий или фото пять лет. На сервере реализовано хранение статуса удаления и данных восстановления в течение 30 дней после завершения. Сервер регулярно проверяет сроки хранения и удаляет соответствующие записи после их истечения. Ожидающая заявка отличается от завершённого удаления.",
-          "Для предотвращения повторного или мошеннического получения награды за первое подключение социальной учётной записи мы отдельно храним SHA-256-хеш провайдера входа и его постоянного идентификатора аккаунта, среду кошелька и время создания записи для предотвращения повторных начислений. Эта запись не содержит адрес электронной почты, исходный социальный идентификатор или ID аккаунта приложения. Хеш является псевдонимизированными персональными данными, а не анонимными данными. Он сохраняется после удаления аккаунта, пока действует программа разовой награды, и удаляется после её окончания, когда цель хранения отпадает. Доступ ограничен предотвращением повторных начислений.",
+          "Начальные награды, награды за привязку и записи об их начислении учитываются для каждой учётной записи Pantrip и удаляются вместе с ней. Платёжные записи, обязательные по закону, хранятся отдельно в указанные выше сроки. Мы не сохраняем отдельные межаккаунтные идентификаторы для запрета повторной регистрации через тот же социальный аккаунт после удаления.",
           "Аналитика сохраняется пока действует её цель; проверенные применимые запросы направляются поставщику для удаления. Автоматическое удаление через 12 месяцев ещё не настроено, и такой срок не гарантируется. Старые события устройства, не связанные с аккаунтом, могут не определяться только по ID аккаунта. Мы объясним доступный объём и дополнительные действия.",
           "По окончании цели данные удаляются способом, затрудняющим восстановление. Внешняя обработка удаления и ограниченное хранение для безопасности/резервирования могут занять время. Получение запроса отличается от завершения внешнего удаления. Обязательные записи уничтожаются по истечении срока."
         ]
@@ -602,7 +834,7 @@
           "Запросить удаление аккаунта можно в разделе «Мои данные» настроек. После проверки личности и операций удаляются серверный аккаунт, баллы, права на кухни и декор, синхронизированные продукты и фотографии. Это относится и к гостевым аккаунтам. Локальные продукты и фото остаются. Удаление не означает возврат средств; обязательные платёжные записи хранятся отдельно установленный срок.",
           "Внешние сервисы удаляют данные отдельно от удаления аккаунта, поэтому сроки завершения могут различаться. Сервер автоматически обрабатывает запросы на удаление и повторяет неудавшиеся операции. Проверка аутентификации и отзыва доступа для реальных аккаунтов Apple, а также завершения удаления существующих событий Amplitude ещё требуется. Мы различаем получение запроса, обработку, удаление аккаунта и завершение удаления у внешних сервисов. Для проверки статуса или если приложение недоступно напишите на jsh097610@gmail.com.",
           "Сервер сохраняет аналитические ID электронной почты, проверенные по данным аутентифицированного аккаунта, и связывает их с аккаунтом. При удалении аккаунта запрашивается удаление данных Amplitude для сохранённых почтовых ID и прежних ID на основе UUID.",
-          "Исключение при удалении аккаунта: запись для предотвращения повторной награды за первое социальное подключение сохраняется в течение срока из раздела 7."
+          "После завершённого удаления повторная регистрация создаёт новую учётную запись Pantrip, которая может получить применимые начальные награды и награды за привязку. Повторная привязка в существующей учётной записи не даёт дополнительной награды."
         ]
       ],
       [
@@ -620,7 +852,7 @@
           "О важных изменениях данных, целей и поставщиков сообщаем в приложении или здесь, обновляя дату. Изменения, требующие нового согласия, рассматриваются отдельно.",
           "Обновление от 2026-09-29: добавлены простой светлый/тёмный дизайн и содержание, уточнены способы сбора данных и обращения для реализации прав. Это обновление документа не добавляет новые категории собираемых персональных данных. Чтобы ознакомиться с предыдущим уведомлением, напишите нам.",
           "Обновление 2026-09-30: добавлены использование подтверждённой почты социального входа как ID пользователя Amplitude и обработка этих идентификаторов при удалении аккаунта.",
-          "Дополнение от 2026-09-30: описаны записи для предотвращения повторной социальной награды и исключение для их хранения после удаления аккаунта."
+          "2026-09-30, исправление: награда за первую социальную привязку начисляется один раз на учётную запись приложения. Уточнение об отдельном хранении идентификаторов для предотвращения повторных наград после удаления исправлено. Публичные веб-страницы теперь размещаются на OpenAI / ChatGPT Sites."
         ]
       ]
     ],
@@ -633,7 +865,7 @@
       "Проверка платежей и управление операциями: идентификаторы аккаунта, товары, операции, чеки и возвраты. Фактические страны обработки и сроки поставщика уточняются. Обязательные платёжные документы хранятся отдельно с ограниченным доступом.",
       "Аналитика: допустимые события/свойства, идентификаторы, приложение и устройство. Проект использует серверы США; сбор и хранение описаны выше. Идентификаторы включают подтверждённую социальным провайдером почту (в том числе адреса ретрансляции Apple) или UUID аккаунта.",
       "При онлайн-поиске Open Food Facts получает штрихкод или введённый запрос, язык поиска и сетевые данные, включая IP. Фотографии для этого поиска не загружаются. Без использования функции запрос не отправляется.",
-      "GitHub Pages: IP, браузер и запросы обрабатываются в США и сети GitHub для доставки/безопасности по правилам хостинга. Токены аккаунта на страницы не передаются."
+      "OpenAI / ChatGPT Sites размещает публичные веб-страницы. IP-адрес, сведения о браузере и устройстве и метаданные запросов могут обрабатываться в журналах доступа для предоставления и защиты страниц. Записи о продуктах, фотографии и токены аутентификации приложения не передаются на этот публичный сайт. Применяется политика конфиденциальности хостинг-провайдера."
     ],
     "support": [
       [
@@ -665,14 +897,72 @@
       [
         "Стартовые баллы и подключение аккаунта",
         [
-          "Стартовая награда — 2 000P один раз на аккаунт приложения. Первое подключение Apple или Google даёт 2 500P один раз на аккаунт приложения и на социальный аккаунт. Новый социальный аккаунт при прямой регистрации получает обе награды — 4 500P. Ранее выданные стартовые награды и награды за подключение сохраняются: разница не доплачивается и не списывается. Уже получивший награду социальный аккаунт не может получить её снова после переподключения или удаления и повторной регистрации. Начисления и повторы проверяет сервер.",
+          "Начальная награда — 2 000P один раз на учётную запись Pantrip. Первая привязка Apple или Google даёт 2 500P один раз на учётную запись приложения. Создание новой учётной записи через социальный вход даёт обе награды, всего 4 500P. Ранее начисленные награды не меняются; разница не добавляется и не вычитается. Повторная привязка существующей учётной записи не даёт ещё один бонус. После завершённого удаления при повторной регистрации новая учётная запись может получить применимые начальные награды и награды за привязку. Сервер проверяет начисления и повторы для каждой учётной записи.",
           "Регистрация продукта даёт 10P, до 3 продуктов в день. Завершение до указанной даты даёт 15P, до 2 в день. Общий дневной лимит этих действий — 50P. Награда выдаётся после подтверждения сервером без дополнительного ожидания 24 часов; действия офлайн проверяются после подключения. За получение баллов активности в 3 разных дня одной недели начисляется ещё 70P. У отдельных достижений сохраняются собственные условия. Реклама даёт 50P, 30P и 20P до 3 раз в день с интервалом не менее 1 часа.",
           "Дневные лимиты сбрасываются в 00:00 UTC; неделя учитывается с понедельника по воскресенье по UTC."
         ]
       ]
     ],
     "contentsTitle": "Содержание",
-    "languageTitle": "Язык"
+    "languageTitle": "Язык",
+    "termsTitle": "Условия использования",
+    "termsSummary": "Условия использования аккаунтов, записей о продуктах, баллов и покупок в Pantrip: Food & Kitchen. Действуют с 30 сентября 2026 года.",
+    "terms": [
+      [
+        "1. Сервис и оператор",
+        [
+          "Pantrip: Food & Kitchen помогает записывать продукты и сроки годности и оформлять кухню. Оператор — Seonghun Jeon; контакт: jsh097610@gmail.com. Условия относятся к приложению и связанным сервисам аккаунта. Сервис предназначен для лиц от 16 лет. Если закон вашей страны требует согласия родителя или законного представителя, необходимо также выполнить это требование."
+        ]
+      ],
+      [
+        "2. Аккаунт и вход",
+        [
+          "Можно начать с анонимного аккаунта или подключить Apple либо Google. Социальный вход позволяет вернуться в аккаунт Pantrip и пользоваться его баллами и историей покупок. Защищайте способы входа и не используйте чужой аккаунт без разрешения. Анонимный аккаунт может быть трудно восстановить, если доступ потерян до подключения способа входа."
+        ]
+      ],
+      [
+        "3. Проверка записей о продуктах",
+        [
+          "Проверяйте и при необходимости исправляйте даты, фотографии, результаты поиска по штрихкоду и распознавания дат. Записи и напоминания не определяют, безопасно ли употреблять продукт. Самостоятельно проверяйте даты на упаковке, условия хранения и фактическое состояние продукта. Права на добавленные фотографии и записи остаются у вас. При включении синхронизации они сохраняются, передаются и отображаются в объёме, необходимом для сервиса."
+        ]
+      ],
+      [
+        "4. Хранение на устройстве и синхронизация",
+        [
+          "По умолчанию продукты и фотографии хранятся на устройстве. После входа через Apple или Google можно отдельно согласиться на синхронизацию с сервером и другими устройствами этого аккаунта. Сам вход не включает синхронизацию. Её отключение останавливает новые отправки, но не удаляет серверные копии немедленно. Удаление продукта при включённой синхронизации может отразиться на других подключённых устройствах. Обработка и удаление описаны в Политике конфиденциальности."
+        ]
+      ],
+      [
+        "5. Баллы и предметы оформления",
+        [
+          "Баллы можно получать за описанные в приложении действия и награды или через товары App Store, когда они доступны. Они используются для цифровых кухонь, форм продуктов, украшений и других показанных в приложении предметов. Баллы не являются деньгами или вкладом; функций обналичивания и перевода на другой аккаунт нет. Условия, лимиты, цены и доступность указаны на соответствующем экране. Начисление наград и покупок может происходить после проверки сервером. Это не даёт права повторно получать одну и ту же награду. Предметы связаны с соответствующим аккаунтом."
+        ]
+      ],
+      [
+        "6. Оплата и возвраты",
+        [
+          "Если денежные покупки доступны, они проводятся через App Store Apple. Перед оплатой проверьте товар, сумму и условия. При ошибке оплаты или неначислении баллов обратитесь в поддержку. Возврат покупок Apple можно запросить на reportaproblem.apple.com. После возврата или отмены состояние баллов и предметов соответствующей операции может быть скорректировано. Это не ограничивает установленные законом права на отказ от покупки, возврат или защиту потребителя."
+        ]
+      ],
+      [
+        "7. Добросовестное использование",
+        [
+          "Не добавляйте материалы, нарушающие права других лиц, не используйте чужие аккаунты без разрешения, не получайте баллы и награды фиктивными действиями или изменёнными запросами и не мешайте безопасности или нормальной работе сервиса. При выявлении проблемы функция или аккаунт могут быть ограничены в пределах, необходимых для предотвращения вреда и проверки. По возможности мы сообщаем причину и способ связи. Если вы считаете решение ошибочным, запросите проверку по почте поддержки."
+        ]
+      ],
+      [
+        "8. Удаление аккаунта и поддержка",
+        [
+          "Удаление можно запросить в настройках, в разделе информации об аккаунте. Удаляются серверный аккаунт, баллы, права на предметы оформления и синхронизированные продукты и фотографии; восстановление может быть невозможно, поэтому сначала прочитайте пояснение в приложении. Данные о продуктах и фотографии на устройстве остаются отдельно. Удаление не означает автоматический возврат денег. Обязательные записи об операциях и другие исключения могут храниться отдельно в сроки, указанные в Политике конфиденциальности. Внешние поставщики могут завершать удаление в разное время. Если приложение недоступно или нужен статус запроса, обратитесь в поддержку."
+        ]
+      ],
+      [
+        "9. Изменения и ваши права",
+        [
+          "Онлайн-функциям, включая проверку аккаунта, синхронизацию и проверку платежей или наград, нужна сеть; обслуживание и сбои могут вызывать задержки. Важные изменения сервиса или условий объявляются в приложении либо на официальном сайте с указанием срока применения. Когда это требуется законом, согласие запрашивается отдельно. Условия не исключают обязательные нормы и права потребителя, применимые в вашей стране. Вопросы об условиях или сервисе направляйте в поддержку."
+        ]
+      ]
+    ]
   },
   "th": {
     "privacyTitle": "นโยบายความเป็นส่วนตัว",
@@ -726,7 +1016,7 @@
         "7. ระยะเวลาเก็บและการทำลาย",
         [
           "เก็บเฉพาะบันทึกสัญญา การชำระเงิน และการส่งมอบที่กฎหมายกำหนดห้าปีนับจากเวลาธุรกรรมเดิม ส่วนข้อร้องเรียนและข้อพิพาทสามปีตามเกณฑ์ของบันทึกนั้น ไม่ใช่เก็บทุกกิจกรรมหรือภาพห้าปี เซิร์ฟเวอร์มีการจัดเก็บสถานะและข้อมูลกู้คืนการลบเป็นเวลา 30 วันหลังเสร็จสิ้นแล้ว เซิร์ฟเวอร์ตรวจสอบระยะเวลาเก็บรักษาเป็นประจำและลบบันทึกที่เกี่ยวข้องเมื่อครบกำหนด แยกคำขอที่รอดำเนินการจากการลบเสร็จแล้ว",
-          "เพื่อป้องกันการรับรางวัลเชื่อมบัญชีโซเชียลครั้งแรกซ้ำหรือโดยทุจริต เราเก็บแฮช SHA-256 ของผู้ให้บริการเข้าสู่ระบบรวมกับรหัสบัญชีถาวรของผู้ให้บริการ สภาพแวดล้อมกระเป๋าพอยต์ และเวลาที่สร้างบันทึกป้องกันการรับรางวัลซ้ำแยกไว้ บันทึกนี้ไม่เก็บอีเมล รหัสโซเชียลต้นฉบับ หรือรหัสบัญชีแอป แฮชยังเป็นข้อมูลส่วนบุคคลที่ใช้นามแฝง ไม่ใช่ข้อมูลนิรนาม บันทึกจะคงอยู่หลังลบบัญชีตราบที่โครงการรางวัลครั้งเดียวนี้ดำเนินอยู่ และจะถูกลบเมื่อโครงการสิ้นสุดและหมดวัตถุประสงค์การเก็บ จำกัดการเข้าถึงเพื่อป้องกันการรับรางวัลซ้ำเท่านั้น",
+          "รางวัลเริ่มต้น รางวัลเชื่อมบัญชีโซเชียล และประวัติการให้รางวัลจัดการแยกตามบัญชี Pantrip และลบไปพร้อมกับการลบบัญชี บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามระยะเวลาข้างต้น เราไม่เก็บข้อมูลระบุตัวตนข้ามบัญชีแยกไว้เพื่อห้ามสมัครใหม่ด้วยบัญชีโซเชียลเดิมหลังลบบัญชี",
           "เหตุการณ์วิเคราะห์เก็บตราบที่ยังมีวัตถุประสงค์ เมื่อยืนยันคำขอลบที่ใช้บังคับจะดำเนินผ่านผู้ให้บริการ ยังไม่ได้ตั้งลบอัตโนมัติเมื่อครบ 12 เดือน จึงไม่รับรองระยะเวลานั้น เหตุการณ์เก่าที่อิงอุปกรณ์และไม่เชื่อมกับบัญชีอาจหาไม่ได้จากรหัสบัญชีเพียงอย่างเดียว เราจะแจ้งขอบเขตที่ตรวจสอบได้และขั้นตอนเพิ่มเติม",
           "เมื่อหมดวัตถุประสงค์จะลบด้วยวิธีที่กู้คืนได้ยาก การลบของผู้ให้บริการและการเก็บจำกัดเพื่อความปลอดภัย/สำรองอาจใช้เวลา เราแยกการรับคำขอจากการลบภายนอกสำเร็จ และลบข้อมูลตามกฎหมายเมื่อครบกำหนด"
         ]
@@ -737,7 +1027,7 @@
           "ขอลบบัญชีได้ในข้อมูลของฉันในการตั้งค่า หลังตรวจสอบตัวตนและธุรกรรม จะลบบัญชีเซิร์ฟเวอร์ แต้ม สิทธิ์ห้องครัวและของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงค์ ครอบคลุมบัญชีผู้เยี่ยมชมด้วย อาหารและรูปภาพในอุปกรณ์ยังอยู่ การลบบัญชีไม่ใช่การคืนเงิน บันทึกการชำระเงินที่กฎหมายกำหนดจะเก็บแยกตามเวลาที่จำเป็น",
           "ผู้ให้บริการภายนอกลบข้อมูลแยกจากการลบบัญชี จึงอาจเสร็จไม่พร้อมกัน เซิร์ฟเวอร์ประมวลผลคำขอลบโดยอัตโนมัติและลองงานที่ล้มเหลวใหม่ ยังต้องตรวจสอบการยืนยันตัวตนและเพิกถอนสิทธิ์ของบัญชี Apple จริง รวมถึงการลบเหตุการณ์เดิมใน Amplitude จนเสร็จ เราแยกสถานะรับคำขอ กำลังดำเนินการ ลบบัญชีแล้ว และลบข้อมูลภายนอกเสร็จแล้ว หากต้องการตรวจสอบความคืบหน้าหรือใช้แอปไม่ได้ โปรดติดต่อ jsh097610@gmail.com",
           "เซิร์ฟเวอร์บันทึก ID อีเมลสำหรับการวิเคราะห์ที่ตรวจสอบจากข้อมูลบัญชีที่ยืนยันตัวตนแล้ว และเชื่อมกับบัญชี เมื่อลบบัญชี ระบบจะขอให้ Amplitude ลบข้อมูลของ ID อีเมลที่บันทึกไว้และ ID เดิมที่ใช้ UUID",
-          "ข้อยกเว้นในการลบบัญชี: บันทึกป้องกันการรับรางวัลเชื่อมโซเชียลครั้งแรกซ้ำจะคงอยู่ตามระยะเวลาในข้อ 7"
+          "เมื่อการลบบัญชีเสร็จสมบูรณ์ การสมัครใหม่จะสร้างบัญชี Pantrip ใหม่ที่สามารถรับรางวัลเริ่มต้นและรางวัลเชื่อมบัญชีที่เข้าเงื่อนไขได้ การยกเลิกการเชื่อมต่อแล้วเชื่อมใหม่ในบัญชีเดิมจะไม่ได้รับรางวัลเพิ่ม"
         ]
       ],
       [
@@ -755,7 +1045,7 @@
           "แจ้งการเปลี่ยนแปลงสำคัญของข้อมูล วัตถุประสงค์หรือผู้ให้บริการในแอปหรือหน้านี้และปรับวันที่ หากต้องขอความยินยอมใหม่จะแจ้งแยกต่างหาก",
           "อัปเดต 2026-09-29: เพิ่มหน้าข้อความแบบเรียบง่ายพื้นขาว/ดำและสารบัญ พร้อมชี้แจงวิธีรวบรวมข้อมูลและการใช้สิทธิ การแก้ไขเอกสารครั้งนี้ไม่ได้เพิ่มประเภทข้อมูลส่วนบุคคลที่รวบรวม หากต้องการดูประกาศก่อนหน้า โปรดติดต่อทางอีเมล",
           "อัปเดต 2026-09-30: เพิ่มการใช้อีเมลที่ยืนยันจากการเข้าสู่ระบบโซเชียลเป็น ID ผู้ใช้ Amplitude และการจัดการตัวระบุเหล่านี้เมื่อลบบัญชี",
-          "อัปเดตเพิ่มเติม 2026-09-30: ระบุบันทึกป้องกันการรับรางวัลเชื่อมโซเชียลซ้ำและข้อยกเว้นการเก็บหลังลบบัญชี"
+          "2026-09-30 แก้ไข: รางวัลเชื่อมบัญชีโซเชียลครั้งแรกให้หนึ่งครั้งต่อบัญชีแอป แก้ไขข้อความที่ระบุว่าเก็บข้อมูลระบุตัวตนเพื่อป้องกันรางวัลซ้ำไว้หลังลบบัญชี และเปลี่ยนผู้ให้บริการโฮสต์หน้าเว็บสาธารณะเป็น OpenAI / ChatGPT Sites"
         ]
       ]
     ],
@@ -768,7 +1058,7 @@
       "ตรวจสอบและจัดการการชำระเงิน: รหัสบัญชี สินค้า ธุรกรรม ใบเสร็จ และคืนเงิน ประเทศประมวลผลจริงและระยะเก็บของผู้ให้บริการยังอยู่ระหว่างตรวจสอบ หลักฐานที่กฎหมายกำหนดเก็บแยกโดยจำกัดการเข้าถึง",
       "วิเคราะห์การใช้: เหตุการณ์/คุณสมบัติที่อนุญาต รหัสวิเคราะห์และข้อมูลแอป/อุปกรณ์ โครงการใช้เซิร์ฟเวอร์สหรัฐ ตามเงื่อนไขวิเคราะห์ข้างต้น ตัวระบุการวิเคราะห์รวมอีเมลที่ผู้ให้บริการโซเชียลยืนยัน (รวมอีเมลส่งต่อของ Apple) หรือ UUID บัญชี",
       "เมื่อค้นหาออนไลน์ Open Food Facts จะได้รับบาร์โค้ดหรือคำค้นที่ป้อน ภาษาค้นหา และข้อมูลการเชื่อมต่อเช่น IP ไม่มีการอัปโหลดภาพในการค้นหานี้ หากไม่ใช้ฟังก์ชันจะไม่มีการส่งคำขอ",
-      "GitHub Pages: IP เบราว์เซอร์และคำขอหน้าเว็บประมวลผลในสหรัฐและเครือข่าย GitHub เพื่อส่งหน้า/ความปลอดภัยตามนโยบายบันทึก ไม่ส่งโทเค็นบัญชีแอปไปหน้าเว็บ"
+      "OpenAI / ChatGPT Sites ให้บริการโฮสต์หน้าเว็บสาธารณะ ที่อยู่ IP ข้อมูลเบราว์เซอร์และอุปกรณ์ และข้อมูลเมตาของคำขออาจถูกประมวลผลในบันทึกการเข้าถึงเพื่อให้บริการและรักษาความปลอดภัยของหน้าเว็บ ข้อมูลอาหาร รูปภาพ และโทเคนยืนยันตัวตนของแอปจะไม่ถูกส่งมายังเว็บไซต์สาธารณะนี้ ใช้นโยบายความเป็นส่วนตัวของผู้ให้บริการโฮสต์"
     ],
     "support": [
       [
@@ -800,14 +1090,72 @@
       [
         "พอยต์เริ่มต้นและเชื่อมบัญชี",
         [
-          "รางวัลเริ่มต้นคือ 2,000P หนึ่งครั้งต่อบัญชีแอป การเชื่อม Apple หรือ Google ครั้งแรกให้ 2,500P หนึ่งครั้งต่อบัญชีแอปและต่อบัญชีโซเชียล บัญชีโซเชียลใหม่ที่สมัครโดยตรงจะได้ทั้งสองรางวัลรวม 4,500P รางวัลเริ่มต้นและรางวัลเชื่อมบัญชีที่เคยได้รับจะคงเดิม ไม่มีการเติมหรือหักส่วนต่าง บัญชีโซเชียลที่เคยรับรางวัลเชื่อมแล้วจะรับซ้ำโดยเชื่อมใหม่หรือลบแล้วสมัครใหม่ไม่ได้ เซิร์ฟเวอร์ตรวจสอบการให้รางวัลและการรับซ้ำ",
+          "รางวัลเริ่มต้นคือ 2,000P หนึ่งครั้งต่อบัญชี Pantrip การเชื่อม Apple หรือ Google ครั้งแรกให้ 2,500P หนึ่งครั้งต่อบัญชีแอป การสร้างบัญชีใหม่ผ่านการเข้าสู่ระบบโซเชียลจะได้รับทั้งสองรางวัล รวม 4,500P รางวัลที่ได้รับก่อนหน้านี้ไม่เปลี่ยนแปลง ไม่มีการเพิ่มหรือหักส่วนต่าง การเชื่อมบัญชีเดิมอีกครั้งไม่ให้โบนัสเพิ่ม หลังการลบบัญชีเสร็จสมบูรณ์ บัญชีใหม่ที่สร้างจากการสมัครใหม่สามารถรับรางวัลเริ่มต้นและรางวัลเชื่อมบัญชีที่เข้าเงื่อนไขได้ เซิร์ฟเวอร์ตรวจสอบการให้รางวัลและรายการซ้ำแยกตามบัญชี",
           "ลงทะเบียนสิ่งของได้ 10P ต่อชิ้น สูงสุด 3 ชิ้นต่อวัน ใช้สิ่งของเสร็จภายในวันที่กำหนดได้ 15P ต่อชิ้น สูงสุด 2 ชิ้นต่อวัน ทั้งสองกิจกรรมรวมกันได้สูงสุด 50P ต่อวัน รับรางวัลหลังเซิร์ฟเวอร์ยืนยันโดยไม่ต้องรอเพิ่ม 24 ชั่วโมง กิจกรรมออฟไลน์จะตรวจสอบเมื่อเชื่อมต่ออีกครั้ง รับพอยต์กิจกรรมใน 3 วันต่างกันของสัปดาห์ได้เพิ่ม 70P ความสำเร็จแต่ละรายการยังมีเงื่อนไขเฉพาะ ดูโฆษณารับ 50P, 30P และ 20P ได้สูงสุด 3 ครั้งต่อวัน โดยเว้นอย่างน้อย 1 ชั่วโมงระหว่างรางวัล",
           "ขีดจำกัดรายวันรีเซ็ตเวลา 00:00 UTC และนับสัปดาห์ตั้งแต่วันจันทร์ถึงวันอาทิตย์ตาม UTC"
         ]
       ]
     ],
     "contentsTitle": "สารบัญ",
-    "languageTitle": "ภาษา"
+    "languageTitle": "ภาษา",
+    "termsTitle": "ข้อกำหนดการใช้บริการ",
+    "termsSummary": "ข้อกำหนดเกี่ยวกับบัญชี บันทึกอาหาร คะแนน การซื้อ และการใช้ Pantrip: Food & Kitchen มีผลวันที่ 30 กันยายน 2026",
+    "terms": [
+      [
+        "1. บริการและผู้ให้บริการ",
+        [
+          "Pantrip: Food & Kitchen ช่วยบันทึกอาหารและวันหมดอายุ พร้อมตกแต่งครัว ผู้ให้บริการคือ Seonghun Jeon ติดต่อได้ที่ jsh097610@gmail.com ข้อกำหนดนี้ใช้กับแอปและบริการบัญชีที่เกี่ยวข้อง บริการนี้สำหรับผู้มีอายุ 16 ปีขึ้นไป หากกฎหมายในประเทศของคุณกำหนดให้ต้องได้รับความยินยอมจากผู้ปกครองหรือผู้แทนโดยชอบธรรม คุณต้องปฏิบัติตามข้อกำหนดนั้นด้วย"
+        ]
+      ],
+      [
+        "2. บัญชีและการเข้าสู่ระบบ",
+        [
+          "คุณเริ่มด้วยบัญชีไม่ระบุตัวตนหรือเชื่อมต่อ Apple หรือ Google ได้ การเข้าสู่ระบบผ่านผู้ให้บริการเหล่านี้ช่วยให้กลับมาใช้บัญชี Pantrip พร้อมคะแนนและประวัติการซื้อของบัญชีได้ โปรดรักษาวิธีเข้าสู่ระบบให้ปลอดภัยและอย่าใช้บัญชีผู้อื่นโดยไม่ได้รับอนุญาต หากสูญเสียการเข้าถึงบัญชีไม่ระบุตัวตนก่อนเชื่อมต่อวิธีเข้าสู่ระบบ อาจกู้คืนได้ยาก"
+        ]
+      ],
+      [
+        "3. ตรวจสอบบันทึกอาหาร",
+        [
+          "โปรดตรวจสอบและแก้ไขวันที่ รูปภาพ ผลค้นหาบาร์โค้ด และวันที่ที่ระบบอ่านได้ตามจำเป็น บันทึกและการแจ้งเตือนไม่ได้ตัดสินว่าอาหารปลอดภัยต่อการรับประทานหรือไม่ โปรดตรวจสอบวันที่บนบรรจุภัณฑ์ วิธีเก็บรักษา และสภาพอาหารจริงด้วยตนเอง สิทธิในรูปภาพและบันทึกที่คุณเพิ่มยังเป็นของคุณ หากเปิดซิงก์ ข้อมูลจะถูกจัดเก็บ ส่ง และแสดงเท่าที่จำเป็นต่อการให้บริการ"
+        ]
+      ],
+      [
+        "4. การเก็บบนอุปกรณ์และการซิงก์แบบเลือกได้",
+        [
+          "ข้อมูลอาหารและรูปภาพเก็บบนอุปกรณ์เป็นค่าเริ่มต้น หลังเข้าสู่ระบบด้วย Apple หรือ Google คุณสามารถยินยอมแยกต่างหากให้ซิงก์กับเซิร์ฟเวอร์และอุปกรณ์อื่นที่เข้าสู่บัญชีเดียวกันได้ การเข้าสู่ระบบเพียงอย่างเดียวไม่เปิดการซิงก์ การปิดซิงก์จะหยุดการส่งเพิ่มเติม แต่ไม่ลบสำเนาบนเซิร์ฟเวอร์ทันที การลบอาหารขณะเปิดซิงก์อาจมีผลกับอุปกรณ์ที่เชื่อมต่ออื่นด้วย ดูการประมวลผลและการลบในนโยบายความเป็นส่วนตัว"
+        ]
+      ],
+      [
+        "5. คะแนนและของตกแต่ง",
+        [
+          "คุณรับคะแนนจากกิจกรรมและรางวัลที่ระบุในแอป หรือจากสินค้าของ App Store เมื่อมีให้ซื้อ คะแนนใช้กับครัว รูปทรงสินค้า ของตกแต่ง และรายการดิจิทัลที่แสดงในแอป คะแนนไม่ใช่เงินสดหรือเงินฝาก และไม่มีฟังก์ชันถอนเป็นเงินสดหรือโอนไปบัญชีอื่น โปรดตรวจสอบเงื่อนไข ขีดจำกัด ราคา และความพร้อมให้บริการบนหน้าที่เกี่ยวข้อง รางวัลและการซื้ออาจแสดงหลังเซิร์ฟเวอร์ตรวจสอบ และไม่ได้ให้สิทธิรับรางวัลเดียวกันซ้ำ รายการดิจิทัลผูกกับบัญชีที่เกี่ยวข้อง"
+        ]
+      ],
+      [
+        "6. การชำระเงินและคืนเงิน",
+        [
+          "เมื่อมีการซื้อด้วยเงิน การชำระเงินจะใช้ขั้นตอนของ App Store ของ Apple โปรดตรวจสอบสินค้า ราคา และเงื่อนไขก่อนชำระ ติดต่อฝ่ายสนับสนุนเมื่อการชำระเงินผิดพลาดหรือไม่ได้รับคะแนน และขอคืนเงินจากการซื้อของ Apple ได้ที่ reportaproblem.apple.com คะแนนหรือสถานะรายการของธุรกรรมนั้นอาจถูกปรับหลังการคืนเงินหรือยกเลิก ข้อมูลนี้ไม่จำกัดสิทธิตามกฎหมายในการยกเลิก ขอคืนเงิน หรือสิทธิผู้บริโภค"
+        ]
+      ],
+      [
+        "7. การใช้งานอย่างเป็นธรรม",
+        [
+          "ห้ามเพิ่มเนื้อหาที่ละเมิดสิทธิผู้อื่น ใช้บัญชีผู้อื่นโดยไม่ได้รับอนุญาต รับคะแนนหรือรางวัลด้วยกิจกรรมปลอมหรือคำขอที่ดัดแปลง หรือรบกวนความปลอดภัยและการทำงานปกติของบริการ เมื่อพบปัญหา อาจจำกัดฟังก์ชันหรือบัญชีเท่าที่จำเป็นเพื่อป้องกันความเสียหายและตรวจสอบ โดยจะแจ้งเหตุผลและช่องทางติดต่อเมื่อทำได้ หากเห็นว่าเกิดข้อผิดพลาด คุณขอให้ตรวจสอบผ่านอีเมลสนับสนุนได้"
+        ]
+      ],
+      [
+        "8. การลบบัญชีและการสนับสนุน",
+        [
+          "คุณขอลบบัญชีได้จากข้อมูลบัญชีในหน้าตั้งค่า การลบจะนำบัญชีบนเซิร์ฟเวอร์ คะแนน สิทธิในของตกแต่ง รวมถึงอาหารและรูปภาพที่ซิงก์ไว้ออก ซึ่งอาจกู้คืนไม่ได้ โปรดอ่านคำอธิบายในแอปก่อน ข้อมูลอาหารและรูปภาพบนอุปกรณ์ยังคงอยู่แยกต่างหาก การลบบัญชีไม่ใช่การคืนเงินอัตโนมัติ บันทึกธุรกรรมที่กฎหมายกำหนดและข้อยกเว้นอื่นอาจเก็บแยกตามระยะเวลาในนโยบายความเป็นส่วนตัว ผู้ให้บริการภายนอกอาจลบเสร็จต่างเวลากัน หากใช้แอปไม่ได้หรือต้องการทราบสถานะ โปรดติดต่อฝ่ายสนับสนุน"
+        ]
+      ],
+      [
+        "9. การเปลี่ยนแปลงและสิทธิของคุณ",
+        [
+          "ฟังก์ชันออนไลน์ เช่น ตรวจสอบบัญชี ซิงก์ และตรวจสอบการชำระเงินหรือรางวัล ต้องใช้เครือข่ายและอาจล่าช้าระหว่างบำรุงรักษาหรือขัดข้อง การเปลี่ยนแปลงสำคัญของบริการหรือข้อกำหนดจะแจ้งในแอปหรือเว็บไซต์ทางการพร้อมเวลาที่มีผล และจะขอความยินยอมแยกเมื่อกฎหมายกำหนด ข้อกำหนดนี้ไม่ยกเว้นกฎหมายบังคับหรือสิทธิผู้บริโภคที่ใช้ในประเทศของคุณ โปรดส่งคำถามเกี่ยวกับข้อกำหนดหรือบริการให้ฝ่ายสนับสนุน"
+        ]
+      ]
+    ]
   },
   "mn": {
     "privacyTitle": "Нууцлалын бодлого",
@@ -861,7 +1209,7 @@
         "7. Хадгалах хугацаа ба устгал",
         [
           "Хуулиар шаардсан гэрээ, төлбөр, нийлүүлэлтийн хамгийн бага бүртгэлийг анхны гүйлгээний цагаас таван жил, гомдол/маргааны бүртгэлийг холбогдох журмаар гурван жил хязгаарлагдмал хадгална. Бүх үйлдэл, зургийг таван жил хадгалах гэсэн үг биш. Устгалын төлөв, сэргээх лавлагааг дууссанаас хойш 30 хоног хадгалах ажиллагааг серверт хэрэгжүүлсэн. Сервер хадгалах хугацааг тогтмол шалгаж, хугацаа нь дууссан холбогдох бүртгэлийг устгана. Хүлээгдэж буй хүсэлт ба дууссан устгалыг ялгаж мэдээлнэ.",
-          "Сошиал бүртгэл анх холбосны урамшууллыг давхар эсвэл залилангаар авахаас сэргийлж, нэвтрэх үйлчилгээ үзүүлэгч болон түүний бүртгэлийн тогтмол таних утгыг нэгтгэсэн SHA-256 хэш, онооны түрийвчний орчин, давхар урамшууллаас сэргийлэх бичлэг үүсгэсэн цагийг тусад нь хадгална. Энэ бичлэгт цахим шуудан, сошиал бүртгэлийн эх таних утга, аппын бүртгэлийн ID хадгалахгүй. Хэш нь нэрийг орлуулсан хувийн мэдээлэл бөгөөд нэргүй мэдээлэл биш. Бүртгэл устгасны дараа ч нэг удаагийн урамшууллын хөтөлбөр хэрэгжих хугацаанд хадгалж, хөтөлбөр дуусаж хадгалах зорилго арилмагц устгана. Хандалтыг зөвхөн давтан урамшуулал авахаас сэргийлэхэд хязгаарлана.",
+          "Эхлэх болон сошиал холболтын урамшуулал, олголтын бүртгэлийг Pantrip бүртгэл тус бүрээр хөтөлж, бүртгэл устахад хамт устгана. Хуулиар хадгалах шаардлагатай төлбөрийн баримтыг дээрх хугацаанд тусад нь хадгална. Устгасны дараа ижил сошиал бүртгэлээр дахин бүртгүүлэхийг хориглох зорилгоор бүртгэл хоорондын таних мэдээллийг тусад нь хадгалахгүй.",
           "Шинжилгээний үйл явдлыг зорилго үргэлжлэх хугацаанд хадгалж, хамаарах устгах хүсэлтийг шалгасны дараа үйлчилгээ үзүүлэгчээр устгуулна. 12 сарын автомат устгал тохируулагдаагүй тул 12 сар болоод заавал устна гэж батлахгүй. Бүртгэлтэй холбогдоогүй хуучин төхөөрөмжийн үйл явдлыг зөвхөн бүртгэлийн ID-аар олж чадахгүй байж болно. Шалгаж болох хүрээ, нэмэлт алхмыг тайлбарлана.",
           "Зорилго дуусмагц сэргээхэд хүндрэлтэй аргаар устгана. Гадаад үйлчилгээний устгал, хязгаарлагдмал аюулгүй байдал/нөөц хадгалалт хугацаа шаардаж болно. Хүсэлт хүлээн авсан болон гадаад устгал дууссаныг ялгаж мэдээлнэ. Хуульд заасан мэдээллийг хугацаа дуусахад устгана."
         ]
@@ -872,7 +1220,7 @@
           "Тохиргооны Миний мэдээлэл хэсгээс бүртгэл устгах хүсэлт гаргана. Таних болон гүйлгээний шалгалтын дараа серверийн бүртгэл, оноо, гал тогоо болон чимэглэлийн эрх, синк хийсэн хүнс, зургийг устгана. Зочин бүртгэл мөн хамаарна. Төхөөрөмжийн хүнс, зураг үлдэнэ. Энэ нь төлбөр буцаах биш; хуулиар шаардсан төлбөрийн бүртгэлийг шаардлагатай хугацаанд тусад нь хадгална.",
           "Гаднын үйлчилгээний өгөгдлийн устгал нь бүртгэл устгахаас тусдаа явагдах тул дуусах хугацаа өөр байж болно. Сервер устгах хүсэлтийг автоматаар боловсруулж, амжилтгүй ажлыг дахин оролдоно. Бодит Apple бүртгэлийн баталгаажуулалт, эрх цуцлалт болон Amplitude-д байгаа үйл явдлын устгал бүрэн дууссаныг шалгах шаардлага хэвээр байна. Хүсэлт хүлээн авсан, боловсруулж буй, бүртгэл устсан, гаднын устгал дууссан төлөвийг ялгаж мэдээлнэ. Явцыг шалгах эсвэл апп ашиглаж чадахгүй бол jsh097610@gmail.com хаягаар холбогдоно уу.",
           "Сервер баталгаажуулсан бүртгэлийн мэдээллээс шалгасан шинжилгээний имэйл ID-г бүртгэлтэй холбон хадгална. Бүртгэл устгахад хадгалсан имэйл ID болон хуучин UUID-д суурилсан ID-гийн өгөгдлийг Amplitude-ээс устгах хүсэлт илгээнэ.",
-          "Бүртгэл устгах үеийн үл хамаарах зүйл: сошиал бүртгэл анх холбосны урамшууллыг давхар авахаас сэргийлэх бичлэг 7-р хэсэгт заасан хугацаанд үлдэнэ."
+          "Бүртгэл устгах ажиллагаа дууссаны дараа дахин бүртгүүлбэл шинэ Pantrip бүртгэл үүсэж, холбогдох эхлэх болон холболтын урамшууллыг авах боломжтой. Одоо байгаа бүртгэлийн холболтыг салгаад дахин холбоход нэмэлт урамшуулал олгохгүй."
         ]
       ],
       [
@@ -890,7 +1238,7 @@
           "Мэдээлэл, зорилго, үйлчилгээ үзүүлэгчийн чухал өөрчлөлтийг апп эсвэл энэ хуудсаар зарлаж, хүчинтэй огноог шинэчилнэ. Шинэ зөвшөөрөл шаардсан өөрчлөлтийг тусад нь тайлбарлана.",
           "2026-09-29 шинэчлэлт: цагаан/хар дэвсгэртэй энгийн баримт бичгийн загвар, агуулгын жагсаалт нэмж, мэдээлэл цуглуулах болон эрхээ хэрэгжүүлэх аргыг тодрууллаа. Энэ баримт бичгийн шинэчлэлтээр цуглуулах хувийн мэдээллийн шинэ төрөл нэмээгүй. Өмнөх мэдэгдэлтэй танилцах бол имэйлээр хандана уу.",
           "2026-09-30 шинэчлэлт: сошиал нэвтрэлтийн баталгаажсан имэйлийг Amplitude хэрэглэгчийн ID болгон ашиглах болон бүртгэл устгах үеийн эдгээр ID-гийн боловсруулалтыг нэмэв.",
-          "2026-09-30 нэмэлт: сошиал холболтын давхар урамшууллаас сэргийлэх бичлэг болон бүртгэл устгасны дараах хадгалалтын үл хамаарах нөхцөлийг тайлбарлав."
+          "2026-09-30 залруулга: анхны сошиал холболтын урамшууллыг аппын бүртгэл тус бүрд нэг удаа олгоно. Бүртгэл устгасны дараа давхар олголтоос сэргийлэх таних мэдээллийг тусад нь хадгална гэсэн тайлбарыг залрууллаа. Нийтийн вэб хуудасны хостингийг OpenAI / ChatGPT Sites болгож өөрчиллөө."
         ]
       ]
     ],
@@ -903,7 +1251,7 @@
       "Төлбөр баталгаажуулах, гүйлгээ удирдах: бүртгэлийн ID, бүтээгдэхүүн, гүйлгээ, баримт, буцаалт. Бодит боловсруулах улс, нийлүүлэгчийн хадгалалтын хугацааг тодруулж байна. Шаардлагатай төлбөрийн баримтыг тусад нь хязгаарлагдмал хадгална.",
       "Ашиглалтын шинжилгээ: зөвшөөрөгдсөн үйл явдал/шинж чанар, таних дугаар, апп/төхөөрөмж. Төсөл АНУ-ын сервер ашиглана. Дээрх шинжилгээний нөхцөл үйлчилнэ. Шинжилгээний таних мэдээлэлд сошиал үйлчилгээ үзүүлэгчийн баталгаажуулсан имэйл (Apple-ийн дамжуулах хаяг орно) эсвэл бүртгэлийн UUID орно.",
       "Онлайн хайлт хийхэд Open Food Facts-д баркод эсвэл оруулсан хайлтын үг, хайлтын хэл, IP зэрэг холболтын мэдээлэл очно. Энэ хайлтад зураг байршуулахгүй. Үйлдлийг ашиглахгүй бол хүсэлт илгээхгүй.",
-      "GitHub Pages: хуудасны IP, хөтөч, хүсэлтийг АНУ болон GitHub сүлжээнд түгээлт/аюулгүй байдлын зорилгоор, логийн дүрмийн дагуу боловсруулна. Аппын токен дамжуулахгүй."
+      "OpenAI / ChatGPT Sites нийтийн вэб хуудсуудыг байршуулна. Хуудсыг хүргэх, хамгаалах зорилгоор хандалтын IP хаяг, хөтөч ба төхөөрөмжийн мэдээлэл, хүсэлтийн мета өгөгдлийг хандалтын логт боловсруулж болно. Аппын хүнсний бүртгэл, зураг, бүртгэлийн баталгаажуулалтын токеныг энэ нийтийн сайт руу илгээхгүй. Хостинг үйлчилгээ үзүүлэгчийн нууцлалын бодлого үйлчилнэ."
     ],
     "support": [
       [
@@ -935,13 +1283,71 @@
       [
         "Эхлэх болон бүртгэл холбох оноо",
         [
-          "Эхлэх урамшуулал нь аппын бүртгэл бүрд нэг удаа 2,000P. Apple эсвэл Google-ийг анх холбоход аппын болон сошиал бүртгэл тус бүрд нэг удаа 2,500P олгоно. Шинэ сошиал бүртгэлээр шууд бүртгүүлбэл хоёр урамшуулал нийлээд 4,500P болно. Өмнө олгосон эхлэх болон холболтын урамшуулал хэвээр үлдэнэ; зөрүүг нөхөж олгохгүй, хасахгүй. Холболтын урамшуулал авсан сошиал бүртгэл дахин холбох, устгаад дахин бүртгүүлэх замаар давтан авах боломжгүй. Сервер олголт болон давхардлыг шалгана.",
+          "Эхлэх урамшуулал нь Pantrip бүртгэл бүрд нэг удаа 2,000P. Apple эсвэл Google-тэй анх холбоход аппын бүртгэл бүрд нэг удаа 2,500P олгоно. Сошиал нэвтрэлтээр шинэ бүртгэл үүсгэвэл хоёр урамшууллыг нийлүүлж 4,500P авна. Өмнө олгосон урамшууллыг өөрчлөхгүй, зөрүүг нэмж эсвэл хасахгүй. Одоо байгаа бүртгэлийг дахин холбоход нэмэлт урамшуулал олгохгүй. Бүртгэл устгах ажиллагаа дууссаны дараа дахин бүртгүүлсэн шинэ бүртгэл холбогдох эхлэх болон холболтын урамшууллыг авах боломжтой. Сервер олголт болон давхардлыг бүртгэл тус бүрээр шалгана.",
           "Бараа бүртгэхэд 10P, өдөрт 3 хүртэл бараанд олгоно. Хугацаанаас өмнө дуусгахад 15P, өдөрт 2 хүртэл бараанд олгоно. Эдгээр үйлдлийн өдрийн нийлбэр дээд хэмжээ 50P. Нэмэлт 24 цаг хүлээхгүй, сервер баталгаажуулсны дараа олгоно; офлайн үйлдлийг дахин холбогдоход шалгана. Нэг долоо хоногийн өөр 3 өдөр үйлдлийн оноо авбал 70P нэмнэ. Амжилт тус бүр өөрийн биелүүлэх нөхцөлтэй хэвээр. Зар сурталчилгааны урамшуулал өдөрт 3 хүртэл удаа 50P, 30P, 20P бөгөөд хоорондоо дор хаяж 1 цагийн зайтай байна.",
           "Өдрийн хязгаар UTC 00:00 цагт шинэчлэгдэнэ. Долоо хоногийг UTC цагаар даваа гарагаас ням гараг хүртэл тооцно."
         ]
       ]
     ],
     "contentsTitle": "Агуулга",
-    "languageTitle": "Хэл"
+    "languageTitle": "Хэл",
+    "termsTitle": "Үйлчилгээний нөхцөл",
+    "termsSummary": "Pantrip: Food & Kitchen-ийн бүртгэл, хүнсний мэдээлэл, оноо, худалдан авалт болон хэрэглээний нөхцөл. 2026 оны 9 дүгээр сарын 30-наас мөрдөнө.",
+    "terms": [
+      [
+        "1. Үйлчилгээ ба эрхлэгч",
+        [
+          "Pantrip: Food & Kitchen нь хүнс, дуусах хугацааг бүртгэж, гал тогоогоо тохижуулахад тусална. Үйлчилгээ эрхлэгч нь Seonghun Jeon; холбоо барих хаяг: jsh097610@gmail.com. Эдгээр нөхцөл апп болон холбогдох бүртгэлийн үйлчилгээнд хамаарна. Үйлчилгээ нь 16 ба түүнээс дээш насныханд зориулагдсан. Танай улсын хууль эцэг эх, хууль ёсны төлөөлөгчийн зөвшөөрөл шаарддаг бол уг шаардлагыг мөн хангана."
+        ]
+      ],
+      [
+        "2. Бүртгэл ба нэвтрэлт",
+        [
+          "Нэргүй бүртгэлээр эхлэх эсвэл Apple, Google бүртгэлээ холбож болно. Эдгээрээр нэвтрэх нь Pantrip бүртгэлдээ дахин орж, оноо болон худалдан авалтын түүхээ ашиглахад зориулагдана. Нэвтрэх хэрэгслээ хамгаалж, бусдын бүртгэлийг зөвшөөрөлгүй бүү ашиглаарай. Нэвтрэх арга холбоогүй нэргүй бүртгэлийн хандалтаа алдвал сэргээхэд хүндрэлтэй байж болно."
+        ]
+      ],
+      [
+        "3. Хүнсний мэдээллийг шалгах",
+        [
+          "Оруулсан огноо, зураг, баркодын хайлтын үр дүн, таньсан огноог шалгаж, шаардлагатай бол засаарай. Аппын бүртгэл, сануулга нь хүнс идэхэд аюулгүй эсэхийг тогтоохгүй. Савлагааны огноо, хадгалах заавар, хүнсний бодит байдлыг өөрөө шалгана. Оруулсан зураг, мэдээллийн эрх танд хэвээр үлдэнэ. Синк зөвшөөрсөн бол үйлчилгээ үзүүлэхэд шаардлагатай хэмжээнд хадгалж, дамжуулж, харуулна."
+        ]
+      ],
+      [
+        "4. Төхөөрөмжийн хадгалалт ба сонголтот синк",
+        [
+          "Хүнсний мэдээлэл, зураг анхдагчаар төхөөрөмжид хадгалагдана. Apple эсвэл Google-ээр нэвтэрсний дараа тусад нь зөвшөөрвөл сервер болон ижил бүртгэлээр нэвтэрсэн бусад төхөөрөмжтэй синк хийнэ. Зөвхөн нэвтрэхэд синк автоматаар асахгүй. Синкийг унтраавал цааш дамжуулахыг зогсоох боловч серверийн хуулбарыг шууд устгахгүй. Синк асаалттай үед хүнс устгавал бусад холбогдсон төхөөрөмжид мөн тусаж болно. Боловсруулалт, устгалын талаар Нууцлалын бодлогыг үзнэ үү."
+        ]
+      ],
+      [
+        "5. Оноо ба тохижуулах зүйлс",
+        [
+          "Оноог аппад тайлбарласан үйл ажиллагаа, урамшууллаар эсвэл санал болгосон үед App Store бүтээгдэхүүн худалдан авч авна. Оноог аппад харагдах дижитал гал тогоо, бүтээгдэхүүний хэлбэр, чимэглэл болон бусад зүйлд ашиглана. Оноо нь бэлэн мөнгө, хадгаламж биш бөгөөд мөнгө болгон авах, өөр бүртгэлд шилжүүлэх боломжгүй. Нөхцөл, хязгаар, үнэ, хүртээмжийг тухайн дэлгэцээс шалгаарай. Урамшуулал, худалдан авалт серверийн шалгалтын дараа бүртгэгдэж болно. Энэ нь нэг урамшууллыг дахин дахин авах эрх олгохгүй. Дижитал зүйлс тухайн бүртгэлтэй холбогдоно."
+        ]
+      ],
+      [
+        "6. Төлбөр ба буцаалт",
+        [
+          "Мөнгөн худалдан авалт санал болгосон үед Apple-ийн App Store төлбөрийн үйл явцыг ашиглана. Төлөхөөс өмнө бүтээгдэхүүн, үнэ, нөхцөлийг шалгана уу. Төлбөрийн алдаа эсвэл оноо ороогүй бол дэмжлэгт хандаж, Apple худалдан авалтын буцаалтыг reportaproblem.apple.com-оос хүсэж болно. Буцаалт, цуцлалтын дараа тухайн гүйлгээний оноо эсвэл зүйлсийн төлөв өөрчлөгдөж болно. Энэ тайлбар нь хуулиар олгосон цуцлах, мөнгө буцаалгах болон хэрэглэгчийн эрхийг хязгаарлахгүй."
+        ]
+      ],
+      [
+        "7. Шударга хэрэглээ",
+        [
+          "Бусдын эрхийг зөрчсөн материал оруулах, бусдын бүртгэлийг зөвшөөрөлгүй ашиглах, хуурамч үйлдэл эсвэл өөрчилсөн хүсэлтээр оноо, урамшуулал авах, аюулгүй байдал болон хэвийн ажиллагаанд саад учруулахыг хориглоно. Асуудал тогтоогдвол хохирлоос сэргийлэх, шалгахад шаардлагатай хэмжээнд тухайн функц эсвэл бүртгэлийг хязгаарлаж болно. Боломжтой үед шалтгаан, холбоо барих аргыг мэдэгдэнэ. Алдаа гэж үзвэл дэмжлэгийн имэйлээр дахин шалгуулах хүсэлт гаргаж болно."
+        ]
+      ],
+      [
+        "8. Бүртгэл устгах ба дэмжлэг",
+        [
+          "Тохиргооны бүртгэлийн мэдээллээс устгах хүсэлт гаргаж болно. Устгахад серверийн бүртгэл, оноо, тохижуулах зүйлсийн эзэмшил, синк хийсэн хүнсний мэдээлэл, зураг устах бөгөөд сэргээх боломжгүй байж болох тул эхлээд аппын тайлбарыг уншина уу. Төхөөрөмж дэх хүнсний мэдээлэл, зураг тусдаа үлдэнэ. Бүртгэл устгах нь автоматаар мөнгө буцаах үйлдэл биш. Шаардлагатай гүйлгээний бүртгэл болон бусад үл хамаарах мэдээллийг Нууцлалын бодлогод заасан хугацаанд тусад нь хадгалж болно. Гаднын үйлчилгээ үзүүлэгчдийн устгал дуусах хугацаа өөр байж болно. Апп ашиглах боломжгүй эсвэл төлөв мэдэх шаардлагатай бол дэмжлэгт хандана уу."
+        ]
+      ],
+      [
+        "9. Өөрчлөлт ба таны эрх",
+        [
+          "Бүртгэл шалгах, синк хийх, төлбөр, урамшуулал баталгаажуулах зэрэг онлайн функцэд сүлжээ хэрэгтэй бөгөөд засвар, доголдлын үед саатаж болно. Үйлчилгээ эсвэл нөхцөлийн чухал өөрчлөлтийг хэрэгжих хугацаатай нь апп эсвэл албан ёсны сайтад мэдэгдэж, хууль шаардвал тусад нь зөвшөөрөл авна. Эдгээр нөхцөл нь танай улсад мөрдөгдөх заавал биелүүлэх хууль, хэрэглэгчийн эрхийг үгүйсгэхгүй. Нөхцөл эсвэл хэрэглээний асуултаа дэмжлэгт илгээнэ үү."
+        ]
+      ]
+    ]
   }
 }
