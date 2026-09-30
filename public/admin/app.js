@@ -46,6 +46,15 @@ export function erasureSteps(flags = {}) {
   ].map(([label, done, skipped]) => `${label}: ${skipped ? '해당 없음' : done ? '완료' : '대기'}`);
 }
 
+export function restoreSection(hash, root = document) {
+  const workspace = root.getElementById('workspace');
+  const section = root.getElementById(hash.slice(1));
+  if (!hash.startsWith('#') || !workspace || workspace.hidden || section?.parentElement !== workspace || section.tagName !== 'SECTION') return false;
+  section.focus({ preventScroll: true });
+  section.scrollIntoView({ block: 'start' });
+  return true;
+}
+
 if (typeof document !== 'undefined') start();
 
 function start() {
@@ -66,6 +75,7 @@ function start() {
   }
   async function run(work) {
     if (state.busy) return;
+    const wasHidden = $('workspace').hidden;
     state.busy = true; controls();
     try { await work(); }
     catch (error) {
@@ -73,7 +83,12 @@ function start() {
         state.operator = false; clearAccount(); $('workspace').hidden = true; $('login-panel').hidden = false;
       }
       status(error.message || '요청에 실패했습니다.', true);
-    } finally { state.busy = false; controls(); }
+    } finally {
+      state.busy = false; controls();
+      // The initial fragment resolves while its target is hidden. Restore after loading.
+      // Ordinary requests must not pull the user back to a previously visited section.
+      if (wasHidden && !$('workspace').hidden) restoreSection(location.hash);
+    }
   }
   function saveSession(value) {
     state.session = { access_token: value.access_token, refresh_token: value.refresh_token,

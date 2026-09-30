@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { validateMutation, safeDashboardURL, makePKCE, walletState, erasureQuery, erasureSteps } from './app.js';
+import { validateMutation, safeDashboardURL, makePKCE, walletState, erasureQuery, erasureSteps, restoreSection } from './app.js';
 
 const base = { userID: 'a0000000-0000-0000-0000-000000000001', requestID: 'b0000000-0000-0000-0000-000000000001',
   namespace: 'test_store', expectedRevision: 4, reason: '인증 이벤트 지급', confirmation: 'APPLY', action: 'credit', points: 30000 };
@@ -67,4 +67,41 @@ test('page IDs are unique so rendering cannot replace a containing section', asy
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, 'Duplicate element IDs');
   assert.match(html, /<tbody id="erasures"><\/tbody>/);
+});
+
+
+test('section fragment is restored after authentication reveals the workspace and tables finish loading', async () => {
+  const html = await readFile(new URL('./index.html', import.meta.url), 'utf8');
+  const workspace = { hidden: true };
+  const calls = [];
+  const nodes = Object.fromEntries(['accounts', 'account', 'erasure-section', 'database'].map(id => [id, {
+    parentElement: workspace, tagName: 'SECTION',
+    focus: options => calls.push([id, 'focus', options]),
+    scrollIntoView: options => calls.push([id, 'scroll', options]),
+  }]));
+  const root = { getElementById: id => id === 'workspace' ? workspace : nodes[id] };
+  assert.equal(restoreSection('#database', root), false);
+  assert.deepEqual(calls, []);
+  workspace.hidden = false;
+  for (const id of Object.keys(nodes)) {
+    assert.match(html, new RegExp(`<section id="${id}"[^>]*tabindex="-1"`));
+    assert.equal(restoreSection(`#${id}`, root), true);
+    assert.deepEqual(calls.splice(0), [[id, 'focus', { preventScroll: true }], [id, 'scroll', { block: 'start' }]]);
+  }
+  for (const hash of ['', '#unknown', '#workspace', 'database']) assert.equal(restoreSection(hash, root), false);
+  assert.deepEqual(calls, []);
+});
+
+
+test('a section selected during an async table load is realigned after its position changes', async () => {
+  const workspace = { hidden: false };
+  let sectionTop = 100;
+  const scrolled = [];
+  const section = { parentElement: workspace, tagName: 'SECTION', focus() {}, scrollIntoView() { scrolled.push(sectionTop); } };
+  const root = { getElementById: id => id === 'workspace' ? workspace : id === 'database' ? section : null };
+  const tableLoad = Promise.resolve().then(() => { sectionTop = 700; });
+  restoreSection('#database', root);
+  await tableLoad;
+  restoreSection('#database', root);
+  assert.deepEqual(scrolled, [100, 700]);
 });
